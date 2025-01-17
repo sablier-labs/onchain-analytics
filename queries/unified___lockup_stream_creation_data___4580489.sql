@@ -18,10 +18,8 @@ SELECT
   sender,
   streamId,
   'lockupLinear' AS contract,
-  CASE
-    WHEN cast(
-      json_extract_scalar(timestamps, '$.cliff') AS double
-    ) = 0 THEN 'linear'
+	CASE
+    WHEN cast(json_extract_scalar(range, '$.cliff') AS double) - cast(json_extract_scalar(range, '$.start') AS double) = 0 THEN 'linear'
     ELSE 'linear-cliff'
   END as streamingCurve,
   CASE
@@ -72,25 +70,12 @@ SELECT
 		THEN 'true'
     ELSE 'false'
   END AS stablecoin,
-  json_extract_scalar(timestamps, '$.start') AS startTime,
-  json_extract_scalar(timestamps, '$.end') AS endTime,
+	  json_extract_scalar(range, '$.start') AS startTime,
+  json_extract_scalar(range, '$.end') AS endTime,
   (
-    cast(
-      json_extract_scalar(timestamps, '$.end') AS double
-    ) - cast(
-      json_extract_scalar(timestamps, '$.start') AS double
-    )
+    cast(json_extract_scalar(range, '$.end') AS double) - cast(json_extract_scalar(range, '$.start') AS double)
   ) AS duration,
-  CASE
-    WHEN cast(
-      json_extract_scalar(timestamps, '$.cliff') AS double
-    ) = 0 then 0
-    ELSE cast(
-      json_extract_scalar(timestamps, '$.cliff') AS double
-    ) - cast(
-      json_extract_scalar(timestamps, '$.start') AS double
-    )
-  END AS cliffDuration,
+  cast(json_extract_scalar(range, '$.cliff') AS double) - cast(json_extract_scalar(range, '$.start') AS double) AS cliffDuration,
   json_extract_scalar(amounts, '$.deposit') AS deposit,
   json_extract_scalar(amounts, '$.protocolFee') AS protocolFee,
   json_extract_scalar(amounts, '$.brokerFee') AS brokerFee
@@ -189,7 +174,7 @@ SELECT
     )
   END AS cliffDuration,
   json_extract_scalar(amounts, '$.deposit') AS deposit,
-  0 AS protocolFee,
+  '0' AS protocolFee,
   json_extract_scalar(amounts, '$.brokerFee') AS brokerFee
 FROM
 sablier_v2_2_multichain.sablierv2lockuplinear_evt_createlockuplinearstream
@@ -294,7 +279,7 @@ SELECT
     ELSE 0
   END as cliffDuration,
   json_extract_scalar(amounts, '$.deposit') AS deposit,
-  0 AS protocolFee,
+  '0' AS protocolFee,
   json_extract_scalar(amounts, '$.brokerFee') AS brokerFee
 FROM
   sablier_v2_2_multichain."SablierV2LockupDynamic_evt_CreateLockupDynamicStream"
@@ -385,7 +370,7 @@ SELECT
   ) AS duration,
   0 as cliffDuration,
   json_extract_scalar(amounts, '$.deposit') AS deposit,
-  0 AS protocolFee,
+  '0' AS protocolFee,
   json_extract_scalar(amounts, '$.brokerFee') AS brokerFee
 FROM
   sablier_v2_2_multichain."SablierV2LockupTranched_evt_CreateLockupTranchedStream"
