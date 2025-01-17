@@ -2,7 +2,7 @@
 -- query name: Unified: Lockup Stream Creation Data
 -- query link: https://dune.com/queries/4580489
 
--- Sablier v2.0
+-- Sablier v1.0
 
 SELECT
 	chain,
@@ -20,6 +20,7 @@ SELECT
   sender,
   streamId,
   'lockupLinear' AS contract,
+	'v1.0' as version,
 	CASE
     WHEN cast(json_extract_scalar(range, '$.cliff') AS DOUBLE) - cast(json_extract_scalar(range, '$.start') AS DOUBLE) = 0 THEN 'linear'
     ELSE 'linear-cliff'
@@ -102,6 +103,7 @@ SELECT
   sender,
   streamId,
   'lockupDynamic' AS contract,
+	'v1.0' as version,
   CASE
     WHEN json_extract_scalar(segments[1], '$.exponent') = '3000000000000000000' THEN 'exponential'
     WHEN json_extract_scalar(segments[1], '$.amount') = '0'
@@ -203,6 +205,7 @@ SELECT
   sender,
   streamId,
   'lockupLinear' AS contract,
+	'v1.1' as version,
 	CASE
     WHEN cast(json_extract_scalar(range, '$.cliff') AS DOUBLE) - cast(json_extract_scalar(range, '$.start') AS DOUBLE) = 0 THEN 'linear'
     ELSE 'linear-cliff'
@@ -285,6 +288,7 @@ SELECT
   sender,
   streamId,
   'lockupDynamic' AS contract,
+	'v1.1' as version,
   CASE
     WHEN json_extract_scalar(segments[1], '$.exponent') = '3000000000000000000' THEN 'exponential'
     WHEN json_extract_scalar(segments[1], '$.amount') = '0'
@@ -386,6 +390,7 @@ SELECT
   sender,
   streamId,
   'lockupLinear' AS contract,
+	'v1.2' as version,
   CASE
     WHEN cast(
       json_extract_scalar(timestamps, '$.cliff') AS DOUBLE
@@ -483,6 +488,7 @@ SELECT
   sender,
   streamId,
   'lockupDynamic' AS contract,
+	'v1.2' as version,
   CASE
     WHEN json_extract_scalar(segments[1], '$.exponent') = '3000000000000000000' THEN 'exponential'
     WHEN json_extract_scalar(segments[1], '$.amount') = '0'
@@ -588,6 +594,7 @@ SELECT
   sender,
   streamId,
   'lockupTranched' AS contract,
+	'v1.2' as version,
   CASE
     WHEN cardinality(tranches) = 1 THEN 'timelock'
     WHEN cast(
