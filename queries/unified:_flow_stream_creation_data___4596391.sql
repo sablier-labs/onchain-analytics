@@ -16,9 +16,9 @@ SELECT
     recipient,
     sender,
     streamId,
-		"v1.0" AS version,
+		'v1.0' AS version,
 		CASE
-			WHEN asset in (
+			WHEN token in (
 				0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48, -- Ethereum USDC
 				0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4, -- zkSync USDC
 				0x0b2c639c533813f4aa9d7837caf62653d097ff85, -- Optimism USDC
@@ -35,7 +35,7 @@ SELECT
 				0x6c3ea9036406852006290770bedfcaba0e23a0e8 -- Ethereum PYUSD
 			)
 			THEN cast(ratePerSecond AS DOUBLE) / 1e6
-			WHEN asset in (
+			WHEN token in (
 				0xdc035d45d973e3ec169d2276ddab16f1e407384f, -- Ethereum USDS
 				0x820c137fa70c8691f0e44dc420a5e53c168921dc, -- Base USDS
 				0x57ab1ec28d129707052df4df418d58a2d46d5f51, -- Ethereum SUSD
