@@ -8,4 +8,5 @@ query_ids:
   - 4600798 # Flow: Stream Creation Count
   - 4600977 # Unified: Unique User Count
   - 4601033 # Lockup: Unique User Count
+  - 4601157 # Legacy: Unique User Count
   - 4601154 # Flow: Unique User Count
