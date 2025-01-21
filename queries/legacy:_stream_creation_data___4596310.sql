@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Unified: Legacy Stream Creation Data
+-- query name: Legacy: Stream Creation Data
 -- query link: https://dune.com/queries/4596310
 
 

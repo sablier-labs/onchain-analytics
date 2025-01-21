@@ -8,7 +8,7 @@ SELECT
 FROM
     (
         SELECT funder AS user
-        FROM query_4580489 -- Unified: Lockup Stream Creation Data
+        FROM query_4580489 -- Lockup: Stream Creation Data
         UNION ALL
         SELECT sender AS user
         FROM query_4580489
@@ -17,14 +17,15 @@ FROM
         FROM query_4580489
         UNION ALL
         SELECT sender AS user
-        FROM query_4596310 -- Unified: Legacy Stream Creation Data
+        FROM query_4596310 -- Legacy: Stream Creation Data
         UNION ALL
         SELECT recipient AS user
         FROM query_4596310
         UNION ALL
         SELECT sender AS user
-        FROM query_4596391 -- Unified: Flow Stream Creation Data
+        FROM query_4596391 -- Flow: Stream Creation Data
         UNION ALL
         SELECT recipient AS user
         FROM query_4596391
+    )FROM query_4596391
     )

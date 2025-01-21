@@ -6,4 +6,4 @@
 SELECT
     COUNT(*)
 FROM
-    query_4596391 -- Unified: Flow Stream Creation Data
+    query_4596391 -- Flow: Stream Creation Dataion Data

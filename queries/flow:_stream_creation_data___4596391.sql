@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Unified: Flow Stream Creation Data
+-- query name: Flow: Stream Creation Data
 -- query link: https://dune.com/queries/4596391
 
 

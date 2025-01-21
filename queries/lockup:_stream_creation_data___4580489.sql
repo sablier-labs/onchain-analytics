@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Unified: Lockup Stream Creation Data
+-- query name: Lockup: Stream Creation Data
 -- query link: https://dune.com/queries/4580489
 
 -- Sablier v1.0

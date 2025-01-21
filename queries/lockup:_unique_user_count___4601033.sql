@@ -8,11 +8,12 @@ SELECT
 FROM
     (
         SELECT funder AS user
-        FROM query_4580489 -- Unified: Lockup Stream Creation Data
+        FROM query_4580489 -- Lockup: Stream Creation Data
         UNION ALL
         SELECT sender AS user
         FROM query_4580489
         UNION ALL
         SELECT recipient AS user
         FROM query_4580489
+    )89
     )
