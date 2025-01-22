@@ -22,4 +22,3 @@ SELECT
                 query_4596391 -- Flow: Stream Creation Data
         )
     ) AS stream_creation_count
-S stream_creation_count

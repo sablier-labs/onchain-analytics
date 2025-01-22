@@ -15,5 +15,4 @@ FROM
         UNION ALL
         SELECT recipient AS user
         FROM query_4580489
-    )89
     )

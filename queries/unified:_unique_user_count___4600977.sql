@@ -27,5 +27,4 @@ FROM
         UNION ALL
         SELECT recipient AS user
         FROM query_4596391
-    )FROM query_4596391
     )
