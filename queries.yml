@@ -17,3 +17,4 @@ query_ids:
   - 4606918 # Flow: Deposit Data
   - 4606999 # Unified: Median Stablecoin Deposit
   - 4607097 # Lockup: Median Stablecoin Deposit
+  - 4607189 # Legacy: Median Stablecoin Deposit
