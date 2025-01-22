@@ -16,3 +16,4 @@ query_ids:
   - 4606974 # Flow: Cumulative Stablecoin Volume
   - 4606918 # Flow: Deposit Data
   - 4606999 # Unified: Median Stablecoin Deposit
+  - 4607097 # Lockup: Median Stablecoin Deposit
