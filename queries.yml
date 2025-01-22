@@ -20,3 +20,4 @@ query_ids:
   - 4607189 # Legacy: Median Stablecoin Deposit
   - 4607199 # Flow: Median Stablecoin Deposit
   - 4607298 # Lockup: Monthly Stream Creation Count
+  - 4607341 # Flow: Monthly Stream Creation Count
