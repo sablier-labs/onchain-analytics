@@ -27,3 +27,6 @@ query_ids:
   - 4607466 # Flow: Stream Creation Count (12 Months)
   - 4607469 # Flow: Stream Creation Count (1 Month)
   - 4607476 # Flow: Stream Creation Count (1 Week)
+  - 4607911 # Lockup: Yearly Stream Creation Count Change
+  - 4607531 # Lockup: Monthly Stream Creation Count Change
+  - 4607902 # Lockup: Weekly Stream Creation Count Change
