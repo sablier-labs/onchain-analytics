@@ -10,3 +10,4 @@ query_ids:
   - 4601033 # Lockup: Unique User Count
   - 4601157 # Legacy: Unique User Count
   - 4601154 # Flow: Unique User Count
+  - 4606813 # Unified: Cumulative Stablecoin Volume
