@@ -6,14 +6,10 @@
 SELECT (
 	(SELECT
 		SUM(stablecoinDeposit)
-	 FROM query_4580489
+	 FROM query_4580489 -- Lockup: Stream Creation Data
 	 ) + (
 	 SELECT
 	  SUM(stablecoinDeposit)
-	 FROM query_4596310
-	 ) + (
-	 SELECT
-	  SUM(stablecoinDeposit)
-	 FROM query_4596391
+	 FROM query_4596310 -- Legacy: Stream Creation Data
 	 )
 ) AS cumulative_stablecoin_volume
