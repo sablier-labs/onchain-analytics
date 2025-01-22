@@ -21,3 +21,6 @@ query_ids:
   - 4607199 # Flow: Median Stablecoin Deposit
   - 4607298 # Lockup: Monthly Stream Creation Count
   - 4607341 # Flow: Monthly Stream Creation Count
+  - 4607430 # Lockup: Stream Creation Count (12 Months)
+  - 4607442 # Lockup: Stream Creation Count (1 month)
+  - 4607455 # Lockup: Stream Creation Count (1 week)
