@@ -34,3 +34,6 @@ query_ids:
   - 4607933 # Flow: Monthly Stream Creation Count Change
   - 4607938 # Flow: Weekly Stream Creation Count Change
   - 4613589 # Lockup: Most Used Tokens in Warm Streams
+  - 4613871 # Flow: Most Used Tokens
+  - 4613997 # Lockup: Monthly Stablecoin Volume
+  - 4614039 # Flow: Monthly Stablecoin Volume
