@@ -4,7 +4,7 @@
 
 
 SELECT
-    date_trunc('month', evt_block_time) AS month,
+    DATE_FORMAT(evt_block_time, '%M %Y') AS month,
     SUM(stablecoinDeposit) AS total_deposits
 FROM
     query_4606918 -- Flow: Deposit Data
@@ -12,4 +12,7 @@ WHERE
     -- evt_block_time < date_trunc('month', current_date) AND
     evt_block_time >= date_trunc('month', current_date) - interval '12' month
 GROUP BY
+    DATE_FORMAT(evt_block_time, '%M %Y'),
     date_trunc('month', evt_block_time)
+ORDER BY
+    date_trunc('month', evt_block_time);
