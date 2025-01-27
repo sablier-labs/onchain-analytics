@@ -37,3 +37,4 @@ query_ids:
   - 4613871 # Flow: Most Used Tokens
   - 4613997 # Lockup: Monthly Stablecoin Volume
   - 4614039 # Flow: Monthly Stablecoin Volume
+  - 4629897 # Lockup: Number of Created Streams (Past 24 Hours)
