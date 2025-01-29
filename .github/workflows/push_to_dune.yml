@@ -43,7 +43,13 @@ jobs:
           pwd
           ls -R
 
-      - name: Update all queries from Dune, by overwriting queries with repo query text
+      - name: Update all queries on Dune
         env:
           DUNE_API_KEY: ${{ secrets.DUNE_API_KEY }}
         run: poetry run python --unbuffered scripts/push_to_dune.py
+
+      - name: "Summary"
+        run: |
+          echo "## Push to Dune result" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Pushed" >> $GITHUB_STEP_SUMMARY
+
