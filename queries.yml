@@ -1,40 +1,40 @@
 query_ids:
-  - 4580489 # Lockup: Stream Creation Data
-  - 4596310 # Legacy: Stream Creation Data
-  - 4596391 # Flow: Stream Creation Data
-  - 4600695 # Unified: Stream Creation Count
-  - 4600738 # Lockup: Stream Creation Count
-  - 4600780 # Legacy: Stream Creation Count
-  - 4600798 # Flow: Stream Creation Count
-  - 4600977 # Unified: Unique User Count
-  - 4601033 # Lockup: Unique User Count
-  - 4601157 # Legacy: Unique User Count
-  - 4601154 # Flow: Unique User Count
-  - 4606813 # Unified: Cumulative Stablecoin Volume
-  - 4606967 # Lockup: Cumulative Stablecoin Volume
-  - 4606972 # Legacy: Cumulative Stablecoin Volume
   - 4606974 # Flow: Cumulative Stablecoin Volume
-  - 4606918 # Flow: Deposit Data
-  - 4606999 # Unified: Median Stablecoin Deposit
-  - 4607097 # Lockup: Median Stablecoin Deposit
-  - 4607189 # Legacy: Median Stablecoin Deposit
   - 4607199 # Flow: Median Stablecoin Deposit
-  - 4607298 # Lockup: Monthly Stream Creation Count
-  - 4607341 # Flow: Monthly Stream Creation Count
-  - 4607430 # Lockup: Stream Creation Count (12 Months)
-  - 4607442 # Lockup: Stream Creation Count (1 Month)
-  - 4607455 # Lockup: Stream Creation Count (1 Week)
-  - 4607466 # Flow: Stream Creation Count (12 Months)
-  - 4607469 # Flow: Stream Creation Count (1 Month)
-  - 4607476 # Flow: Stream Creation Count (1 Week)
-  - 4607911 # Lockup: Yearly Stream Creation Count Change
-  - 4607531 # Lockup: Monthly Stream Creation Count Change
-  - 4607902 # Lockup: Weekly Stream Creation Count Change
-  - 4607952 # Flow: Yearly Stream Creation Count Change
-  - 4607933 # Flow: Monthly Stream Creation Count Change
-  - 4607938 # Flow: Weekly Stream Creation Count Change
-  - 4613589 # Lockup: Most Used Tokens in Warm Streams
-  - 4613871 # Flow: Most Used Tokens
-  - 4613997 # Lockup: Monthly Stablecoin Volume
   - 4614039 # Flow: Monthly Stablecoin Volume
+  - 4607341 # Flow: Monthly Stream Creation Count
+  - 4613871 # Flow: Most Used Tokens
+  - 4600798 # Flow: Stream Creation Count
+  - 4596391 # Flow: Stream Creation Data
+  - 4606918 # Flow: Deposit Data
+  - 4607933 # Flow: Monthly Stream Creation Count Change
+  - 4607476 # Flow: Stream Creation Count (1 Week)
+  - 4607469 # Flow: Stream Creation Count (1 Month)
+  - 4607466 # Flow: Stream Creation Count (12 Months)
+  - 4601154 # Flow: Unique User Count
+  - 4607952 # Flow: Yearly Stream Creation Count Change
+  - 4607938 # Flow: Weekly Stream Creation Count Change
+  - 4606972 # Legacy: Cumulative Stablecoin Volume
+  - 4607189 # Legacy: Median Stablecoin Deposit
+  - 4600780 # Legacy: Stream Creation Count
+  - 4596310 # Legacy: Stream Creation Data
+  - 4601157 # Legacy: Unique User Count
+  - 4606967 # Lockup: Cumulative Stablecoin Volume
+  - 4607097 # Lockup: Median Stablecoin Deposit
+  - 4613997 # Lockup: Monthly Stablecoin Volume
+  - 4607298 # Lockup: Monthly Stream Creation Count
+  - 4607531 # Lockup: Monthly Stream Creation Count Change
+  - 4613589 # Lockup: Most Used Tokens in Warm Streams
   - 4629897 # Lockup: Number of Created Streams (Past 24 Hours)
+  - 4600738 # Lockup: Stream Creation Count
+  - 4607455 # Lockup: Stream Creation Count (1 Week)
+  - 4607442 # Lockup: Stream Creation Count (1 Month)
+  - 4607430 # Lockup: Stream Creation Count (12 Months)
+  - 4601033 # Lockup: Unique User Count
+  - 4580489 # Lockup: Stream Creation Data
+  - 4607911 # Lockup: Yearly Stream Creation Count Change
+  - 4607902 # Lockup: Weekly Stream Creation Count Change
+  - 4606813 # Unified: Cumulative Stablecoin Volume
+  - 4606999 # Unified: Median Stablecoin Deposit
+  - 4600695 # Unified: Stream Creation Count
+  - 4600977 # Unified: Unique User Count
