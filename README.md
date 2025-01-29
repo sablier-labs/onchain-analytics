@@ -28,7 +28,6 @@ You can run these scripts using `poetry run python scripts/<script_name>.py`.
 | `preview_query.py`  | Returns the first 20 rows of results by running a query from your `/queries` folder. This uses Dune API credits. |
 | `pull_from_dune.py` | Updates or adds queries to Dune based on the ids in `queries.yml`                                                |
 | `push_to_dune.py`   | Updates queries to Dune based on the files in the `/queries` folder                                              |
-| `upload_to_dune.py` | Uploads or updates any tables from the `/uploads` folder. Must be in CSV format, and under 200MB.                |
 
 ## Things to Be Aware of
 
