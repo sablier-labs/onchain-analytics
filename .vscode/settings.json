@@ -12,6 +12,7 @@
   "files.associations": {
     ".sqlfluff": "ini"
   },
+  "python.defaultInterpreterPath": ".venv/bin/python",
   "sqlfluff.dialect": "trino",
   "sqlfluff.executablePath": "${workspaceFolder}/.venv/bin/sqlfluff"
 }
