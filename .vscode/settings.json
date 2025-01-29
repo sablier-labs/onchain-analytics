@@ -3,10 +3,15 @@
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "[sql]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "dorzey.vscode-sqlfluff"
   },
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "files.associations": {
+    ".sqlfluff": "ini"
+  },
+  "sqlfluff.dialect": "trino",
+  "sqlfluff.executablePath": "${workspaceFolder}/.venv/bin/sqlfluff"
 }

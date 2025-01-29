@@ -1,30 +1,28 @@
--- part of a query repo
+-- part of a query repo: https://github.com/sablier-labs/onchain-analytics
 -- query name: Unified: Unique User Count
 -- query link: https://dune.com/queries/4600977
 
-
-SELECT
-    COUNT(DISTINCT user)
+SELECT COUNT(DISTINCT sablier_user)
 FROM
     (
-        SELECT funder AS user
+        SELECT funder AS sablier_user
         FROM query_4580489 -- Lockup: Stream Creation Data
         UNION ALL
-        SELECT sender AS user
-        FROM query_4580489
+        SELECT sender AS sablier_user
+        FROM query_4580489 -- Lockup: Stream Creation Data
         UNION ALL
-        SELECT recipient AS user
-        FROM query_4580489
+        SELECT recipient AS sablier_user
+        FROM query_4580489 -- Lockup: Stream Creation Data
         UNION ALL
-        SELECT sender AS user
+        SELECT sender AS sablier_user
         FROM query_4596310 -- Legacy: Stream Creation Data
         UNION ALL
-        SELECT recipient AS user
-        FROM query_4596310
+        SELECT recipient AS sablier_user
+        FROM query_4596310 -- Legacy: Stream Creation Data
         UNION ALL
-        SELECT sender AS user
+        SELECT sender AS sablier_user
         FROM query_4596391 -- Flow: Stream Creation Data
         UNION ALL
-        SELECT recipient AS user
-        FROM query_4596391
+        SELECT recipient AS sablier_user
+        FROM query_4596391 -- Flow: Stream Creation Data
     )

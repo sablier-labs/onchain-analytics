@@ -1,9 +1,7 @@
--- part of a query repo
+-- part of a query repo: https://github.com/sablier-labs/onchain-analytics
 -- query name: Legacy: Stream Creation Count
 -- query link: https://dune.com/queries/4600780
 
-
-SELECT
-    COUNT(*)
+SELECT COUNT(*)
 FROM
-    query_4596310 -- Legacy: Stream Creation Dataion Data
+    query_4596310 -- Legacy: Stream Creation Data

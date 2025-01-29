@@ -1,7 +1,6 @@
--- part of a query repo
+-- part of a query repo: https://github.com/sablier-labs/onchain-analytics
 -- query name: Lockup: Yearly Stream Creation Count Change
 -- query link: https://dune.com/queries/4607911
-
 
 SELECT
     CASE
@@ -10,10 +9,18 @@ SELECT
     END AS percentage_change
 FROM (
     SELECT
-        SUM(CASE WHEN evt_block_time >= CURRENT_DATE - INTERVAL '365' day THEN 1 ELSE 0 END) AS current_year_streams,
-        SUM(CASE WHEN evt_block_time >= CURRENT_DATE - INTERVAL '730' day AND evt_block_time < CURRENT_DATE - INTERVAL '365' day THEN 1 ELSE 0 END) AS previous_year_streams
+        SUM(CASE WHEN evt_block_time >= CURRENT_DATE - INTERVAL '365' DAY THEN 1 ELSE 0 END) AS current_year_streams,
+        SUM(
+            CASE
+                WHEN
+                    evt_block_time >= CURRENT_DATE - INTERVAL '730' DAY
+                    AND evt_block_time < CURRENT_DATE - INTERVAL '365' DAY
+                    THEN 1
+                ELSE 0
+            END
+        ) AS previous_year_streams
     FROM
         query_4580489 -- Lockup: Stream Creation Data
     WHERE
-        evt_block_time >= CURRENT_DATE - INTERVAL '730' day
+        evt_block_time >= CURRENT_DATE - INTERVAL '730' DAY
 ) AS streams_data;

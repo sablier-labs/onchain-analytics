@@ -1,9 +1,7 @@
--- part of a query repo
+-- part of a query repo: https://github.com/sablier-labs/onchain-analytics
 -- query name: Flow: Stream Creation Count
 -- query link: https://dune.com/queries/4600798
 
-
-SELECT
-    COUNT(*)
+SELECT COUNT(*)
 FROM
-    query_4596391 -- Flow: Stream Creation Dataion Data
+    query_4596391 -- Flow: Stream Creation Data
