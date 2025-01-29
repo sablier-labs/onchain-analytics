@@ -1,2 +1,5 @@
+# directories
 .venv
+
+# files
 .env

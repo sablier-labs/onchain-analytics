@@ -1,0 +1,18 @@
+[tool.poetry]
+    authors = ["Sablier Labs Ltd"]
+    description = "Onchain analytics for the Sablier Protocol"
+    name = "Onchain Analytics"
+    package-mode = false
+    readme = "README.md"
+    version = "1.0.0"
+
+[tool.poetry.dependencies]
+    python = "^3.12"
+    dune-client = "^1.7.8"
+    pyyaml = "^6.0.2"
+    python-dotenv = "^1.0.1"
+    pandas = "^2.2.3"
+
+[build-system]
+    requires = ["poetry-core"]
+    build-backend = "poetry.core.masonry.api"
