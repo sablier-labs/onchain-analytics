@@ -41,14 +41,11 @@ for id in query_ids:
         print("UPDATE: existing query file: {}".format(found_files[0]))
         with open(file_path, "r+", encoding="utf-8") as file:
             # if "query repo:" is in the file, then don't add the text header again
-            if (
-                "-- part of a query repo: https://github.com/sablier-labs/onchain-analytics"
-                in query.sql
-            ):
+            if "-- part of a query repo" in query.sql:
                 file.write(query.sql)
             else:
                 file.write(
-                    f"-- part of a query repo: https://github.com/sablier-labs/onchain-analytics\n-- query name: {query.base.name}\n-- query link: https://dune.com/queries/{query.base.query_id}\n\n\n{query.sql}"
+                    f"-- part of a query repo\n-- query name: {query.base.name}\n-- query link: https://dune.com/queries/{query.base.query_id}\n\n\n{query.sql}"
                 )
     else:
         # Create new file and directories if they don't exist
@@ -56,10 +53,7 @@ for id in query_ids:
         file_path = os.path.join(os.path.dirname(__file__), "..", "queries", new_file)
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
-        if (
-            "-- part of a query repo: https://github.com/sablier-labs/onchain-analytics"
-            in query.sql
-        ):
+        if "-- part of a query repo" in query.sql:
             print("WARNING!!! This query is part of a query repo")
             with open(file_path, "w", encoding="utf-8") as file:
                 file.write(
@@ -68,6 +62,6 @@ for id in query_ids:
         else:
             with open(file_path, "w", encoding="utf-8") as file:
                 file.write(
-                    f"-- part of a query repo: https://github.com/sablier-labs/onchain-analytics\n-- query name: {query.base.name}\n-- query link: https://dune.com/queries/{query.base.query_id}\n\n\n{query.sql}"
+                    f"-- part of a query repo\n-- query name: {query.base.name}\n-- query link: https://dune.com/queries/{query.base.query_id}\n\n\n{query.sql}"
                 )
         print("CREATE: new query file: {}".format(new_file))
