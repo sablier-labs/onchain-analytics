@@ -21,12 +21,14 @@ script will run in CI and push your changes to Dune. You can also run this scrip
 
 ## Scripts
 
-| Script              | Action                                                                                                       |
-| ------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `preview_query.py`  | Returns first 20 rows of results by running a query from your `/queries` folder. This uses Dune API credits. |
-| `pull_from_dune.py` | Updates or adds queries to Dune based on the ids in `queries.yml`                                            |
-| `push_to_dune.py`   | Updates queries to Dune based on the files in the `/queries` folder                                          |
-| `upload_to_dune.py` | Uploads or updates any tables from the `/uploads` folder. Must be in CSV format, and under 200MB.            |
+You can run these scripts using `poetry run python scripts/<script_name>.py`.
+
+| Script              | Action                                                                                                           |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `preview_query.py`  | Returns the first 20 rows of results by running a query from your `/queries` folder. This uses Dune API credits. |
+| `pull_from_dune.py` | Updates or adds queries to Dune based on the ids in `queries.yml`                                                |
+| `push_to_dune.py`   | Updates queries to Dune based on the files in the `/queries` folder                                              |
+| `upload_to_dune.py` | Uploads or updates any tables from the `/uploads` folder. Must be in CSV format, and under 200MB.                |
 
 ## Things to Be Aware of
 
@@ -38,7 +40,7 @@ the file, otherwise the scripts will break!**
 help prevent others from using it in more than one repo.
 
 ➕: If you want to add a query, add it in Dune UI first, then pull the query id from the URL
-(`dune.com/queries/{id}/other_stuff`) into `queries.yml`
+(`dune.com/queries/{id}/other_stuff`) into `queries.yml`.
 
 🛑: If you accidentally merge a PR or push a commit that messes up your query in Dune, you can roll back any changes
 using [query version history](https://dune.com/docs/app/query-editor/version-history).
