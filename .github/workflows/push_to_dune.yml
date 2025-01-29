@@ -1,9 +1,10 @@
 name: Push Queries to Dune
 
 on:
+  workflow_dispatch:
   push:
     branches:
-      - main
+      - "main"
     paths:
       - "queries/**"
 
@@ -22,7 +23,7 @@ jobs:
       - name: Install Poetry
         uses: abatilo/actions-poetry@v4
 
-      - name: Define a cache for the virtual environment based on the dependencies lock file
+      - name: Define a cache for the virtual environment based on the lock file
         uses: actions/cache@v4
         with:
           path: ./.venv
@@ -30,6 +31,12 @@ jobs:
 
       - name: Install the project dependencies
         run: poetry install
+
+      - name: Lint the Python code
+        run: poetry run black --check ./scripts/**/*.py
+
+      - name: Lint the SQL code
+        run: poetry run sqlfluff lint ./queries/**/*.sql
 
       - name: Log directory structure
         run: |

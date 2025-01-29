@@ -63,6 +63,12 @@ poetry run sqlfluff format ./queries/**/*.sql
 poetry run black ./scripts/**/*.py
 ```
 
+#### Lint Python
+
+```sh
+poetry run black --check ./scripts/**/*.py
+```
+
 #### Lint SQL
 
 ```sh
