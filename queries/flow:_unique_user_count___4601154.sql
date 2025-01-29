@@ -6,8 +6,8 @@ SELECT COUNT(DISTINCT flow_user)
 FROM
     (
         SELECT sender AS flow_user
-        FROM query_4596391 -- Unified: Flow Stream Creation Data
+        FROM query_4596391 -- Flow: Stream Creation Data
         UNION ALL
         SELECT recipient AS flow_user
-        FROM query_4596391 -- Unified: Flow Stream Creation Data
+        FROM query_4596391 -- Flow: Stream Creation Data
     )
