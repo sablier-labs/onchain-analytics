@@ -51,16 +51,16 @@ concerns or feedback, please join our [Discord server](https://discord.gg/bSwRCw
 
 ### Development Commands
 
-#### Format SQL
-
-```sh
-poetry run sqlfluff format ./queries/**/*.sql
-```
-
 #### Format Python
 
 ```sh
 poetry run black ./scripts/**/*.py
+```
+
+#### Format SQL
+
+```sh
+poetry run sqlfluff format ./queries/**/*.sql
 ```
 
 #### Lint Python
