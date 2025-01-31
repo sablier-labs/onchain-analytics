@@ -10,7 +10,7 @@ SELECT
             FROM
                 query_4580489 -- Lockup: Stream Creation Data
             WHERE
-                "stablecoinDeposit" > 0
+                stablecoin_deposit > 0
         ) / (
             SELECT CAST(COUNT(*) AS DOUBLE)
             FROM
