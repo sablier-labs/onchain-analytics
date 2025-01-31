@@ -45,3 +45,4 @@ query_ids:
   - 4646303 # Flow: Chain Usage Distribution
   - 4646323 # Lockup: Median Cliff Duration
   - 4646332 # Lockup: Share of Stablecoin Streams
+  - 4646341 # Flow: Share of Stablecoin Streams
