@@ -1,3 +1,4 @@
+-- WARNING: this query may be part of multiple repos
 -- part of a query repo
 -- query name: Lockup: Monthly Cumulative Stablecoin Volume
 -- query link: https://dune.com/queries/4650009
