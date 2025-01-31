@@ -55,25 +55,25 @@ concerns or feedback, please join our [Discord server](https://discord.gg/bSwRCw
 #### Format Python
 
 ```sh
-poetry run black ./scripts/**/*.py
+poetry run black ./scripts/*.py
 ```
 
 #### Format SQL
 
 ```sh
-poetry run sqlfluff format ./queries/**/*.sql
+poetry run sqlfluff format ./queries/*.sql
 ```
 
 #### Lint Python
 
 ```sh
-poetry run black --check ./scripts/**/*.py
+poetry run black --check ./scripts/*.py
 ```
 
 #### Lint SQL
 
 ```sh
-poetry run sqlfluff lint ./queries/**/*.sql
+poetry run sqlfluff lint ./queries/*.sql
 ```
 
 ## License
