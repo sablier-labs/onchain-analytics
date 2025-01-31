@@ -4,7 +4,7 @@
 
 
 SELECT
-    DATE_FORMAT(evt_block_time, '%M %Y') AS month,
+    DATE_FORMAT(evt_block_time, '%M %Y') AS evt_month,
     SUM(stablecoinDeposit) AS total_deposits
 FROM
     query_4580489 -- Lockup: Stream Creation Data
