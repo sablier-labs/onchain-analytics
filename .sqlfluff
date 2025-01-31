@@ -1,0 +1,6 @@
+[sqlfluff]
+# The dialect used by DuneSQL
+dialect = trino
+max_line_length = 120
+# Allow up to 100k bytes for file sizes
+large_file_skip_byte_limit = 100000

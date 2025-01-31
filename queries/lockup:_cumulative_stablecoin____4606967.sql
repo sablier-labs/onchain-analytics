@@ -1,9 +1,7 @@
--- part of a query repo
+-- part of a query repo: https://github.com/sablier-labs/onchain-analytics
 -- query name: Lockup: Cumulative Stablecoin Volume
 -- query link: https://dune.com/queries/4606967
 
-
-SELECT
-    SUM(stablecoinDeposit)
+SELECT SUM(STABLECOIN_DEPOSIT)
 FROM
-    query_4580489 -- Lockup: Stream Creation Data
+    QUERY_4580489 -- Lockup: Stream Creation Data

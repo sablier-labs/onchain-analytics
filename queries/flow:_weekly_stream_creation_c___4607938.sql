@@ -1,7 +1,6 @@
--- part of a query repo
+-- part of a query repo: https://github.com/sablier-labs/onchain-analytics
 -- query name: Flow: Weekly Stream Creation Count Change
 -- query link: https://dune.com/queries/4607938
-
 
 SELECT
     CASE
@@ -10,10 +9,18 @@ SELECT
     END AS percentage_change
 FROM (
     SELECT
-        SUM(CASE WHEN evt_block_time >= CURRENT_DATE - INTERVAL '7' day THEN 1 ELSE 0 END) AS current_week_streams,
-        SUM(CASE WHEN evt_block_time >= CURRENT_DATE - INTERVAL '14' day AND evt_block_time < CURRENT_DATE - INTERVAL '7' day THEN 1 ELSE 0 END) AS previous_week_streams
+        SUM(CASE WHEN evt_block_time >= CURRENT_DATE - INTERVAL '7' DAY THEN 1 ELSE 0 END) AS current_week_streams,
+        SUM(
+            CASE
+                WHEN
+                    evt_block_time >= CURRENT_DATE - INTERVAL '14' DAY
+                    AND evt_block_time < CURRENT_DATE - INTERVAL '7' DAY
+                    THEN 1
+                ELSE 0
+            END
+        ) AS previous_week_streams
     FROM
         query_4596391 -- Flow: Stream Creation Data
     WHERE
-        evt_block_time >= CURRENT_DATE - INTERVAL '14' day
+        evt_block_time >= CURRENT_DATE - INTERVAL '14' DAY
 ) AS streams_data;

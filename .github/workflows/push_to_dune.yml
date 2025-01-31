@@ -1,32 +1,55 @@
-name: Push to Dune on Commit
+name: Push Queries to Dune
 
 on:
+  workflow_dispatch:
   push:
     branches:
-      - main
+      - "main"
     paths:
-      - 'queries/**'
+      - "queries/**"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+
+      - name: Install Python
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: "3.12"
+
+      - name: Install Poetry
+        uses: abatilo/actions-poetry@v4
+
+      - name: Define a cache for the virtual environment based on the lock file
+        uses: actions/cache@v4
+        with:
+          path: ./.venv
+          key: venv-${{ hashFiles('poetry.lock') }}
+
+      - name: Install the project dependencies
+        run: poetry install
+
+      - name: Lint the Python code
+        run: poetry run black --check ./scripts/**/*.py
+
+      - name: Lint the SQL code
+        run: poetry run sqlfluff lint ./queries/**/*.sql
 
       - name: Log directory structure
         run: |
           pwd
           ls -R
-    
-      - name: pip requirements
-        run: pip install -r requirements.txt
 
-      - name: Update all queries from Dune, by overwriting queries with repo query text
+      - name: Update all queries on Dune
         env:
           DUNE_API_KEY: ${{ secrets.DUNE_API_KEY }}
-        run: python -u scripts/push_to_dune.py
+        run: poetry run python --unbuffered scripts/push_to_dune.py
+
+      - name: "Summary"
+        run: |
+          echo "## Push to Dune result" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Pushed" >> $GITHUB_STEP_SUMMARY
+

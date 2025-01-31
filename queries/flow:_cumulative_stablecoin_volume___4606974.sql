@@ -1,9 +1,7 @@
--- part of a query repo
+-- part of a query repo: https://github.com/sablier-labs/onchain-analytics
 -- query name: Flow: Cumulative Stablecoin Volume
 -- query link: https://dune.com/queries/4606974
 
-
-SELECT
-    SUM(stablecoinDeposit)
+SELECT SUM(STABLECOIN_DEPOSIT)
 FROM
-    query_4606918 -- Flow: Deposit Data
+    QUERY_4606918 -- Flow: Deposit Data
