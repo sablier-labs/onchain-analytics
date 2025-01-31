@@ -20,7 +20,7 @@ InitialCumulative AS (
     SELECT 
         COALESCE(SUM(stablecoin_deposit), 0) AS starting_cumulative
     FROM 
-        query_4580489 
+        query_4606918 -- Flow: Deposit Data
     WHERE 
         evt_block_time < DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '12' MONTH
 ),

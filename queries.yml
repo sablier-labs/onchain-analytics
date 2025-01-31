@@ -31,6 +31,7 @@ query_ids:
   - 4613589 # Lockup: Most Used Tokens in Warm Streams
   - 4629897 # Lockup: Number of Created Streams (Past 24 Hours)
   - 4600738 # Lockup: Stream Creation Count
+  - 4650071 # Lockup: Share of Transferable Streams
   - 4650009 # Cumulative Stablecoin Volume
   - 4607455 # Lockup: Stream Creation Count (1 Week)
   - 4607442 # Lockup: Stream Creation Count (1 Month)
