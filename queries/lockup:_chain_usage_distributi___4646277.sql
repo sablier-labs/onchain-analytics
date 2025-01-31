@@ -17,7 +17,7 @@ SELECT
         WHEN chain = 'polygon' THEN 'Polygon'
         WHEN chain = 'scroll' THEN 'Scroll'
         WHEN chain = 'zksync' THEN 'zkSync'
-    ELSE 'error'
+        ELSE 'error'
     END AS chain,
     COUNT(*) AS number_of_created_streams
 FROM

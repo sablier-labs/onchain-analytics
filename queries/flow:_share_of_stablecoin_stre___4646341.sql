@@ -4,18 +4,16 @@
 
 
 SELECT
-  (
     (
-      SELECT
-        cast(COUNT(*) AS DOUBLE)
-      FROM
-        query_4596391 -- Flow: Stream Creation Data
-      WHERE
-        stablecoinRatePerSecond > 0
-    ) / (
-      SELECT
-        cast(COUNT(*) AS DOUBLE)
-      FROM
-        query_4596391 -- Flow: Stream Creation Data
-    )
-  ) * 100
+        (
+            SELECT CAST(COUNT(*) AS DOUBLE)
+            FROM
+                query_4596391 -- Flow: Stream Creation Data
+            WHERE
+                "stablecoinRatePerSecond" > 0
+        ) / (
+            SELECT CAST(COUNT(*) AS DOUBLE)
+            FROM
+                query_4596391 -- Flow: Stream Creation Data
+        )
+    ) * 100

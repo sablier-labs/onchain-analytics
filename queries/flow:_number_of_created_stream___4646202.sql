@@ -3,9 +3,8 @@
 -- query link: https://dune.com/queries/4646202
 
 
-SELECT
-    COUNT(*)
+SELECT COUNT(*)
 FROM
     query_4596391 -- Flow: Stream Creation Data
 WHERE
-    evt_block_time > now() - interval '24' hour;
+    evt_block_time > NOW() - INTERVAL '24' HOUR;
