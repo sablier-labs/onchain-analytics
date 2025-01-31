@@ -5,10 +5,10 @@
 -- Lockup v1.0: LockupLinear
 
 SELECT
+    chain,
     asset AS token,
     broker,
     cancelable,
-    chain,
     contract_address,
     evt_block_number,
     evt_block_time,
@@ -31,7 +31,7 @@ SELECT
     END AS shape,
     CASE
         WHEN
-            token IN (
+            asset IN (
                 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48, -- Ethereum USDC
                 0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4, -- zkSync USDC
                 0x0b2c639c533813f4aa9d7837caf62653d097ff85, -- Optimism USDC
@@ -49,7 +49,7 @@ SELECT
             )
             THEN cast(json_extract_scalar(amounts, '$.deposit') AS DOUBLE) / 1e6
         WHEN
-            token IN (
+            asset IN (
                 0xdc035d45d973e3ec169d2276ddab16f1e407384f, -- Ethereum USDS
                 0x820c137fa70c8691f0e44dc420a5e53c168921dc, -- Base USDS
                 0x57ab1ec28d129707052df4df418d58a2d46d5f51, -- Ethereum SUSD
@@ -102,9 +102,9 @@ UNION ALL
 -- Lockup v1.0: LockupDynamic
 
 SELECT
+    chain,
     asset AS token,
     broker,
-    chain,
     cancelable,
     contract_address,
     evt_block_number,
@@ -135,7 +135,7 @@ SELECT
     END AS shape,
     CASE
         WHEN
-            token IN (
+            asset IN (
                 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48, -- Ethereum USDC
                 0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4, -- zkSync USDC
                 0x0b2c639c533813f4aa9d7837caf62653d097ff85, -- Optimism USDC
@@ -153,7 +153,7 @@ SELECT
             )
             THEN cast(json_extract_scalar(amounts, '$.deposit') AS DOUBLE) / 1e6 -- 6 decimals
         WHEN
-            token IN (
+            asset IN (
                 0xdc035d45d973e3ec169d2276ddab16f1e407384f, -- Ethereum USDS
                 0x820c137fa70c8691f0e44dc420a5e53c168921dc, -- Base USDS
                 0x57ab1ec28d129707052df4df418d58a2d46d5f51, -- Ethereum SUSD
@@ -216,22 +216,22 @@ UNION ALL
 -- Lockup v1.1: LockupLinear
 
 SELECT
-    broker,
     chain,
+    asset AS token,
+    broker,
     cancelable,
-    'lockupLinear' AS contract,
     contract_address,
-    transferable,
     evt_block_number,
     evt_block_time,
     evt_index,
     evt_tx_hash,
     funder,
     recipient,
-    'v1.1' AS release_version,
     sender,
     streamid,
-    asset AS token,
+    transferable,
+    'lockupLinear' AS contract,
+    'v1.1' AS release_version,
     CASE
         WHEN
             cast(json_extract_scalar(range, '$.cliff') AS DOUBLE)
@@ -242,7 +242,7 @@ SELECT
     END AS shape,
     CASE
         WHEN
-            token IN (
+            asset IN (
                 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48, -- Ethereum USDC
                 0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4, -- zkSync USDC
                 0x0b2c639c533813f4aa9d7837caf62653d097ff85, -- Optimism USDC
@@ -260,7 +260,7 @@ SELECT
             )
             THEN cast(json_extract_scalar(amounts, '$.deposit') AS DOUBLE) / 1e6
         WHEN
-            token IN (
+            asset IN (
                 0xdc035d45d973e3ec169d2276ddab16f1e407384f, -- Ethereum USDS
                 0x820c137fa70c8691f0e44dc420a5e53c168921dc, -- Base USDS
                 0x57ab1ec28d129707052df4df418d58a2d46d5f51, -- Ethereum SUSD
@@ -313,10 +313,10 @@ UNION ALL
 -- Lockup v1.1: LockupDynamic
 
 SELECT
+    chain,
     asset AS token,
     broker,
     cancelable,
-    chain,
     contract_address,
     evt_block_number,
     evt_block_time,
@@ -346,7 +346,7 @@ SELECT
     END AS shape,
     CASE
         WHEN
-            token IN (
+            asset IN (
                 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48, -- Ethereum USDC
                 0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4, -- zkSync USDC
                 0x0b2c639c533813f4aa9d7837caf62653d097ff85, -- Optimism USDC
@@ -364,7 +364,7 @@ SELECT
             )
             THEN cast(json_extract_scalar(amounts, '$.deposit') AS DOUBLE) / 1e6
         WHEN
-            token IN (
+            asset IN (
                 0xdc035d45d973e3ec169d2276ddab16f1e407384f, -- Ethereum USDS
                 0x820c137fa70c8691f0e44dc420a5e53c168921dc, -- Base USDS
                 0x57ab1ec28d129707052df4df418d58a2d46d5f51, -- Ethereum SUSD
@@ -427,11 +427,10 @@ UNION ALL
 -- Lockup v1.2: LockupLinear
 
 SELECT
+    chain,
     asset AS token,
     broker,
-    chain,
     cancelable,
-    transferable,
     contract_address,
     evt_block_number,
     evt_block_time,
@@ -441,6 +440,7 @@ SELECT
     recipient,
     sender,
     streamid,
+    transferable,
     'lockupLinear' AS contract,
     'v1.2' AS release_version,
     CASE
@@ -451,7 +451,7 @@ SELECT
     END AS shape,
     CASE
         WHEN
-            token IN (
+            asset IN (
                 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48, -- Ethereum USDC
                 0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4, -- zkSync USDC
                 0x0b2c639c533813f4aa9d7837caf62653d097ff85, -- Optimism USDC
@@ -469,7 +469,7 @@ SELECT
             )
             THEN cast(json_extract_scalar(amounts, '$.deposit') AS DOUBLE) / 1e6
         WHEN
-            token IN (
+            asset IN (
                 0xdc035d45d973e3ec169d2276ddab16f1e407384f, -- Ethereum USDS
                 0x820c137fa70c8691f0e44dc420a5e53c168921dc, -- Base USDS
                 0x57ab1ec28d129707052df4df418d58a2d46d5f51, -- Ethereum SUSD
@@ -535,12 +535,11 @@ UNION ALL
 
 
 SELECT
+    chain,
     asset AS token,
     broker,
     cancelable,
-    chain,
     contract_address,
-    transferable,
     evt_block_number,
     evt_block_time,
     evt_index,
@@ -549,6 +548,7 @@ SELECT
     recipient,
     sender,
     streamid,
+    transferable,
     'lockupDynamic' AS contract,
     'v1.2' AS release_version,
     CASE
@@ -568,7 +568,7 @@ SELECT
     END AS shape,
     CASE
         WHEN
-            token IN (
+            asset IN (
                 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48, -- Ethereum USDC
                 0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4, -- zkSync USDC
                 0x0b2c639c533813f4aa9d7837caf62653d097ff85, -- Optimism USDC
@@ -586,7 +586,7 @@ SELECT
             )
             THEN cast(json_extract_scalar(amounts, '$.deposit') AS DOUBLE) / 1e6
         WHEN
-            token IN (
+            asset IN (
                 0xdc035d45d973e3ec169d2276ddab16f1e407384f, -- Ethereum USDS
                 0x820c137fa70c8691f0e44dc420a5e53c168921dc, -- Base USDS
                 0x57ab1ec28d129707052df4df418d58a2d46d5f51, -- Ethereum SUSD
@@ -655,10 +655,10 @@ UNION ALL
 -- Lockup v1.2: LockupTranched
 
 SELECT
+    chain,
     asset AS token,
     broker,
     cancelable,
-    chain,
     contract_address,
     evt_block_number,
     evt_block_time,
@@ -682,7 +682,7 @@ SELECT
     END AS shape,
     CASE
         WHEN
-            token IN (
+            asset IN (
                 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48, -- Ethereum USDC
                 0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4, -- zkSync USDC
                 0x0b2c639c533813f4aa9d7837caf62653d097ff85, -- Optimism USDC
@@ -700,7 +700,7 @@ SELECT
             )
             THEN cast(json_extract_scalar(amounts, '$.deposit') AS DOUBLE) / 1e6
         WHEN
-            token IN (
+            asset IN (
                 0xdc035d45d973e3ec169d2276ddab16f1e407384f, -- Ethereum USDS
                 0x820c137fa70c8691f0e44dc420a5e53c168921dc, -- Base USDS
                 0x57ab1ec28d129707052df4df418d58a2d46d5f51, -- Ethereum SUSD
