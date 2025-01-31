@@ -3,9 +3,8 @@
 -- query link: https://dune.com/queries/4607442
 
 
-SELECT
-    COUNT(*)
+SELECT COUNT(*)
 FROM
     query_4580489 -- Lockup: Stream Creation Data
 WHERE
-    evt_block_time >= date_trunc('day', current_date) - interval '1' month
+    evt_block_time >= DATE_TRUNC('day', CURRENT_DATE) - INTERVAL '1' MONTH

@@ -3,7 +3,6 @@
 -- query link: https://dune.com/queries/4606967
 
 
-SELECT
-    SUM(stablecoin_deposit)
+SELECT SUM(stablecoin_deposit)
 FROM
     query_4580489 -- Lockup: Stream Creation Data
