@@ -35,6 +35,7 @@ query_ids:
   - 4650078 # Lockup: Share of Cancelable Streams
   - 4650093 # Lockup: Share of Uncancelable and Transferable Streams
   - 4650111 # Lockup: Share of Cancelable and Transferable Streams
+  - 4650134 # Lockup: Share of Uncancelable Streams
   - 4650009 # Lockup: Cumulative Stablecoin Volume
   - 4607455 # Lockup: Stream Creation Count (1 Week)
   - 4607442 # Lockup: Stream Creation Count (1 Month)
