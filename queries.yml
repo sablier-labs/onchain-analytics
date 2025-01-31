@@ -42,3 +42,4 @@ query_ids:
   - 4646207 # Unified: Number of Created Streams (Past 24 Hours)
   - 4646230 # Lockup: Stream Category Usage Distribution
   - 4646277 # Lockup: Chain Usage Distribution
+  - 4646303 # Flow: Chain Usage Distribution
