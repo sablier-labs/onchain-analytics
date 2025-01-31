@@ -50,7 +50,7 @@ jobs:
       - name: Update all queries on Dune
         env:
           DUNE_API_KEY: ${{ secrets.DUNE_API_KEY }}
-        run: poetry run python --unbuffered scripts/push_to_dune.py
+        run: poetry run python -u scripts/push_to_dune.py
 
       - name: "Summary"
         run: |
