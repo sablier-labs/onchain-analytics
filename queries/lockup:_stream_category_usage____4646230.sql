@@ -8,7 +8,7 @@ SELECT
         WHEN contract = 'lockupLinear' THEN 'Lockup Linear'
         WHEN contract = 'lockupDynamic' THEN 'Lockup Dynamic'
         WHEN contract = 'lockupTranched' THEN 'Lockup Tranched'
-        ELSE 'error'
+    ELSE 'error'
     END AS contract,
     COUNT(*) AS number_of_created_streams
 FROM

@@ -16,6 +16,7 @@ query_ids:
   - 4607938 # Flow: Weekly Stream Creation Count Change
   - 4646202 # Flow: Number of Created Streams (Past 24 Hours)
   - 4646303 # Flow: Chain Usage Distribution
+  - 4650041 # Flow: Cumulative Stablecoin Volume
   - 4646341 # Flow: Share of Stablecoin Streams
   - 4606972 # Legacy: Cumulative Stablecoin Volume
   - 4607189 # Legacy: Median Stablecoin Deposit
@@ -30,6 +31,7 @@ query_ids:
   - 4613589 # Lockup: Most Used Tokens in Warm Streams
   - 4629897 # Lockup: Number of Created Streams (Past 24 Hours)
   - 4600738 # Lockup: Stream Creation Count
+  - 4650009 # Cumulative Stablecoin Volume
   - 4607455 # Lockup: Stream Creation Count (1 Week)
   - 4607442 # Lockup: Stream Creation Count (1 Month)
   - 4607430 # Lockup: Stream Creation Count (12 Months)
