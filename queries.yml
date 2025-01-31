@@ -14,6 +14,9 @@ query_ids:
   - 4601154 # Flow: Unique User Count
   - 4607952 # Flow: Yearly Stream Creation Count Change
   - 4607938 # Flow: Weekly Stream Creation Count Change
+  - 4646202 # Flow: Number of Created Streams (Past 24 Hours)
+  - 4646303 # Flow: Chain Usage Distribution
+  - 4646341 # Flow: Share of Stablecoin Streams
   - 4606972 # Legacy: Cumulative Stablecoin Volume
   - 4607189 # Legacy: Median Stablecoin Deposit
   - 4600780 # Legacy: Stream Creation Count
@@ -34,7 +37,12 @@ query_ids:
   - 4580489 # Lockup: Stream Creation Data
   - 4607911 # Lockup: Yearly Stream Creation Count Change
   - 4607902 # Lockup: Weekly Stream Creation Count Change
+  - 4646230 # Lockup: Stream Category Usage Distribution
+  - 4646277 # Lockup: Chain Usage Distribution
+  - 4646323 # Lockup: Median Cliff Duration
+  - 4646332 # Lockup: Share of Stablecoin Streams
   - 4606813 # Unified: Cumulative Stablecoin Volume
   - 4606999 # Unified: Median Stablecoin Deposit
   - 4600695 # Unified: Stream Creation Count
   - 4600977 # Unified: Unique User Count
+  - 4646207 # Unified: Number of Created Streams (Past 24 Hours)
