@@ -47,6 +47,8 @@ query_ids:
   - 4611255 # Lockup: Grouped Withdrawal Data
   - 4611179 # Lockup: Remaining Balances
   - 4611374 # Lockup: Adjusted Remaining Balances
+  - 4611349 # Lockup: Priced Adjusted Remaining Balances
+  - 4611402 # Lockup: Total Value Locked (TVL)
   - 4607902 # Lockup: Weekly Stream Creation Count Change
   - 4646230 # Lockup: Stream Category Usage Distribution
   - 4646277 # Lockup: Chain Usage Distribution
