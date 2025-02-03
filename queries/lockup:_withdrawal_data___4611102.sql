@@ -5,6 +5,7 @@
 
 SELECT
     chain,
+    contract_address,
     'lockupLinear' AS contract,
     evt_block_time,
     streamid,
@@ -16,6 +17,7 @@ FROM
 UNION ALL
 SELECT
     chain,
+    contract_address,
     'lockupDynamic' AS contract,
     evt_block_time,
     streamid,
@@ -27,6 +29,7 @@ FROM
 UNION ALL
 SELECT
     chain,
+    contract_address,
     'lockupLinear' AS contract,
     evt_block_time,
     streamid,
@@ -38,6 +41,7 @@ FROM
 UNION ALL
 SELECT
     chain,
+    contract_address,
     'lockupDynamic' AS contract,
     evt_block_time,
     streamid,
@@ -49,6 +53,7 @@ FROM
 UNION ALL
 SELECT
     chain,
+    contract_address,
     'lockupTranched' AS contract,
     evt_block_time,
     streamid,
