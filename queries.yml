@@ -51,6 +51,7 @@ query_ids:
   - 4611349 # Lockup: Priced Adjusted Remaining Balances
   - 4611402 # Lockup: Total Value Locked (TVL)
   - 4662176 # Lockup: Total Value Locked (TVL) Distribution by Token
+  - 4665836 # Lockup: Total Value Locked (TVL) Distribution by Chain
   - 4607902 # Lockup: Weekly Stream Creation Count Change
   - 4646230 # Lockup: Stream Category Usage Distribution
   - 4646277 # Lockup: Chain Usage Distribution
