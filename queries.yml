@@ -46,6 +46,7 @@ query_ids:
   - 4611102 # Lockup: Withdrawal Data
   - 4611255 # Lockup: Grouped Withdrawal Data
   - 4611179 # Lockup: Remaining Balances
+  - 4665542 # Lockup: Remaining Balances (Accounted for Cancelations)
   - 4611374 # Lockup: Adjusted Remaining Balances
   - 4611349 # Lockup: Priced Adjusted Remaining Balances
   - 4611402 # Lockup: Total Value Locked (TVL)
