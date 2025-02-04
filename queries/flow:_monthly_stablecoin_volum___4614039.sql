@@ -15,4 +15,3 @@ GROUP BY
     DATE_TRUNC('month', evt_block_time)
 ORDER BY
     DATE_TRUNC('month', evt_block_time);
-);
