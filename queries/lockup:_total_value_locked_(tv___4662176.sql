@@ -14,3 +14,7 @@ GROUP BY
     token,
     symbol,
     price
+ORDER BY
+    total_balance DESC
+LIMIT
+    20;
