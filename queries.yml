@@ -17,6 +17,7 @@ query_ids:
   - 4646202 # Flow: Number of Created Streams (Past 24 Hours)
   - 4646303 # Flow: Chain Usage Distribution
   - 4646341 # Flow: Share of Stablecoin Streams
+  - 4666321 # Flow: Most Used Stablecoins
   - 4606972 # Legacy: Cumulative Stablecoin Volume
   - 4607189 # Legacy: Median Stablecoin Deposit
   - 4600780 # Legacy: Stream Creation Count
