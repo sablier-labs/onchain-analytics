@@ -58,6 +58,7 @@ query_ids:
   - 4646323 # Lockup: Median Cliff Duration
   - 4646332 # Lockup: Share of Stablecoin Streams
   - 4665451 # Lockup: Cancelation Data
+  - 4666198 # Lockup: Most Used Stablecoins
   - 4606813 # Unified: Cumulative Stablecoin Volume
   - 4606999 # Unified: Median Stablecoin Deposit
   - 4600695 # Unified: Stream Creation Count
