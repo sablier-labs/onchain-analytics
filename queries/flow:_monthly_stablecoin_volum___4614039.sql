@@ -8,10 +8,11 @@ SELECT
 FROM
     query_4606918 -- Flow: Deposit Data
 WHERE
-    -- evt_block_time < DATE_TRUNC('month', CURRENT_DATE) AND
-    evt_block_time >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '12' MONTH
+    evt_block_time < DATE_TRUNC('month', CURRENT_DATE)
+    AND evt_block_time >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '12' MONTH
 GROUP BY
     DATE_FORMAT(evt_block_time, '%M %Y'),
     DATE_TRUNC('month', evt_block_time)
 ORDER BY
     DATE_TRUNC('month', evt_block_time);
+);
