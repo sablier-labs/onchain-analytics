@@ -9,7 +9,7 @@ SELECT
     q.token,
     COUNT(q.token) AS number_of_streams
 FROM
-    query_4580489 AS q
+    query_4672879 AS q
 LEFT JOIN
     tokens.erc20 AS t
     ON

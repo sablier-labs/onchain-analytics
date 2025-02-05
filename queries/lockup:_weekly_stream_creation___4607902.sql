@@ -20,7 +20,7 @@ FROM (
             END
         ) AS previous_week_streams
     FROM
-        query_4580489 -- Lockup: Stream Creation Data
+        query_4672879 -- Lockup: Global Stream Creation Data
     WHERE
         evt_block_time >= CURRENT_DATE - INTERVAL '14' DAY
 ) AS streams_data;

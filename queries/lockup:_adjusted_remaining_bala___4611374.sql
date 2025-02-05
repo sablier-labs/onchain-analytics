@@ -7,7 +7,6 @@ WITH adjusted_balances AS (
     SELECT
         q.chain,
         q.contract_address,
-        q.contract,
         q.streamid,
         q.token,
         q.deposit,
@@ -27,7 +26,6 @@ WITH adjusted_balances AS (
 SELECT
     chain,
     contract_address,
-    contract,
     streamid,
     token,
     deposit,

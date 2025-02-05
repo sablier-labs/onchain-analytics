@@ -8,7 +8,7 @@ FROM
         (
             SELECT STABLECOIN_DEPOSIT
             FROM
-                QUERY_4580489 -- Lockup: Stream Creation Data
+                QUERY_4580489 -- Lockup: Global Stream Creation Data
             WHERE
                 DURATION > 86400 AND STABLECOIN_DEPOSIT > 50
         )

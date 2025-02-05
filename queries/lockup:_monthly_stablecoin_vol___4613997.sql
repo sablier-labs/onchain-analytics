@@ -6,7 +6,7 @@ SELECT
     DATE_FORMAT(evt_block_time, '%M %Y') AS evt_month,
     SUM(stablecoin_deposit) AS total_deposits
 FROM
-    query_4580489 -- Lockup: Stream Creation Data
+    query_4672879 -- Lockup: Global Stream Creation Data
 WHERE
     evt_block_time < DATE_TRUNC('month', CURRENT_DATE)
     AND evt_block_time >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '12' MONTH

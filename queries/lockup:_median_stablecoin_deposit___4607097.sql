@@ -5,7 +5,7 @@
 
 SELECT approx_percentile(STABLECOIN_DEPOSIT, 0.5) AS MEDIAN
 FROM
-    QUERY_4580489 -- Lockup: Stream Creation Data
+    QUERY_4580489 -- Lockup: Global Stream Creation Data
 WHERE
     DURATION > 86400 -- a day
     AND STABLECOIN_DEPOSIT > 50

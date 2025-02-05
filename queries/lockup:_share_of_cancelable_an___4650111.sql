@@ -8,12 +8,12 @@ SELECT
         (
             SELECT CAST(COUNT(*) AS DOUBLE)
             FROM
-                query_4580489 -- Lockup: Stream Creation Data
+                query_4672879 -- Lockup: Global Stream Creation Data
             WHERE
                 cancelable = true AND transferable = true
         ) / (
             SELECT CAST(COUNT(*) AS DOUBLE)
             FROM
-                query_4580489 -- Lockup: Stream Creation Data
+                query_4672879 -- Lockup: Global Stream Creation Data
         )
     ) * 100

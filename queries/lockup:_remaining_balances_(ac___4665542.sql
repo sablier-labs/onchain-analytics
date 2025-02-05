@@ -6,7 +6,6 @@
 SELECT
     q1.chain,
     q1.contract_address,
-    q1.contract,
     q1.streamid,
     q1.token,
     q1.release_version,

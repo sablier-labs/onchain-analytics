@@ -78,4 +78,4 @@ FROM
 LEFT JOIN
     query_4596391 AS t2 -- Flow: Stream Creation Data
     ON
-        t1.streamid = t2.streamid AND t1.chain = t2.chain;
+        t1.streamid = t2.streamid AND t1.chain = t2.chain AND t1.funder = t2.sender;

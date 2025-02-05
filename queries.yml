@@ -42,7 +42,9 @@ query_ids:
   - 4607442 # Lockup: Stream Creation Count (1 Month)
   - 4607430 # Lockup: Stream Creation Count (12 Months)
   - 4601033 # Lockup: Unique User Count
-  - 4580489 # Lockup: Stream Creation Data
+  - 4580489 # Lockup: Stream Creation Data 1
+  - 4672652 # Lockup: Stream Creation Data 2
+  - 4672879 # Lockup: Global Stream Creation Data
   - 4607911 # Lockup: Yearly Stream Creation Count Change
   - 4611102 # Lockup: Withdrawal Data
   - 4611255 # Lockup: Grouped Withdrawal Data
