@@ -19,7 +19,6 @@ STREAMAGGREGATION AS (
         CHAIN,
         CONTRACT_ADDRESS,
         RELEASE_VERSION,
-        CONTRACT,
         STREAMID,
         TOKEN
 )

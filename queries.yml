@@ -50,6 +50,7 @@ query_ids:
   - 4611255 # Lockup: Grouped Withdrawal Data
   - 4611179 # Lockup: Remaining Balances
   - 4665542 # Lockup: Remaining Balances (Accounted for Cancelations)
+  - 4676715 # Lockup: Airdrop Revenues
   - 4611374 # Lockup: Adjusted Remaining Balances
   - 4611349 # Lockup: Priced Adjusted Remaining Balances
   - 4611402 # Lockup: Total Value Locked (TVL)
@@ -64,6 +65,11 @@ query_ids:
   - 4666198 # Lockup: Most Used Stablecoins
   - 4606813 # Unified: Cumulative Stablecoin Volume
   - 4606999 # Unified: Median Stablecoin Deposit
+  - 4687435 # Unified: Withdrawal Revenues
   - 4600695 # Unified: Stream Creation Count
   - 4600977 # Unified: Unique User Count
   - 4646207 # Unified: Number of Created Streams (Past 24 Hours)
+  - 4714783 # Unified: Median Daily Revenue
+  - 4687721 # Unified: Total Protocol Revenues
+  - 4687516 # Unified: Protocol Revenues (Protocol Revenue Distribution by Category, Protocol Revenue Distribution by Chain)
+  - 4687748 # Unified: Daily Protocol Revenues

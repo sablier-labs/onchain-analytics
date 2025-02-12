@@ -4,4 +4,4 @@ dialect = trino
 max_line_length = 120
 # Allow up to 100k bytes for file sizes
 large_file_skip_byte_limit = 100000
-exclude_rules=RF02,AL01
+exclude_rules=RF02,AL01,AL02,ST06
