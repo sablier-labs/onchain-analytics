@@ -8,5 +8,7 @@ SELECT
     sum(protocol_revenues_usd) AS revenue
 FROM
     query_4687516
+WHERE
+    block_time < date_trunc('day', current_date)
 GROUP BY
     date_trunc('day', block_time)

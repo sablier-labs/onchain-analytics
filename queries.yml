@@ -1,4 +1,7 @@
 query_ids:
+  - 4719750 # Airdrops: Claim Count
+  - 4719719 # Airdrops: Claim Data
+  - 4719780 # Airdrops: Daily Claim Count
   - 4606974 # Flow: Cumulative Stablecoin Volume
   - 4607199 # Flow: Median Stablecoin Deposit
   - 4614039 # Flow: Monthly Stablecoin Volume
@@ -52,6 +55,8 @@ query_ids:
   - 4665542 # Lockup: Remaining Balances (Accounted for Cancelations)
   - 4676715 # Lockup: Airdrop Revenues
   - 4611374 # Lockup: Adjusted Remaining Balances
+  - 4719220 # Lockup: Withdrawal Count
+  - 4719563 # Lockup: Daily Withdrawal Count
   - 4611349 # Lockup: Priced Adjusted Remaining Balances
   - 4611402 # Lockup: Total Value Locked (TVL)
   - 4662176 # Lockup: Total Value Locked (TVL) Distribution by Token
