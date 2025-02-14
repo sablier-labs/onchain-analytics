@@ -18,6 +18,7 @@ SELECT
     streamid,
     "to",
     token,
+    'v1.0' AS release_version,
     withdrawamount
 FROM sablier_flow_v1_0_multichain.sablierflow_evt_withdrawfromflowstream
 
@@ -38,5 +39,6 @@ SELECT
     streamid,
     "to",
     token,
+    'v1.1' AS release_version,
     withdrawamount
 FROM sablier_flow_v1_1_multichain.sablierflow_evt_withdrawfromflowstream

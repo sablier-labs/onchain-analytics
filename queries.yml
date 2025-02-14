@@ -20,6 +20,14 @@ query_ids:
   - 4646202 # Flow: Number of Created Streams (Past 24 Hours)
   - 4646303 # Flow: Chain Usage Distribution
   - 4724176 # Flow: Withdrawal Data
+  - 4724335 # Flow: Grouped Deposit Data
+  - 4724337 # Flow: Grouped Withdrawal Data
+  - 4724354 # Flow: Remaining Balances
+  - 4724366 # Flow: Adjusted Remaining Balances
+  - 4724379 # Flow: Priced Adjusted Remaining Balances
+  - 4724394 # Flow: Total Value Locked (TVL)
+  - 4724432 # Flow: Total Value Locked (TVL) Distribution by Token
+  - 4724441 # Flow: Total Value Locked (TVL) Distribution by Chain
   - 4646341 # Flow: Share of Stablecoin Streams
   - 4666321 # Flow: Most Used Stablecoins
   - 4606972 # Legacy: Cumulative Stablecoin Volume
@@ -72,6 +80,7 @@ query_ids:
   - 4606813 # Unified: Cumulative Stablecoin Volume
   - 4606999 # Unified: Median Stablecoin Deposit
   - 4687435 # Unified: Withdrawal Revenues
+  - 4724466 # Unified: Total Value Locked (TVL)
   - 4600695 # Unified: Stream Creation Count
   - 4600977 # Unified: Unique User Count
   - 4646207 # Unified: Number of Created Streams (Past 24 Hours)

@@ -1,0 +1,65 @@
+-- part of a query repo
+-- query name: Flow: Priced Adjusted Remaining Balances
+-- query link: https://dune.com/queries/4724379
+
+
+WITH
+LATESTPRICES AS (
+    SELECT
+        CONTRACT_ADDRESS,
+        BLOCKCHAIN,
+        SYMBOL,
+        PRICE,
+        TIMESTAMP,
+        ROW_NUMBER() OVER (
+            PARTITION BY
+                CONTRACT_ADDRESS,
+                BLOCKCHAIN
+            ORDER BY
+                TIMESTAMP DESC
+        ) AS PRICE_RANK
+    FROM
+        PRICES.DAY
+),
+
+BALANCEWITHPRICE AS (
+    SELECT
+        Q.CHAIN,
+        Q.STREAMID,
+        Q.TOKEN,
+        Q.DEPOSIT_AMOUNT,
+        Q.WITHDRAWN_AMOUNT,
+        Q.ADJUSTED_REMAINING_BALANCE,
+        LP.PRICE,
+        LP.TIMESTAMP AS PRICE_TIMESTAMP,
+        LP.SYMBOL,
+        Q.ADJUSTED_REMAINING_BALANCE * LP.PRICE AS REMAINING_BALANCE_VALUE
+    FROM
+        QUERY_4724366 Q -- Lockup: Ajusted Remaining Balances
+    LEFT JOIN LATESTPRICES LP
+        ON
+            Q.TOKEN = LP.CONTRACT_ADDRESS
+            AND Q.CHAIN = LP.BLOCKCHAIN
+    WHERE
+        LP.PRICE_RANK = 1
+        AND UPPER(CAST(TOKEN AS varchar(42))) NOT IN (
+            '0X1F557FB2AA33DCE484902695CA1374F413875519',
+            '0X5AC34C53A04B9AAA0BF047E7291FB4E8A48F2A18',
+            '0X3638C9E50437F00AE53A649697F288BA68888CC1',
+            '0X0A7B751FCDBBAA8BB988B9217AD5FB5CFE7BF7A0'
+        )
+)
+
+SELECT
+    CHAIN,
+    STREAMID,
+    TOKEN,
+    DEPOSIT_AMOUNT,
+    WITHDRAWN_AMOUNT,
+    ADJUSTED_REMAINING_BALANCE,
+    PRICE,
+    PRICE_TIMESTAMP,
+    SYMBOL,
+    REMAINING_BALANCE_VALUE
+FROM
+    BALANCEWITHPRICE;
