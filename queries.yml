@@ -19,6 +19,7 @@ query_ids:
   - 4607938 # Flow: Weekly Stream Creation Count Change
   - 4646202 # Flow: Number of Created Streams (Past 24 Hours)
   - 4646303 # Flow: Chain Usage Distribution
+  - 4724176 # Flow: Withdrawal Data
   - 4646341 # Flow: Share of Stablecoin Streams
   - 4666321 # Flow: Most Used Stablecoins
   - 4606972 # Legacy: Cumulative Stablecoin Volume

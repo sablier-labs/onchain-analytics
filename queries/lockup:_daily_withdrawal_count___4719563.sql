@@ -21,4 +21,4 @@ FROM
 WHERE
     sender IN ({{Sender/Campaign Addresses}})
 GROUP BY
-    date_trunc('day', evt_block_time)
+date_trunc('day', evt_block_time)ime)
