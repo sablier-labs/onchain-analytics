@@ -82,6 +82,7 @@ query_ids:
   - 4687435 # Unified: Withdrawal Revenues
   - 4724466 # Unified: Total Value Locked (TVL)
   - 4600695 # Unified: Stream Creation Count
+  - 4735720 # Unified: Number of Safe Users
   - 4600977 # Unified: Unique User Count
   - 4646207 # Unified: Number of Created Streams (Past 24 Hours)
   - 4714783 # Unified: Median Daily Revenue
