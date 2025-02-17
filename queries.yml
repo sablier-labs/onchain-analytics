@@ -84,7 +84,9 @@ query_ids:
   - 4600695 # Unified: Stream Creation Count
   - 4735720 # Unified: Number of Safe Users
   - 4735747 # Unified: Stream Count Created by Safe Wallets
+  - 4736107 # Unified: Share of Streams Received by Safe Wallets
   - 4735792 # Unified: Share of Streams Created by Safe Wallets
+  - 4736093 # Unified: Stream Count Received by Safe Wallets
   - 4600977 # Unified: Unique User Count
   - 4646207 # Unified: Number of Created Streams (Past 24 Hours)
   - 4714783 # Unified: Median Daily Revenue
