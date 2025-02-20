@@ -66,6 +66,7 @@ query_ids:
   - 4611374 # Lockup: Adjusted Remaining Balances
   - 4719220 # Lockup: Withdrawal Count
   - 4719563 # Lockup: Daily Withdrawal Count
+  - 4753606 # Lockup: Weekly Created Streams
   - 4611349 # Lockup: Priced Adjusted Remaining Balances
   - 4611402 # Lockup: Total Value Locked (TVL)
   - 4662176 # Lockup: Total Value Locked (TVL) Distribution by Token
