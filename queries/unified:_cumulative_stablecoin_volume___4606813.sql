@@ -5,7 +5,7 @@
 SELECT (
     (
         SELECT SUM(STABLECOIN_DEPOSIT)
-        FROM QUERY_4580489 -- Lockup: Global Stream Creation Data
+        FROM QUERY_4672879 -- Lockup: Global Stream Creation Data
     ) + (
         SELECT SUM(STABLECOIN_DEPOSIT)
         FROM QUERY_4596310 -- Legacy: Stream Creation Data

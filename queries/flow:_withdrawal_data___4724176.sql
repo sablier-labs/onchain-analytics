@@ -9,10 +9,8 @@ SELECT
     evt_tx_hash,
     evt_tx_from,
     evt_tx_to,
-    evt_tx_index,
     evt_block_time,
     evt_block_number,
-    evt_block_date,
     caller,
     protocolfeeamount,
     streamid,
@@ -30,10 +28,8 @@ SELECT
     evt_tx_hash,
     evt_tx_from,
     evt_tx_to,
-    evt_tx_index,
     evt_block_time,
     evt_block_number,
-    evt_block_date,
     caller,
     protocolfeeamount,
     streamid,
@@ -41,4 +37,5 @@ SELECT
     token,
     'v1.1' AS release_version,
     withdrawamount
-FROM sablier_flow_v1_1_multichain.sablierflow_evt_withdrawfromflowstream
+FROM
+    sablier_flow_v1_1_multichain.sablierflow_evt_withdrawfromflowstream

@@ -3,8 +3,7 @@
 -- query link: https://dune.com/queries/4735747
 
 
-WITH
-sablier_users AS (
+WITH sablier_users AS (
     SELECT sender AS sablier_user
     FROM
         query_4672879 -- Lockup: Global Stream Creation Data
