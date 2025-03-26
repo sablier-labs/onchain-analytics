@@ -2,6 +2,7 @@ query_ids:
   - 4719750 # Airdrops: Claim Count
   - 4719719 # Airdrops: Claim Data
   - 4719780 # Airdrops: Daily Claim Count
+  - 4907530 # Airdrops: Claim Revenue
   - 4606974 # Flow: Cumulative Stablecoin Volume
   - 4607199 # Flow: Median Stablecoin Deposit
   - 4614039 # Flow: Monthly Stablecoin Volume
@@ -73,6 +74,7 @@ query_ids:
   - 4665836 # Lockup: Total Value Locked (TVL) Distribution by Chain
   - 4607902 # Lockup: Weekly Stream Creation Count Change
   - 4646230 # Lockup: Stream Category Usage Distribution
+  - 4907842 # Lockup: Withdrawal Revenue
   - 4646277 # Lockup: Chain Usage Distribution
   - 4646323 # Lockup: Median Cliff Duration
   - 4646332 # Lockup: Share of Stablecoin Streams
@@ -94,3 +96,5 @@ query_ids:
   - 4687721 # Unified: Total Protocol Revenues
   - 4687516 # Unified: Protocol Revenues (Protocol Revenue Distribution by Category, Protocol Revenue Distribution by Chain)
   - 4687748 # Unified: Daily Protocol Revenues
+  - 4907850 # Unified: Revenues
+  - 4907742 # Unified: Grouped Revenues
