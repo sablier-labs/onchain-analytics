@@ -46,9 +46,8 @@ using [query version history](https://dune.com/docs/app/query-editor/version-his
 
 ## Contributing
 
-Feel free to dive in! [Open](https://github.com/sablier-labs/onchain-analytics/issues/new) an issue,
-[start](https://github.com/sablier-labs/onchain-analytics/discussions/new) a discussion or submit a PR. For any informal
-concerns or feedback, please join our [Discord server](https://discord.gg/bSwRCwWRsT).
+Feel free to dive in! [Open](../../issues/new) an issue, [start](../../discussions/new) a discussion or submit a PR. For
+any informal concerns or feedback, please join our [Discord server](https://discord.gg/bSwRCwWRsT).
 
 ### Development Commands
 
