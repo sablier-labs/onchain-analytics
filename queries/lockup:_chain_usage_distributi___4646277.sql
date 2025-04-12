@@ -21,6 +21,6 @@ SELECT
     END AS chain,
     COUNT(*) AS number_of_created_streams
 FROM
-    query_4672879 -- Lockup: Global Stream Creation Data
+    query_4672879 -- Lockup: Data for Creations
 GROUP BY
     chain

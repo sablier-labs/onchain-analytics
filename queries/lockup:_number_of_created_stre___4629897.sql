@@ -4,6 +4,6 @@
 
 SELECT COUNT(*)
 FROM
-    query_4672879 -- Lockup: Global Stream Creation Data
+    query_4672879 -- Lockup: Data for Creations
 WHERE
     evt_block_time > NOW() - INTERVAL '24' HOUR;

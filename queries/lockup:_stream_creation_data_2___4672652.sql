@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Lockup: Global Stream Creation Data 2
+-- query name: Lockup: Data for Creations - Chunk 2
 -- query link: https://dune.com/queries/4672652
 
 

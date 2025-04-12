@@ -5,6 +5,6 @@
 
 SELECT COUNT(*)
 FROM
-    query_4580489 -- Lockup: Stream Creation Data
+    query_4672879 -- Lockup: Data for Creations
 WHERE
     evt_block_time >= DATE_TRUNC('day', CURRENT_DATE) - INTERVAL '12' MONTH

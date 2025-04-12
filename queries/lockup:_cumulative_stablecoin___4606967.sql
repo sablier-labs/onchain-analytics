@@ -5,4 +5,4 @@
 
 SELECT SUM(stablecoin_deposit)
 FROM
-    query_4580489 -- Lockup: Stream Creation Data
+    query_4672879 -- Lockup: Data for Creations

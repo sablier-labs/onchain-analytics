@@ -1,5 +1,5 @@
 -- part of a query repo: https://github.com/sablier-labs/onchain-analytics
--- query name: Lockup: Global Stream Creation Data
+-- query name: Lockup: Data for Creations - Chunk 1
 -- query link: https://dune.com/queries/4580489
 
 -- Lockup v1.0: LockupLinear

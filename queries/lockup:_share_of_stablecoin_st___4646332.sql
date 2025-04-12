@@ -8,12 +8,12 @@ SELECT
         (
             SELECT CAST(COUNT(*) AS DOUBLE)
             FROM
-                query_4672879 -- Lockup: Global Stream Creation Data
+                query_4672879 -- Lockup: Data for Creations
             WHERE
                 stablecoin_deposit > 0
         ) / (
             SELECT CAST(COUNT(*) AS DOUBLE)
             FROM
-                query_4672879 -- Lockup: Global Stream Creation Data
+                query_4672879 -- Lockup: Data for Creations
         )
     ) * 100

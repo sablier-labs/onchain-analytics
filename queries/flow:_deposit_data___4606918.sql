@@ -1,5 +1,5 @@
 -- part of a query repo: https://github.com/sablier-labs/onchain-analytics
--- query name: Flow: Deposit Data
+-- query name: Flow: Data for Deposits
 -- query link: https://dune.com/queries/4606918
 -- noqa: disable=RF02
 

@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Lockup: Cancelation Data
+-- query name: Lockup: Data for Cancellations
 -- query link: https://dune.com/queries/4665451
 
 

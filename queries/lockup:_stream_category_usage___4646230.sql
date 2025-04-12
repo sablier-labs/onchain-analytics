@@ -12,6 +12,6 @@ SELECT
     END AS contract,
     COUNT(*) AS number_of_created_streams
 FROM
-    query_4580489 -- Lockup: Stream Creation Data
+    query_4672879 -- Lockup: Data for Creations
 GROUP BY
     contract

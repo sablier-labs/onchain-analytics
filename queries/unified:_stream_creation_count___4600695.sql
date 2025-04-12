@@ -7,7 +7,7 @@ SELECT
         (
             SELECT COUNT(*)
             FROM
-                query_4672879 -- Lockup: Global Stream Creation Data
+                query_4672879 -- Lockup: Data for Creations
         ) + (
             SELECT COUNT(*)
             FROM
