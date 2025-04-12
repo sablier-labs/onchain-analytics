@@ -51,6 +51,12 @@ any informal concerns or feedback, please join our [Discord server](https://disc
 
 ### Development Commands
 
+### Install Dependencies
+
+```sh
+poetry install
+```
+
 #### Format Python
 
 ```sh
