@@ -1,5 +1,5 @@
 -- part of a query repo: https://github.com/sablier-labs/onchain-analytics
--- query name: Legacy: Stream Creation Data
+-- query name: Legacy: Data for Creations
 -- query link: https://dune.com/queries/4596310
 
 SELECT

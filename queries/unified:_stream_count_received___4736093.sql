@@ -6,7 +6,7 @@
 WITH
 sablier_users AS (
     SELECT recipient AS sablier_user
-    FROM query_4672879 -- Lockup: Global Stream Creation Data
+    FROM query_4672879 -- Lockup: Data for Creations
     UNION ALL
     SELECT recipient AS sablier_user
     FROM query_4596310 -- Legacy: Stream Creation Data

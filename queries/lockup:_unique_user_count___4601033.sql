@@ -6,11 +6,11 @@ SELECT COUNT(DISTINCT lockup_user)
 FROM
     (
         SELECT funder AS lockup_user
-        FROM query_4672879 -- Lockup: Global Stream Creation Data
+        FROM query_4672879 -- Lockup: Data for Creations
         UNION ALL
         SELECT sender AS lockup_user
-        FROM query_4672879 -- Lockup: Global Stream Creation Data
+        FROM query_4672879 -- Lockup: Data for Creations
         UNION ALL
         SELECT recipient AS lockup_user
-        FROM query_4672879 -- Lockup: Global Stream Creation Data
+        FROM query_4672879 -- Lockup: Data for Creations
     )

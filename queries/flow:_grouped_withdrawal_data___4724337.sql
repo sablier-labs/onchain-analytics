@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Flow: Grouped Withdrawal Data
+-- query name: Flow: Data for Withdrawals per Stream
 -- query link: https://dune.com/queries/4724337
 
 

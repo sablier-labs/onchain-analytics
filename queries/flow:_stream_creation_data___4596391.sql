@@ -1,5 +1,5 @@
 -- part of a query repo: https://github.com/sablier-labs/onchain-analytics
--- query name: Flow: Stream Creation Data
+-- query name: Flow: Data for Creations
 -- query link: https://dune.com/queries/4596391
 
 SELECT

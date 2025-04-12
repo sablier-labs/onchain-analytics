@@ -1,7 +1,8 @@
 -- part of a query repo
--- query name: Lockup: Global Stream Creation Data
+-- query name: Lockup: Data for Creations
 -- query link: https://dune.com/queries/4672879
 
+-- We need to split this query into two separate chunks because Dune enforces a limit on the size of queries --
 
 SELECT
     chain,
@@ -29,7 +30,7 @@ SELECT
     deposit,
     protocolfee,
     brokerfee
-FROM query_4580489 -- Lockup: Stream Creation Data 1
+FROM query_4580489 -- Lockup: Data for Creations - Chunk 1
 
 UNION ALL
 
@@ -59,4 +60,4 @@ SELECT
     deposit,
     protocolfee,
     brokerfee
-FROM query_4672652 -- Lockup: Stream Creation Data 2
+FROM query_4672652 -- Lockup: Data for Creations - Chunk 2

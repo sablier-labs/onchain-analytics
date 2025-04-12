@@ -8,7 +8,7 @@ sablier_users AS (
     SELECT
         sender AS sablier_user
     FROM
-        query_4672879 -- Lockup: Global Stream Creation Data
+        query_4672879 -- Lockup: Data for Creations
     UNION ALL
     SELECT
         sender AS sablier_user

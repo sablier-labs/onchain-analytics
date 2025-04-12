@@ -5,6 +5,6 @@
 
 SELECT approx_percentile("cliffDuration", 0.5) / 86400
 FROM
-    query_4672879 -- Lockup: Global Stream Creation Data
+    query_4672879 -- Lockup: Data for Creations
 WHERE
     "cliffDuration" > 0

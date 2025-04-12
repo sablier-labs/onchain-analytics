@@ -8,7 +8,7 @@ FROM
         (
             SELECT STABLECOIN_DEPOSIT
             FROM
-                QUERY_4580489 -- Lockup: Global Stream Creation Data
+                QUERY_4672879 -- Lockup: Data for Creations
             WHERE
                 DURATION > 86400 AND STABLECOIN_DEPOSIT > 50
         )
@@ -16,7 +16,7 @@ FROM
         (
             SELECT STABLECOIN_DEPOSIT
             FROM
-                QUERY_4596310 -- Legacy: Stream Creation Data
+                QUERY_4596310 -- Legacy: Data for Creations
             WHERE
                 DURATION > 86400 AND STABLECOIN_DEPOSIT > 50
         )
@@ -24,7 +24,7 @@ FROM
         (
             SELECT STABLECOIN_DEPOSIT
             FROM
-                QUERY_4606918 -- Flow: Deposit Data
+                QUERY_4606918 -- Flow: Data for Deposits
             WHERE
                 STABLECOIN_DEPOSIT > 50
         )
