@@ -3,7 +3,7 @@
 -- query link: https://dune.com/queries/4672652
 
 
--- Lockup v1.3: LockupLinear
+-- Lockup v2.0: LockupLinear
 SELECT
     chain,
     from_hex(json_extract_scalar(commonparams, '$.token')) AS token,
@@ -20,7 +20,7 @@ SELECT
     streamid,
     cast(json_extract_scalar(commonparams, '$.transferable') AS boolean) AS transferable,
     'lockupLinear' AS category,
-    'v1.3' AS release_version,
+    'v2.0' AS release_version,
     CASE
         WHEN cast(
             json_extract_scalar(json_extract_scalar(commonparams, '$.timestamps'), '$.cliff') AS double
@@ -106,7 +106,7 @@ FROM
 
 UNION ALL
 
--- Lockup v1.3: LockupDynamic
+-- Lockup v2.0: LockupDynamic
 SELECT
     chain,
     from_hex(json_extract_scalar(commonparams, '$.token')) AS token,
@@ -123,7 +123,7 @@ SELECT
     streamid,
     cast(json_extract_scalar(commonparams, '$.transferable') AS boolean) AS transferable,
     'lockupDynamic' AS category,
-    'v1.3' AS release_version,
+    'v2.0' AS release_version,
     CASE
         WHEN json_extract_scalar(segments[1], '$.exponent') = '3000000000000000000' THEN 'exponential'
         WHEN
@@ -218,7 +218,7 @@ FROM
 
 UNION ALL
 
--- Lockup v1.3: LockupTranched
+-- Lockup v2.0: LockupTranched
 SELECT
     chain,
     from_hex(json_extract_scalar(commonparams, '$.token')) AS token,
@@ -235,7 +235,7 @@ SELECT
     streamid,
     cast(json_extract_scalar(commonparams, '$.transferable') AS boolean) AS transferable,
     'lockupDynamic' AS category,
-    'v1.3' AS release_version,
+    'v2.0' AS release_version,
     CASE
         WHEN cardinality(tranches) = 1 THEN 'timelock'
         WHEN cast(
