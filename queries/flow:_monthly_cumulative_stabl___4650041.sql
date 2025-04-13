@@ -3,41 +3,41 @@
 -- query link: https://dune.com/queries/4650041
 
 
-WITH MONTHLYDEPOSITS AS (
+WITH monthly_deposits AS (
     SELECT
-        DATE_FORMAT(EVT_BLOCK_TIME, '%M %Y') AS EVT_MONTH,
-        DATE_TRUNC('month', EVT_BLOCK_TIME) AS MONTH_START,
-        SUM(STABLECOIN_DEPOSIT) AS TOTAL_DEPOSITS
+        DATE_FORMAT(evt_block_time, '%M %Y') AS evt_month,
+        DATE_TRUNC('month', evt_block_time) AS month_start,
+        SUM(stablecoin_deposit) AS total_deposits
     FROM
-        QUERY_4606918 -- Flow: Deposit Data
+        query_4606918 -- Flow: Deposit Data
     WHERE
-        EVT_BLOCK_TIME >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '12' MONTH
+        evt_block_time >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '12' MONTH
     GROUP BY
-        DATE_FORMAT(EVT_BLOCK_TIME, '%M %Y'),
-        DATE_TRUNC('month', EVT_BLOCK_TIME)
+        DATE_FORMAT(evt_block_time, '%M %Y'),
+        DATE_TRUNC('month', evt_block_time)
 ),
 
-INITIALCUMULATIVE AS (
-    SELECT COALESCE(SUM(STABLECOIN_DEPOSIT), 0) AS STARTING_CUMULATIVE
+initial_cumulative AS (
+    SELECT COALESCE(SUM(stablecoin_deposit), 0) AS starting_cumulative
     FROM
-        QUERY_4606918 -- Flow: Deposit Data
+        query_4606918 -- Flow: Deposit Data
     WHERE
-        EVT_BLOCK_TIME < DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '12' MONTH
+        evt_block_time < DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '12' MONTH
 ),
 
-FINALCUMULATIVE AS (
+final_cumulative AS (
     SELECT
-        EVT_MONTH,
-        MONTH_START,
-        TOTAL_DEPOSITS,
-        SUM(TOTAL_DEPOSITS)
+        evt_month,
+        month_start,
+        total_deposits,
+        SUM(total_deposits)
             OVER (
-                ORDER BY MONTH_START ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+                ORDER BY month_start ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
             )
-        + (SELECT STARTING_CUMULATIVE FROM INITIALCUMULATIVE) AS CUMULATIVE_VOLUME
+        + (SELECT starting_cumulative FROM initial_cumulative) AS cumulative_volume
     FROM
-        MONTHLYDEPOSITS
+        monthly_deposits
 )
 
-SELECT * FROM FINALCUMULATIVE
-ORDER BY MONTH_START;
+SELECT * FROM final_cumulative
+ORDER BY month_start;

@@ -3,9 +3,9 @@
 -- query link: https://dune.com/queries/4607097
 
 
-SELECT approx_percentile(STABLECOIN_DEPOSIT, 0.5) AS MEDIAN
+SELECT approx_percentile(stablecoin_deposit, 0.5) AS median
 FROM
-    QUERY_4672879 -- Lockup: Data for Creations
+    query_4672879 -- Lockup: Data for Creations
 WHERE
-    DURATION > 86400 -- a day
-    AND STABLECOIN_DEPOSIT > 50
+    duration > 86400 -- a day
+    AND stablecoin_deposit > 50

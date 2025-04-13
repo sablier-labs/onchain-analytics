@@ -3,6 +3,6 @@
 -- query name: Flow: Cumulative Stablecoin Volume
 -- query link: https://dune.com/queries/4606974
 
-SELECT SUM(STABLECOIN_DEPOSIT)
+SELECT SUM(stablecoin_deposit)
 FROM
-    QUERY_4606918 -- Flow: Deposit Data
+    query_4606918 -- Flow: Deposit Data

@@ -2,30 +2,30 @@
 -- query name: Unified: Median Stablecoin Deposit
 -- query link: https://dune.com/queries/4606999
 
-SELECT approx_percentile(STABLECOIN_DEPOSIT, 0.5) AS MEDIAN
+SELECT approx_percentile(stablecoin_deposit, 0.5) AS median
 FROM
     (
         (
-            SELECT STABLECOIN_DEPOSIT
+            SELECT stablecoin_deposit
             FROM
-                QUERY_4672879 -- Lockup: Data for Creations
+                query_4672879 -- Lockup: Data for Creations
             WHERE
-                DURATION > 86400 AND STABLECOIN_DEPOSIT > 50
+                duration > 86400 AND stablecoin_deposit > 50
         )
         UNION ALL
         (
-            SELECT STABLECOIN_DEPOSIT
+            SELECT stablecoin_deposit
             FROM
-                QUERY_4596310 -- Legacy: Data for Creations
+                query_4596310 -- Legacy: Data for Creations
             WHERE
-                DURATION > 86400 AND STABLECOIN_DEPOSIT > 50
+                duration > 86400 AND stablecoin_deposit > 50
         )
         UNION ALL
         (
-            SELECT STABLECOIN_DEPOSIT
+            SELECT stablecoin_deposit
             FROM
-                QUERY_4606918 -- Flow: Data for Deposits
+                query_4606918 -- Flow: Data for Deposits
             WHERE
-                STABLECOIN_DEPOSIT > 50
+                stablecoin_deposit > 50
         )
     )
