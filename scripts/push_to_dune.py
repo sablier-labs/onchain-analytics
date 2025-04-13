@@ -27,9 +27,7 @@ def main():
         # Check if query file exists in /queries folder
         files = os.listdir(QUERIES_DIR)
         # Find files that match the current query ID
-        found_files = [
-            file for file in files if str(id) == file.split("___")[-1].split(".")[0]
-        ]
+        found_files = [file for file in files if str(id) == file.split("___")[-1].split(".")[0]]
 
         if len(found_files) != 0:
             file_path = os.path.join(QUERIES_DIR, found_files[0])

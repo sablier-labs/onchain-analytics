@@ -26,7 +26,7 @@ install:
 
 # Format Python files
 format-python:
-    poetry run black scripts/*.py
+    poetry run ruff format scripts/*.py
 
 # Format SQL files
 format-sql:
@@ -38,11 +38,11 @@ format: format-python format-sql
 
 # Lint query names
 lint-names:
-    poetry run python -u scripts/lint_names.py
+    poetry run python -u scripts/sync_names.py --lint
 
 # Lint Python files
 lint-python:
-    poetry run black --check scripts/*.py
+    poetry run ruff check scripts/*.py
 
 # Lint SQL files
 lint-sql:
@@ -51,3 +51,7 @@ lint-sql:
 # Lint all files
 lint: lint-names lint-python lint-sql
     @echo "All linting checks complete!"
+
+# Sync query names
+sync-names:
+    poetry run python -u scripts/sync_names.py
