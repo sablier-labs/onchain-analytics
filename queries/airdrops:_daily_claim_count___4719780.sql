@@ -5,10 +5,10 @@
 
 SELECT
     COUNT(*) AS number_of_claims,
-    date_trunc('day', block_time) AS evt_day
+    DATE_TRUNC('day', block_time) AS evt_day
 FROM
     query_4719719 -- Airdrops: Claim Data
 WHERE
-    contract_address IN ({{Sender/Campaign Addresses}})
+    contract_address IN ({{ addresses }}) -- Comma-separated list of sender or campaign addresses
 GROUP BY
-    date_trunc('day', block_time)
+    DATE_TRUNC('day', block_time)

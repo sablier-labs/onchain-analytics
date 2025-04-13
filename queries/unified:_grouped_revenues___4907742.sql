@@ -13,5 +13,7 @@ SELECT
     SUM(usd_revenue) AS total_usd_revenue,
     SUM(gbp_revenue) AS total_gbp_revenue
 FROM query_4915961
-WHERE revenue_date >= DATE_TRUNC('day', CAST('{{Begin Date}}' AS TIMESTAMP)) AND revenue_date <= DATE_TRUNC('day', CAST('{{End Date}}' AS TIMESTAMP))
+WHERE
+    revenue_date >= DATE_TRUNC('day', CAST('{{ start_date }}' AS TIMESTAMP))
+    AND revenue_date <= DATE_TRUNC('day', CAST('{{ end_date }}' AS TIMESTAMP))
 GROUP BY currency, revenue_date, usd_asset_price, gbp_usd_price, gbp_asset_price
