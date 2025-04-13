@@ -14,20 +14,15 @@ A repo for managing Sablier's [Dune queries](https://dune.mintlify.app/api-refer
 
 3. Then, run `pull_from_dune.py` to bring in all queries into the `/queries` folder.
 
-### Updating Queries
+### Updating Query SQL
 
-Make any changes you need to directly in the repo. Then, any time you push a commit to remote, the `push_to_dune.py`
+Make any SQL changes you need to directly in the repo. Then, any time you push a commit to remote, the `push_to_dune.py`
 script will run in CI and push your changes to Dune. You can also run this script manually if you want.
 
-## Scripts
+### Updating Query Names
 
-You can run these scripts using `poetry run python scripts/<script_name>.py`.
-
-| Script              | Action                                                                                                           |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `preview_query.py`  | Returns the first 20 rows of results by running a query from your `/queries` folder. This uses Dune API credits. |
-| `pull_from_dune.py` | Updates or adds queries to Dune based on the ids in `queries.yml`                                                |
-| `push_to_dune.py`   | Updates queries to Dune based on the files in the `/queries` folder                                              |
+Run the `update_query_names.py` script to update the query names on Dune using the names written in the `queries.yml`
+file.
 
 ## Things to Be Aware of
 

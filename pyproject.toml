@@ -25,4 +25,5 @@
 
 [tool.poetry.group.dev.dependencies]
     black = "^25.1.0"
+    colorama = "^0.4.6"
     sqlfluff = "^3.3.0"

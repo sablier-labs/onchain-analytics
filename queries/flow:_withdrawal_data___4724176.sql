@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Flow: Withdrawal Data
+-- query name: Flow: Data for Withdrawals
 -- query link: https://dune.com/queries/4724176
 
 

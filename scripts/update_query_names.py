@@ -1,14 +1,11 @@
-from dune_client.client import DuneClient
-import yaml
-import os
-from typing import cast, List, Tuple
 import argparse
-import sys
-import codecs
-from dotenv import load_dotenv
+import os
+import time
+from dune_config import get_dune_client
+from parse_queries import parse_queries
+from typing import List, Tuple
 
-# Set the default encoding to UTF-8
-sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())  # type: ignore
+dune = get_dune_client()
 
 
 def get_user_confirmation() -> bool:
@@ -29,68 +26,64 @@ def get_user_confirmation() -> bool:
         print("Please respond with 'yes' or 'no' (or 'y' or 'n')")
 
 
-def parse_yaml_file(file_path: str) -> List[Tuple[int, str]]:
+def update_query_name(query_id: int, query_name: str) -> bool:
     """
-    Parse the YAML file and extract query IDs and names from comments.
+    Update a query name using the Dune API.
 
     Args:
-        file_path: Path to the YAML file
+        query_id: ID of the query to update
+        query_name: New name for the query
 
     Returns:
-        List of tuples containing (query_id, query_name)
+        True if update was successful, False otherwise
     """
-    with open(file_path, "r", encoding="utf-8") as file:
-        yaml_content = yaml.safe_load(file)
-
-    query_ids_with_names = []
-
-    # If the above approach didn't work, try a different method by reopening the file
-    with open(file_path, "r", encoding="utf-8") as file:
-        lines = file.readlines()
-
-    for line in lines:
-        line = line.strip()
-        if line.startswith("-") and "#" in line:
-            parts = line.split("#", 1)
-            id_part = parts[0].strip().replace("-", "").strip()
-            name_part = parts[1].strip()
-            try:
-                query_id = int(id_part)
-                query_ids_with_names.append((query_id, name_part))
-            except ValueError:
-                pass
-
-    return query_ids_with_names
+    try:
+        dune.update_query(query_id, name=query_name)
+        print(f"  ✅ SUCCESS: Updated with name: {query_name}")
+        return True
+    except Exception as e:
+        print(f"  ❌ ERROR: Failed to update: {str(e)}")
+        return False
 
 
 def main():
+    parser = argparse.ArgumentParser(
+        description="Update Dune query names based on YAML file"
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Print actions without making API calls"
+    )
+    args = parser.parse_args()
+
     # Ask for user confirmation at the beginning
-    if not get_user_confirmation():
+    if not args.dry_run and not get_user_confirmation():
         print("Operation cancelled by user")
         return
 
-    # Load environment variables from .env file after confirmation
-    dotenv_path = os.path.join(os.path.dirname(__file__), "..", ".env")
-    load_dotenv(dotenv_path)
-    dune = cast(DuneClient, DuneClient.from_env())
-
-    # Always read from queries.yml in the project root
-    queries_path = os.path.join(os.path.dirname(__file__), "..", "queries.yml")
-
     # Parse the YAML file
-    query_ids_with_names = parse_yaml_file(queries_path)
+    query_ids_with_names = parse_queries()
 
     if not query_ids_with_names:
-        print(f"No query IDs with names found in {queries_path}")
+        print(f"No query IDs with names found")
         return
 
-    print(f"Found {len(query_ids_with_names)} queries to update")
-    # Pretty print query_ids_with_names
-    for query_id, name in query_ids_with_names:
-        print(f"Query ID: {query_id}, Name: {name}")
+    print(f"🔍 Found {len(query_ids_with_names)} queries to update")
+    print("\n🚀 Proceeding with updates...\n")
 
-    print("Proceeding with updates...")
-    # The rest of the update logic would go here
+    success_count = 0
+    for query_id, query_name in query_ids_with_names:
+        print(f"⚙️  PROCESSING: Query {query_id}")
+        if args.dry_run:
+            print(f"  📝 Would update with name: {query_name}")
+            success_count += 1
+            print("-" * 50)
+        else:
+            success = update_query_name(query_id, query_name)
+            if success:
+                success_count += 1
+            # Add a short delay to avoid rate limiting
+            time.sleep(0.5)
+            print("-" * 50)
 
 
 if __name__ == "__main__":

@@ -1,101 +1,108 @@
+# NOTE: This file serves as the source of truth for all query names
+# See https://github.com/sablier-labs/onchain-analytics/issues/23
 query_ids:
   - 4719750 # Airdrops: Claim Count
-  - 4719719 # Airdrops: Data for Claims
+  - 4907530 # Airdrops: Claim Revenues
   - 4719780 # Airdrops: Daily Claim Count
-  - 4907530 # Airdrops: Claim Revenue
+  - 4719719 # Airdrops: Data for Claims
+
+  - 4724366 # Flow: Adjusted Remaining Balances
+  - 4646303 # Flow: Chain Usage Distribution
   - 4606974 # Flow: Cumulative Stablecoin Volume
-  - 4607199 # Flow: Median Stablecoin Deposit
-  - 4614039 # Flow: Monthly Stablecoin Volume
-  - 4607341 # Flow: Monthly Stream Creation Count
-  - 4613871 # Flow: Most Used Tokens
-  - 4600798 # Flow: Stream Creation Count
   - 4596391 # Flow: Data for Creations
   - 4606918 # Flow: Data for Deposits
+  - 4724335 # Flow: Data for Deposits per Stream
+  - 4724176 # Flow: Data for Withdrawals
+  - 4724337 # Flow: Data for Withdrawals per Stream
+  - 4607199 # Flow: Median Stablecoin Deposit
+  - 4650041 # Flow: Monthly Cumulative Stablecoin Volume
+  - 4614039 # Flow: Monthly Stablecoin Volume
+  - 4607341 # Flow: Monthly Stream Creation Count
   - 4607933 # Flow: Monthly Stream Creation Count Change
-  - 4607476 # Flow: Stream Creation Count (1 Week)
+  - 4666321 # Flow: Most Used Stablecoins
+  - 4613871 # Flow: Most Used Tokens
+  - 4646202 # Flow: Number of Created Streams (Past 24 Hours)
+  - 4724379 # Flow: Priced Adjusted Remaining Balances
+  - 4724354 # Flow: Remaining Balances
+  - 4600798 # Flow: Stream Creation Count
   - 4607469 # Flow: Stream Creation Count (1 Month)
   - 4607466 # Flow: Stream Creation Count (12 Months)
+  - 4607476 # Flow: Stream Creation Count (1 Week)
+  - 4646341 # Flow: Share of Stablecoin Streams
+  - 4724394 # Flow: Total Value Locked (TVL)
+  - 4724432 # Flow: TVL by Token
+  - 4724441 # Flow: TVL by Chain
   - 4601154 # Flow: Unique User Count
   - 4607952 # Flow: Yearly Stream Creation Count Change
   - 4607938 # Flow: Weekly Stream Creation Count Change
-  - 4646202 # Flow: Number of Created Streams (Past 24 Hours)
-  - 4646303 # Flow: Chain Usage Distribution
-  - 4724176 # Flow: Data for Withdrawals
-  - 4724335 # Flow: Data for Deposits per Stream
-  - 4724337 # Flow: Data for Withdrawals per Stream
-  - 4724354 # Flow: Remaining Balances
-  - 4724366 # Flow: Adjusted Remaining Balances
-  - 4724379 # Flow: Priced Adjusted Remaining Balances
-  - 4724394 # Flow: Total Value Locked (TVL)
-  - 4724432 # Flow: Total Value Locked (TVL) Distribution by Token
-  - 4724441 # Flow: Total Value Locked (TVL) Distribution by Chain
-  - 4646341 # Flow: Share of Stablecoin Streams
-  - 4666321 # Flow: Most Used Stablecoins
+
   - 4606972 # Legacy: Cumulative Stablecoin Volume
   - 4596310 # Legacy: Data for Creations
   - 4607189 # Legacy: Median Stablecoin Deposit
   - 4600780 # Legacy: Stream Creation Count
   - 4601157 # Legacy: Unique User Count
+
+  - 4611374 # Lockup: Adjusted Remaining Balances
+  - 4676715 # Lockup: Airdrop Revenues
+  - 4646277 # Lockup: Chain Usage Distribution
   - 4606967 # Lockup: Cumulative Stablecoin Volume
+  - 4719563 # Lockup: Daily Withdrawal Count
+  - 4665451 # Lockup: Data for Cancellations
+  - 4672879 # Lockup: Data for Creations
+  - 4580489 # Lockup: Data for Creations - Chunk 1
+  - 4672652 # Lockup: Data for Creations - Chunk 2
+  - 4611102 # Lockup: Data for Withdrawals
+  - 4611255 # Lockup: Data for Withdrawals per Stream
+  - 4646323 # Lockup: Median Cliff Duration
   - 4607097 # Lockup: Median Stablecoin Deposit
+  - 4650009 # Lockup: Monthly Cumulative Stablecoin Volume
   - 4613997 # Lockup: Monthly Stablecoin Volume
   - 4607298 # Lockup: Monthly Stream Creation Count
   - 4607531 # Lockup: Monthly Stream Creation Count Change
+  - 4666198 # Lockup: Most Used Stablecoins
   - 4613589 # Lockup: Most Used Tokens in Warm Streams
   - 4629897 # Lockup: Number of Created Streams (Past 24 Hours)
-  - 4600738 # Lockup: Stream Creation Count
-  - 4650071 # Lockup: Share of Transferable Streams
-  - 4650078 # Lockup: Share of Cancelable Streams
-  - 4650093 # Lockup: Share of Uncancelable and Transferable Streams
+  - 4611349 # Lockup: Priced Adjusted Remaining Balances
+  - 4611179 # Lockup: Remaining Balances
+  - 4665542 # Lockup: Remaining Balances (Accounted for Cancellations)
   - 4650111 # Lockup: Share of Cancelable and Transferable Streams
+  - 4650078 # Lockup: Share of Cancelable Streams
+  - 4650071 # Lockup: Share of Transferable Streams
   - 4650134 # Lockup: Share of Uncancelable Streams
+  - 4650093 # Lockup: Share of Uncancelable and Transferable Streams
   - 4650437 # Lockup: Share of Untransferable Streams
-  - 4650009 # Lockup: Monthly Cumulative Stablecoin Volume
+  - 4646230 # Lockup: Stream Category Usage Distribution
+  - 4600738 # Lockup: Stream Creation Count
   - 4607455 # Lockup: Stream Creation Count (1 Week)
   - 4607442 # Lockup: Stream Creation Count (1 Month)
   - 4607430 # Lockup: Stream Creation Count (12 Months)
   - 4601033 # Lockup: Unique User Count
-  - 4580489 # Lockup: Data for Creations - Chunk 1
-  - 4672652 # Lockup: Data for Creations - Chunk 2
-  - 4672879 # Lockup: Data for Creations
-  - 4607911 # Lockup: Yearly Stream Creation Count Change
-  - 4611102 # Lockup: Data for Withdrawals
-  - 4611255 # Lockup: Data for Withdrawals per Stream
-  - 4611179 # Lockup: Remaining Balances
-  - 4665542 # Lockup: Remaining Balances (Accounted for Cancellations)
-  - 4676715 # Lockup: Airdrop Revenues
-  - 4611374 # Lockup: Adjusted Remaining Balances
-  - 4719220 # Lockup: Withdrawal Count
-  - 4719563 # Lockup: Daily Withdrawal Count
-  - 4753606 # Lockup: Weekly Created Streams
-  - 4611349 # Lockup: Priced Adjusted Remaining Balances
   - 4611402 # Lockup: Total Value Locked (TVL)
   - 4662176 # Lockup: TVL by Token
   - 4665836 # Lockup: TVL by Chain
+  - 4607911 # Lockup: Yearly Stream Creation Count Change
   - 4607902 # Lockup: Weekly Stream Creation Count Change
-  - 4646230 # Lockup: Stream Category Usage Distribution
-  - 4907842 # Lockup: Withdrawal Revenue
-  - 4646277 # Lockup: Chain Usage Distribution
-  - 4646323 # Lockup: Median Cliff Duration
+  - 4753606 # Lockup: Weekly Created Streams
+  - 4719220 # Lockup: Withdrawal Count
+  - 4907842 # Lockup: Withdrawal Revenues
   - 4646332 # Lockup: Share of Stablecoin Streams
-  - 4665451 # Lockup: Data for Cancellations
-  - 4666198 # Lockup: Most Used Stablecoins
+
   - 4606813 # Unified: Cumulative Stablecoin Volume
   - 4606999 # Unified: Median Stablecoin Deposit
-  - 4687435 # Unified: Withdrawal Revenues
-  - 4724466 # Unified: Total Value Locked (TVL)
-  - 4600695 # Unified: Stream Creation Count
-  - 4735720 # Unified: Number of Safe Users
-  - 4735747 # Unified: Stream Count Created by Safe Wallets
-  - 4736107 # Unified: Share of Streams Received by Safe Wallets
-  - 4735792 # Unified: Share of Streams Created by Safe Wallets
-  - 4736093 # Unified: Stream Count Received by Safe Wallets
-  - 4600977 # Unified: Unique User Count
   - 4646207 # Unified: Number of Created Streams (Past 24 Hours)
-  - 4714783 # Unified: Median Daily Revenue
-  - 4687721 # Unified: Total Protocol Revenues
-  - 4687516 # Unified: Protocol Revenues (Protocol Revenue Distribution by Category, Protocol Revenue Distribution by Chain)
-  - 4687748 # Unified: Daily Protocol Revenues
-  - 4907850 # Unified: Revenues
-  - 4907742 # Unified: Grouped Revenues
-  - 4915961 # Unified: GBP Revenues
+  - 4735720 # Unified: Number of Safe Users
+  - 4907742 # Unified: Revenues Grouped
+  - 4687748 # Unified: Revenues USD Daily
+  - 4714783 # Unified: Revenues USD Daily Median
+  - 4687721 # Unified: Revenues USD Total
+  - 4687516 # Unified: Revenues USD
+  - 4907850 # Unified: Revenues USD
+  - 4915961 # Unified: Revenues GBP Total
+  - 4736107 # Unified: Share of Streams Received by Safe Users
+  - 4735792 # Unified: Share of Streams Created by Safe Users
+  - 4600695 # Unified: Stream Creation Count
+  - 4735747 # Unified: Stream Count Created by Safe Users
+  - 4736093 # Unified: Stream Count Received by Safe Users
+  - 4724466 # Unified: Total Value Locked (TVL)
+  - 4600977 # Unified: Unique User Count
+  - 4687435 # Unified: Withdrawal Revenues

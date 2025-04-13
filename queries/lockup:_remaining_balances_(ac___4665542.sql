@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Lockup: Remaining Balances (Accounted for Cancelations)
+-- query name: Lockup: Remaining Balances (Accounted for Cancellations)
 -- query link: https://dune.com/queries/4665542
 
 

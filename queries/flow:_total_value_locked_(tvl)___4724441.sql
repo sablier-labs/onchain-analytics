@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Flow: Total Value Locked (TVL) Distribution by Chain
+-- query name: Flow: TVL by Chain
 -- query link: https://dune.com/queries/4724441
 
 

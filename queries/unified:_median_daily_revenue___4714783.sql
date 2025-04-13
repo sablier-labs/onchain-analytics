@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Unified: Median Daily Revenue
+-- query name: Unified: Revenues USD Daily Median
 -- query link: https://dune.com/queries/4714783
 
 
