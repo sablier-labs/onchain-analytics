@@ -1,5 +1,5 @@
 import os
-from typing import Dict, List, Tuple
+from typing import List, Tuple
 
 # Always read from queries.yml in the project root
 QUERIES_FILE = os.path.join(os.path.dirname(__file__), "..", "queries.yml")

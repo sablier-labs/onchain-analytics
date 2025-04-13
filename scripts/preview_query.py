@@ -2,7 +2,6 @@ import os
 import pandas as pd
 import sys
 from dune_config import get_dune_client
-from typing import cast
 
 QUERIES_DIR = os.path.join(os.path.dirname(__file__), "..", "queries")
 dune = get_dune_client()

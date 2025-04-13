@@ -230,7 +230,6 @@ def validate_inline_references(
 
         # Track if we need to update this file
         file_needs_update = False
-        file_content = None
 
         for ref_query_id, ref_name in references.items():
             if ref_query_id not in yaml_query_dict:

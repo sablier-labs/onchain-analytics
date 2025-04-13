@@ -56,7 +56,7 @@ def main():
     query_ids_with_names = parse_queries()
 
     if not query_ids_with_names:
-        print(f"No query IDs with names found")
+        print("No query IDs with names found")
         return
 
     print(f"🔍 Found {len(query_ids_with_names)} queries to update")
