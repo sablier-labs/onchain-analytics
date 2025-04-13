@@ -1,50 +1,51 @@
 import os
 import yaml
-from dune_client.client import DuneClient
-from dotenv import load_dotenv
-import sys
-import codecs
-from typing import cast
+from dune_config import get_dune_client
 
-# Set the default encoding to UTF-8
-sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())  # type: ignore
+ROOT_DIR = os.path.join(os.path.dirname(__file__), "..")
+QUERIES_DIR = os.path.join(ROOT_DIR, "queries")
+QUERIES_FILE = os.path.join(ROOT_DIR, "queries.yml")
+dune = get_dune_client()
 
-dotenv_path = os.path.join(os.path.dirname(__file__), "..", ".env")
-load_dotenv(dotenv_path)
-dune = cast(DuneClient, DuneClient.from_env())
 
-# Read the queries.yml file
-queries_yml = os.path.join(os.path.dirname(__file__), "..", "queries.yml")
-with open(queries_yml, "r", encoding="utf-8") as file:
-    data = yaml.safe_load(file)
+def main():
+    """
+    Pushes queries from the `/queries` folder to Dune API.
+    """
 
-# Extract the query_ids from the data
-query_ids = [id for id in data["query_ids"]]
+    # Read the queries.yml file
+    with open(QUERIES_FILE, "r", encoding="utf-8") as file:
+        data = yaml.safe_load(file)
 
-for id in query_ids:
-    query = dune.get_query(id)
-    print("PROCESSING: query {}, {}".format(query.base.query_id, query.base.name))
+    # Extract the query_ids from the data
+    query_ids = [id for id in data["query_ids"]]
 
-    # Check if query file exists in /queries folder
-    queries_path = os.path.join(os.path.dirname(__file__), "..", "queries")
-    files = os.listdir(queries_path)
-    found_files = [
-        file for file in files if str(id) == file.split("___")[-1].split(".")[0]
-    ]
+    for id in query_ids:
+        query = dune.get_query(id)
+        print("PROCESSING: query {}, {}".format(query.base.query_id, query.base.name))
 
-    if len(found_files) != 0:
-        file_path = os.path.join(
-            os.path.dirname(__file__), "..", "queries", found_files[0]
-        )
-        # Read the content of the file
-        with open(file_path, "r", encoding="utf-8") as file:
-            text = file.read()
+        # Check if query file exists in /queries folder
+        files = os.listdir(QUERIES_DIR)
+        # Find files that match the current query ID
+        found_files = [
+            file for file in files if str(id) == file.split("___")[-1].split(".")[0]
+        ]
 
-            # Update existing file
-            dune.update_query(
-                query.base.query_id,
-                query_sql=text,
-            )
-            print("SUCCESS: updated query {} to dune".format(query.base.query_id))
-    else:
-        print("ERROR: file not found, query id {}".format(query.base.query_id))
+        if len(found_files) != 0:
+            file_path = os.path.join(QUERIES_DIR, found_files[0])
+            # Read the content of the file
+            with open(file_path, "r", encoding="utf-8") as file:
+                text = file.read()
+
+                # Update existing file
+                dune.update_query(
+                    query.base.query_id,
+                    query_sql=text,
+                )
+                print("SUCCESS: updated query {} to Dune".format(query.base.query_id))
+        else:
+            print("ERROR: file not found, query id {}".format(query.base.query_id))
+
+
+if __name__ == "__main__":
+    main()

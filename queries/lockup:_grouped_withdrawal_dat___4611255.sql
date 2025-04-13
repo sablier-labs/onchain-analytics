@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Lockup: Grouped Withdrawal Data
+-- query name: Lockup: Data for Withdrawals per Stream
 -- query link: https://dune.com/queries/4611255
 
 

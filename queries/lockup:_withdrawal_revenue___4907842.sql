@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Lockup: Withdrawal Revenue
+-- query name: Lockup: Withdrawal Revenues
 -- query link: https://dune.com/queries/4907842
 
 

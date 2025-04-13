@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Lockup: Total Value Locked (TVL) Distribution by Token
+-- query name: Lockup: TVL by Token
 -- query link: https://dune.com/queries/4662176
 
 

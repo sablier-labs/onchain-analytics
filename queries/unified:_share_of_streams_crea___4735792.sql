@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Unified: Share of Streams Created by Safe Wallets
+-- query name: Unified: Share of Streams Created by Safe Users
 -- query link: https://dune.com/queries/4735792
 
 

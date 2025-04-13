@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Unified: Grouped Revenues
+-- query name: Unified: Revenues Grouped
 -- query link: https://dune.com/queries/4907742
 
 

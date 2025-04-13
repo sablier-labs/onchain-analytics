@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Unified: Daily Protocol Revenues
+-- query name: Unified: Revenues USD Daily
 -- query link: https://dune.com/queries/4687748
 
 

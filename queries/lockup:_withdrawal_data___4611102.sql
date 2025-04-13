@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Lockup: Withdrawal Data
+-- query name: Lockup: Data for Withdrawals
 -- query link: https://dune.com/queries/4611102
 
 

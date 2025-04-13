@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Unified: Stream Count Created by Safe Wallets
+-- query name: Unified: Stream Count Created by Safe Users
 -- query link: https://dune.com/queries/4735747
 
 
@@ -13,12 +13,12 @@ sablier_users AS (
     SELECT
         sender AS sablier_user
     FROM
-        query_4596310 -- Legacy: Stream Creation Data
+        query_4596310 -- Legacy: Data for Creations
     UNION ALL
     SELECT
         sender AS sablier_user
     FROM
-        query_4596391 -- Flow: Stream Creation Data
+        query_4596391 -- Flow: Data for Creations
 )
 
 SELECT

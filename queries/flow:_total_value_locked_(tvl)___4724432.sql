@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Flow: Total Value Locked (TVL) Distribution by Token
+-- query name: Flow: TVL by Token
 -- query link: https://dune.com/queries/4724432
 
 

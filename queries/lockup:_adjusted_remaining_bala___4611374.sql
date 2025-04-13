@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Lockup: Ajusted Remaining Balances
+-- query name: Lockup: Adjusted Remaining Balances
 -- query link: https://dune.com/queries/4611374
 
 

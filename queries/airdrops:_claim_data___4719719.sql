@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Airdrops: Claim Data
+-- query name: Airdrops: Data for Claims
 -- query link: https://dune.com/queries/4719719
 
 
