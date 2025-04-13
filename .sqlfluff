@@ -1,10 +1,17 @@
 [sqlfluff]
-exclude_rules=AL01,AL02,RF02,ST05,ST06,ST08,LT09
+exclude_rules=RF02,ST05,ST06,ST08,LT09
 # The dialect used by DuneSQL
 dialect = trino
 max_line_length = 120
 # Allow up to 100k bytes for file sizes
 large_file_skip_byte_limit = 100000
+templater = jinja
 
 [sqlfluff:rules:capitalisation.identifiers]
 extended_capitalisation_policy=lower
+
+# Dummy values
+[sqlfluff:templater:jinja:context]
+addresses="0x0000000000000000000000000000000000000001,0x0000000000000000000000000000000000000002"
+end_date="2025-01-01 00:00:00"
+start_date="2025-01-01 00:00:00"

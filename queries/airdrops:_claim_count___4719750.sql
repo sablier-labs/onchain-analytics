@@ -8,6 +8,6 @@ SELECT
 FROM
     query_4719719 -- Airdrops: Claim Data
 WHERE
-    contract_address IN ({{Sender/Campaign Addresses}})
-    AND block_time > CAST('{{Start Date}}' AS TIMESTAMP)
-    AND block_time < CAST('{{End Date}}' AS TIMESTAMP)
+    contract_address IN ({{ addresses }}) -- Comma-separated list of sender or campaign addresses
+    AND block_time > CAST('{{ start_date }}' AS TIMESTAMP)
+    AND block_time < CAST('{{ end_date }}' AS TIMESTAMP)
