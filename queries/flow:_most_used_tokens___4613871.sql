@@ -8,7 +8,7 @@ SELECT
     q.token,
     COUNT(q.token) AS number_of_streams
 FROM
-    query_4596391 AS q -- Flow: Stream Creation Data
+    query_4596391 AS q -- Flow: Data for Creations
 LEFT JOIN
     tokens.erc20 AS t
     ON

@@ -14,7 +14,7 @@ stream_aggregation AS (
         SUM(amount) AS total_amount,
         COUNT(*) AS row_count
     FROM
-        query_4611102 -- Lockup: Withdrawal Data
+        query_4611102 -- Lockup: Data for Withdrawals
     GROUP BY
         chain,
         contract_address,

@@ -10,5 +10,5 @@ SELECT
     streamid,
     token,
     SUM(withdrawamount) AS total_withdraw
-FROM query_4724176 -- Flow: Withdrawal Data
+FROM query_4724176 -- Flow: Data for Withdrawals
 GROUP BY chain, contract_address, release_version, streamid, token;

@@ -11,10 +11,10 @@ SELECT
         ) + (
             SELECT COUNT(*)
             FROM
-                query_4596310 -- Legacy: Stream Creation Data
+                query_4596310 -- Legacy: Data for Creations
         ) + (
             SELECT COUNT(*)
             FROM
-                query_4596391 -- Flow: Stream Creation Data
+                query_4596391 -- Flow: Data for Creations
         )
     ) AS stream_creation_count

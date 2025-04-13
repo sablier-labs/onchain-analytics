@@ -20,7 +20,7 @@ FROM (
             END
         ) AS previous_week_streams
     FROM
-        query_4596391 -- Flow: Stream Creation Data
+        query_4596391 -- Flow: Data for Creations
     WHERE
         evt_block_time >= CURRENT_DATE - INTERVAL '14' DAY
 ) AS streams_data;

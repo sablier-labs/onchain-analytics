@@ -21,7 +21,7 @@ FROM (
             END
         ) AS previous_month_streams
     FROM
-        query_4596391 -- Flow: Stream Creation Data
+        query_4596391 -- Flow: Data for Creations
     WHERE
         evt_block_time >= CURRENT_DATE - INTERVAL '60' DAY
 ) AS streams_data;

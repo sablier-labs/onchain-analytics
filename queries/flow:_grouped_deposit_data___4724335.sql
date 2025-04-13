@@ -10,5 +10,5 @@ SELECT
     streamid,
     token,
     SUM(amount) AS total_deposit
-FROM query_4606918 -- Flow: Deposit Data
+FROM query_4606918 -- Flow: Data for Deposits
 GROUP BY chain, contract_address, release_version, streamid, token;

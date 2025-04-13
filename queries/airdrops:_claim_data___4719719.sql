@@ -7,8 +7,8 @@ SELECT
     t1.block_time,
     contract_address
 FROM
-    ethereum.logs t1
-LEFT JOIN ethereum.transactions t2 ON t1.tx_hash = t2.hash
+    ethereum.logs AS t1
+LEFT JOIN ethereum.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -22,8 +22,8 @@ SELECT
     t1.block_time,
     contract_address
 FROM
-    base.logs t1
-LEFT JOIN base.transactions t2 ON t1.tx_hash = t2.hash
+    base.logs AS t1
+LEFT JOIN base.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -37,8 +37,8 @@ SELECT
     t1.block_time,
     contract_address
 FROM
-    arbitrum.logs t1
-LEFT JOIN arbitrum.transactions t2 ON t1.tx_hash = t2.hash
+    arbitrum.logs AS t1
+LEFT JOIN arbitrum.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -52,8 +52,8 @@ SELECT
     t1.block_time,
     contract_address
 FROM
-    optimism.logs t1
-LEFT JOIN optimism.transactions t2 ON t1.tx_hash = t2.hash
+    optimism.logs AS t1
+LEFT JOIN optimism.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -67,8 +67,8 @@ SELECT
     t1.block_time,
     contract_address
 FROM
-    linea.logs t1
-LEFT JOIN linea.transactions t2 ON t1.tx_hash = t2.hash
+    linea.logs AS t1
+LEFT JOIN linea.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -82,8 +82,8 @@ SELECT
     t1.block_time,
     contract_address
 FROM
-    zksync.logs t1
-LEFT JOIN zksync.transactions t2 ON t1.tx_hash = t2.hash
+    zksync.logs AS t1
+LEFT JOIN zksync.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -97,8 +97,8 @@ SELECT
     t1.block_time,
     contract_address
 FROM
-    scroll.logs t1
-LEFT JOIN scroll.transactions t2 ON t1.tx_hash = t2.hash
+    scroll.logs AS t1
+LEFT JOIN scroll.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -112,8 +112,8 @@ SELECT
     t1.block_time,
     contract_address
 FROM
-    abstract.logs t1
-LEFT JOIN abstract.transactions t2 ON t1.tx_hash = t2.hash
+    abstract.logs AS t1
+LEFT JOIN abstract.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -127,8 +127,8 @@ SELECT
     t1.block_time,
     contract_address
 FROM
-    avalanche_c.logs t1
-LEFT JOIN avalanche_c.transactions t2 ON t1.tx_hash = t2.hash
+    avalanche_c.logs AS t1
+LEFT JOIN avalanche_c.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -142,8 +142,8 @@ SELECT
     t1.block_time,
     contract_address
 FROM
-    polygon.logs t1
-LEFT JOIN polygon.transactions t2 ON t1.tx_hash = t2.hash
+    polygon.logs AS t1
+LEFT JOIN polygon.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -157,8 +157,8 @@ SELECT
     t1.block_time,
     contract_address
 FROM
-    bnb.logs t1
-LEFT JOIN bnb.transactions t2 ON t1.tx_hash = t2.hash
+    bnb.logs AS t1
+LEFT JOIN bnb.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -172,8 +172,8 @@ SELECT
     t1.block_time,
     contract_address
 FROM
-    gnosis.logs t1
-LEFT JOIN gnosis.transactions t2 ON t1.tx_hash = t2.hash
+    gnosis.logs AS t1
+LEFT JOIN gnosis.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (

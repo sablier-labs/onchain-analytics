@@ -4,7 +4,7 @@
 
 SELECT approx_percentile(stablecoin_deposit, 0.5) AS median
 FROM
-    query_4596310 -- Legacy: Stream Creation Data
+    query_4596310 -- Legacy: Data for Creations
 WHERE
     duration > 86400 -- a day
     AND stablecoin_deposit > 50
