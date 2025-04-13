@@ -1,7 +1,7 @@
 import os
-from typing import cast
 from dotenv import load_dotenv
 from dune_client.client import DuneClient
+from typing import cast
 
 
 def get_dune_client():
