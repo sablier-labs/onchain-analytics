@@ -3,15 +3,14 @@
 -- query link: https://dune.com/queries/4724466
 
 
-SELECT
+SELECT (
     (
-        (
-            SELECT TVL
-            FROM
-                QUERY_4611402 -- Lockup: Total Value Locked (TVL)
-        ) + (
-            SELECT TVL
-            FROM
-                QUERY_4724394 -- Flow: Total Value Locked (TVL)
-        )
+        SELECT tvl
+        FROM
+            query_4611402 -- Lockup: Total Value Locked (TVL)
+    ) + (
+        SELECT tvl
+        FROM
+            query_4724394 -- Flow: Total Value Locked (TVL)
     )
+)

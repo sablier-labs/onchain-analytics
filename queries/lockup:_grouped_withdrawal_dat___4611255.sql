@@ -4,31 +4,31 @@
 
 
 WITH
-STREAMAGGREGATION AS (
+stream_aggregation AS (
     SELECT
-        CHAIN,
-        CONTRACT_ADDRESS,
-        STREAMID,
-        RELEASE_VERSION,
-        TOKEN,
-        SUM(AMOUNT) AS TOTAL_AMOUNT,
-        COUNT(*) AS ROW_COUNT
+        chain,
+        contract_address,
+        streamid,
+        release_version,
+        token,
+        SUM(amount) AS total_amount,
+        COUNT(*) AS row_count
     FROM
-        QUERY_4611102 -- Lockup: Withdrawal Data
+        query_4611102 -- Lockup: Withdrawal Data
     GROUP BY
-        CHAIN,
-        CONTRACT_ADDRESS,
-        RELEASE_VERSION,
-        STREAMID,
-        TOKEN
+        chain,
+        contract_address,
+        release_version,
+        streamid,
+        token
 )
 
 SELECT
-    CHAIN,
-    CONTRACT_ADDRESS,
-    RELEASE_VERSION,
-    STREAMID,
-    TOKEN,
-    TOTAL_AMOUNT
+    chain,
+    contract_address,
+    release_version,
+    streamid,
+    token,
+    total_amount
 FROM
-    STREAMAGGREGATION
+    stream_aggregation

@@ -4,13 +4,13 @@
 
 SELECT (
     (
-        SELECT SUM(STABLECOIN_DEPOSIT)
-        FROM QUERY_4672879 -- Lockup: Global Stream Creation Data
+        SELECT SUM(stablecoin_deposit)
+        FROM query_4672879 -- Lockup: Global Stream Creation Data
     ) + (
-        SELECT SUM(STABLECOIN_DEPOSIT)
-        FROM QUERY_4596310 -- Legacy: Stream Creation Data
+        SELECT SUM(stablecoin_deposit)
+        FROM query_4596310 -- Legacy: Stream Creation Data
     ) + (
-        SELECT SUM(STABLECOIN_DEPOSIT)
-        FROM QUERY_4606918 -- Flow: Deposit Data
+        SELECT SUM(stablecoin_deposit)
+        FROM query_4606918 -- Flow: Deposit Data
     )
-) AS CUMULATIVE_STABLECOIN_VOLUME
+) AS cumulative_stablecoin_volume
