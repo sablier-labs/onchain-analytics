@@ -9,7 +9,7 @@ WITH monthly_deposits AS (
         DATE_TRUNC('month', evt_block_time) AS month_start,
         SUM(stablecoin_deposit) AS total_deposits
     FROM
-        query_4606918 -- Flow: Deposit Data
+        query_4606918 -- Flow: Data for Deposits
     WHERE
         evt_block_time >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '12' MONTH
     GROUP BY
@@ -20,7 +20,7 @@ WITH monthly_deposits AS (
 initial_cumulative AS (
     SELECT COALESCE(SUM(stablecoin_deposit), 0) AS starting_cumulative
     FROM
-        query_4606918 -- Flow: Deposit Data
+        query_4606918 -- Flow: Data for Deposits
     WHERE
         evt_block_time < DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '12' MONTH
 ),

@@ -4,6 +4,6 @@
 
 SELECT COUNT(*)
 FROM
-    query_4596391 -- Flow: Stream Creation Data
+    query_4596391 -- Flow: Data for Creations
 WHERE
     evt_block_time >= DATE_TRUNC('day', CURRENT_DATE) - INTERVAL '1' MONTH

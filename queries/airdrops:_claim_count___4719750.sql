@@ -6,7 +6,7 @@
 SELECT
     COUNT(*) AS number_of_claims
 FROM
-    query_4719719 -- Airdrops: Claim Data
+    query_4719719 -- Airdrops: Data for Claims
 WHERE
     contract_address IN ({{ addresses }}) -- Comma-separated list of sender or campaign addresses
     AND block_time > CAST('{{ start_date }}' AS TIMESTAMP)

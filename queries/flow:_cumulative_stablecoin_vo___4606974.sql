@@ -5,4 +5,4 @@
 
 SELECT SUM(stablecoin_deposit)
 FROM
-    query_4606918 -- Flow: Deposit Data
+    query_4606918 -- Flow: Data for Deposits

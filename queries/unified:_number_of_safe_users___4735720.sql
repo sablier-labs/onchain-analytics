@@ -19,19 +19,19 @@ sablier_users AS (
     UNION ALL
     SELECT sender AS sablier_user
     FROM
-        query_4596310 -- Legacy: Stream Creation Data
+        query_4596310 -- Legacy: Data for Creations
     UNION ALL
     SELECT recipient AS sablier_user
     FROM
-        query_4596310 -- Legacy: Stream Creation Data
+        query_4596310 -- Legacy: Data for Creations
     UNION ALL
     SELECT sender AS sablier_user
     FROM
-        query_4596391 -- Flow: Stream Creation Data
+        query_4596391 -- Flow: Data for Creations
     UNION ALL
     SELECT recipient AS sablier_user
     FROM
-        query_4596391 -- Flow: Stream Creation Data
+        query_4596391 -- Flow: Data for Creations
 )
 
 SELECT COUNT(DISTINCT sablier_user) AS matching_users

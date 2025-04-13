@@ -4,4 +4,4 @@
 
 SELECT COUNT(*)
 FROM
-    query_4596391 -- Flow: Stream Creation Data
+    query_4596391 -- Flow: Data for Creations

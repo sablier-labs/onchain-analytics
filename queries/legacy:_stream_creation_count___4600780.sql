@@ -4,4 +4,4 @@
 
 SELECT COUNT(*)
 FROM
-    query_4596310 -- Legacy: Stream Creation Data
+    query_4596310 -- Legacy: Data for Creations

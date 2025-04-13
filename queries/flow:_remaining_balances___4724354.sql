@@ -15,7 +15,7 @@ SELECT
 FROM
     query_4724335 t1 -- Flow: Grouped Deposit Data
 LEFT JOIN
-    query_4724337 -- Flow: Grouped Withdrawal Data
+    query_4724337 -- Flow: Data for Withdrawals per Stream
         t2 ON t1.chain = t2.chain
 AND t1.contract_address = t2.contract_address
 AND t1.streamid = t2.streamid

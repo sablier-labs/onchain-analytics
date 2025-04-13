@@ -4,6 +4,6 @@
 
 SELECT approx_percentile(stablecoin_deposit, 0.5) AS median
 FROM
-    query_4606918 -- Flow: Deposit Data
+    query_4606918 -- Flow: Data for Deposits
 WHERE
     stablecoin_deposit > 50
