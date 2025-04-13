@@ -1,12 +1,13 @@
 # Onchain Analytics
 
-A repo for managing Sablier's [Dune queries](https://dune.mintlify.app/api-reference/crud/endpoint/create), forked from
-[DuneQueryRepo](https://github.com/duneanalytics/DuneQueryRepo).
+A repo for keeping track of Sablier's [Dune queries](https://dune.mintlify.app/api-reference/crud/endpoint/create),
+forked from [DuneQueryRepo](https://github.com/duneanalytics/DuneQueryRepo).
 
 ## Set Up
 
+> [!NOTE] For this repo to work, the API key must be from a [Dune Plus](https://dune.com/pricing) plan.
+
 1. Generate an API key in the Dune UI, and put it in a `.env` file. You can create a key under your Dune team settings.
-   _For this repo to work, the API key must be from a Plus plan._
 
 2. Type your intended query ids into the `queries.yml` file. The id can be found from the link
    `https://dune.com/queries/<query_id>/...`. If you're creating this for a dashboard, go to the dashboard you want to
@@ -44,36 +45,28 @@ using [query version history](https://dune.com/docs/app/query-editor/version-his
 Feel free to dive in! [Open](../../issues/new) an issue, [start](../../discussions/new) a discussion or submit a PR. For
 any informal concerns or feedback, please join our [Discord server](https://discord.gg/bSwRCwWRsT).
 
-### Development Commands
+### Pre Requisites
 
-### Install Dependencies
+You will need the following software on your machine:
 
-```sh
-poetry install
+- [Git](https://git-scm.com/downloads)
+- [Python 3.12](https://python.org/)
+- [Poetry](https://python-poetry.org)
+- [Just](https://github.com/casey/just)
+- [Prettier](https://prettier.io)
+
+### Commands
+
+Install dependencies:
+
+```shell
+just install
 ```
 
-#### Format Python
+To see all available commands, run:
 
-```sh
-poetry run black ./scripts/*.py
-```
-
-#### Format SQL
-
-```sh
-poetry run sqlfluff format ./queries/*.sql
-```
-
-#### Lint Python
-
-```sh
-poetry run black --check ./scripts/*.py
-```
-
-#### Lint SQL
-
-```sh
-poetry run sqlfluff lint ./queries/*.sql
+```shell
+just default
 ```
 
 ## License

@@ -1,9 +1,7 @@
 import argparse
-import os
 import time
 from dune_config import get_dune_client
 from parse_queries import parse_queries
-from typing import List, Tuple
 
 dune = get_dune_client()
 
