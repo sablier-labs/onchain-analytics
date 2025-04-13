@@ -66,6 +66,6 @@ SELECT
     streamid,
     asset AS token,
     amount,
-    'v1.3' AS release_version
+    'v2.0' AS release_version
 FROM
     sablier_v2_2_multichain.sablierv2lockuptranched_evt_withdrawfromlockupstream
