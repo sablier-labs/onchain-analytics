@@ -16,9 +16,7 @@ def get_user_confirmation() -> bool:
     valid_responses = {"yes": True, "y": True, "no": False, "n": False}
 
     while True:
-        response = input(
-            "Are you sure you want to update all query names? (y/n): "
-        ).lower()
+        response = input("Are you sure you want to update all query names? (y/n): ").lower()
         if response in valid_responses:
             return valid_responses[response]
         print("Please respond with 'yes' or 'no' (or 'y' or 'n')")
@@ -45,12 +43,8 @@ def update_query_name(query_id: int, query_name: str) -> bool:
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Update Dune query names based on YAML file"
-    )
-    parser.add_argument(
-        "--dry-run", action="store_true", help="Print actions without making API calls"
-    )
+    parser = argparse.ArgumentParser(description="Update Dune query names based on YAML file")
+    parser.add_argument("--dry-run", action="store_true", help="Print actions without making API calls")
     args = parser.parse_args()
 
     # Ask for user confirmation at the beginning

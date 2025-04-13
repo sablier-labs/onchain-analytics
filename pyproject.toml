@@ -2,10 +2,6 @@
     requires = ["poetry-core"]
     build-backend = "poetry.core.masonry.api"
 
-[tool.black]
-    include = '\.pyi?$'
-    target-version = ['py312']
-
 [tool.poetry]
     authors = ["Sablier Labs Ltd"]
     description = "Onchain analytics for the Sablier Protocol"
@@ -24,6 +20,11 @@
     pyyaml = "^6.0.2"
 
 [tool.poetry.group.dev.dependencies]
-    black = "^25.1.0"
     colorama = "^0.4.6"
+    ruff = "^0.11.5"
     sqlfluff = "^3.3.0"
+
+[tool.ruff]
+    exclude = [".git", ".venv"]
+    line-length = 120
+    target-version = "py312"

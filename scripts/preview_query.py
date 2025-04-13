@@ -18,9 +18,7 @@ def main():
     id = sys.argv[1]
 
     files = os.listdir(QUERIES_DIR)
-    found_files = [
-        file for file in files if str(id) == file.split("___")[-1].split(".")[0]
-    ]
+    found_files = [file for file in files if str(id) == file.split("___")[-1].split(".")[0]]
 
     if len(found_files) != 0:
         query_file = os.path.join(QUERIES_DIR, found_files[0])

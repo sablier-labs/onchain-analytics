@@ -32,16 +32,14 @@ def save_query_to_file(query, found_files):
                 )
     else:
         # Create new file and directories if they don't exist
-        new_file = f'{query.base.name.replace(" ", "_").lower()[:30]}___{query.base.query_id}.sql'
+        new_file = f"{query.base.name.replace(' ', '_').lower()[:30]}___{query.base.query_id}.sql"
         file_path = os.path.join(QUERIES_DIR, new_file)
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
         if "-- part of a query repo" in query.sql:
             print("WARNING!!! This query is part of a query repo")
             with open(file_path, "w", encoding="utf-8") as file:
-                file.write(
-                    f"-- WARNING: this query may be part of multiple repos\n{query.sql}"
-                )
+                file.write(f"-- WARNING: this query may be part of multiple repos\n{query.sql}")
         else:
             with open(file_path, "w", encoding="utf-8") as file:
                 file.write(
@@ -68,9 +66,7 @@ def main():
 
         # Check if query file exists in /queries folder
         files = os.listdir(QUERIES_DIR)
-        found_files = [
-            file for file in files if str(id) == file.split("___")[-1].split(".")[0]
-        ]
+        found_files = [file for file in files if str(id) == file.split("___")[-1].split(".")[0]]
 
         save_query_to_file(query, found_files)
 

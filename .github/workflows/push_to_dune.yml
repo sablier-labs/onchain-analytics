@@ -37,7 +37,7 @@ jobs:
         run: poetry install
 
       - name: Lint the Python code
-        run: poetry run black --check ./scripts/*.py
+        run: just lint
 
       - name: Lint the SQL code
         run: poetry run sqlfluff lint ./queries/*.sql

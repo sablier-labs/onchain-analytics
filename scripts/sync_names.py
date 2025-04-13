@@ -118,16 +118,12 @@ def validate_query_names(
     # Check for queries in YAML but missing SQL files
     for query_id, _ in query_ids_with_names:
         if query_id not in sql_files:
-            errors.append(
-                f"Query ID {query_id} found in queries.yml but no matching SQL file"
-            )
+            errors.append(f"Query ID {query_id} found in queries.yml but no matching SQL file")
 
     # Check for SQL files without entries in YAML
     for query_id in sql_files:
         if query_id not in yaml_query_dict:
-            errors.append(
-                f"SQL file for query ID {query_id} exists but no entry in queries.yml"
-            )
+            errors.append(f"SQL file for query ID {query_id} exists but no entry in queries.yml")
 
     # Check if names match for files that exist in both
     for query_id, yaml_name in query_ids_with_names:
@@ -138,9 +134,7 @@ def validate_query_names(
             rel_path = os.path.relpath(sql_file, ROOT_DIR)
 
             if not sql_name:
-                errors.append(
-                    f"Query ID {query_id}: Failed to extract name from SQL file {rel_path}\n"
-                )
+                errors.append(f"Query ID {query_id}: Failed to extract name from SQL file {rel_path}\n")
                 # If fix mode and we can fix this by adding the header
                 if not lint_only:
                     fixes.append((query_id, sql_file, yaml_name, "add_header"))
@@ -240,9 +234,7 @@ def validate_inline_references(
 
         for ref_query_id, ref_name in references.items():
             if ref_query_id not in yaml_query_dict:
-                errors.append(
-                    f"File {rel_path}: References unknown query ID {ref_query_id}\n"
-                )
+                errors.append(f"File {rel_path}: References unknown query ID {ref_query_id}\n")
                 continue
 
             yaml_name = yaml_query_dict[ref_query_id]
@@ -280,9 +272,7 @@ def fix_inline_references(file_path: str, yaml_query_dict: Dict[int, str]) -> No
 
         if query_id in yaml_query_dict:
             correct_name = yaml_query_dict[query_id]
-            return f"{query_ref} -- {correct_name}" + (
-                match.group(0)[-1] if match.group(0).endswith("\n") else ""
-            )
+            return f"{query_ref} -- {correct_name}" + (match.group(0)[-1] if match.group(0).endswith("\n") else "")
         else:
             # If we don't have a name for this ID, leave it unchanged
             return match.group(0)
@@ -312,12 +302,8 @@ def main():
     as well as query inline references within SQL files.
     Optionally fix inconsistencies.
     """
-    parser = argparse.ArgumentParser(
-        description="Sync and validate query names between YAML and SQL files"
-    )
-    parser.add_argument(
-        "--lint", action="store_true", help="Lint only mode (don't fix errors)"
-    )
+    parser = argparse.ArgumentParser(description="Sync and validate query names between YAML and SQL files")
+    parser.add_argument("--lint", action="store_true", help="Lint only mode (don't fix errors)")
     args = parser.parse_args()
 
     mode_text = "QUERY NAME LINTER" if args.lint else "QUERY NAME SYNC"
@@ -336,9 +322,7 @@ def main():
     header_errors = validate_query_names(query_ids_with_names, sql_files, args.lint)
 
     # Validate query inline references
-    reference_errors = validate_inline_references(
-        query_ids_with_names, sql_files, args.lint
-    )
+    reference_errors = validate_inline_references(query_ids_with_names, sql_files, args.lint)
 
     # Print summary
     yaml_query_count = len(query_ids_with_names)
@@ -356,42 +340,22 @@ def main():
         reference_error_count = len(reference_errors)
 
         if args.lint:
-            print(
-                f"\n{Fore.RED}❌ Found {len(all_errors)} mismatches:{Style.RESET_ALL}"
-            )
-            print(
-                f"  • SQL Header mismatches: {Fore.RED}{header_error_count}{Style.RESET_ALL}"
-            )
-            print(
-                f"  • SQL Inline mismatches: {Fore.RED}{reference_error_count}{Style.RESET_ALL}"
-            )
+            print(f"\n{Fore.RED}❌ Found {len(all_errors)} mismatches:{Style.RESET_ALL}")
+            print(f"  • SQL Header mismatches: {Fore.RED}{header_error_count}{Style.RESET_ALL}")
+            print(f"  • SQL Inline mismatches: {Fore.RED}{reference_error_count}{Style.RESET_ALL}")
 
             for i, error in enumerate(all_errors, 1):
                 print(f"  {i}. {Fore.RED}{error}{Style.RESET_ALL}")
             sys.exit(1)
         else:
-            print(
-                f"\n{Fore.GREEN}✅ Fixed {len(all_errors)} mismatches:{Style.RESET_ALL}"
-            )
-            print(
-                f"  • SQL Header fixes: {Fore.GREEN}{header_error_count}{Style.RESET_ALL}"
-            )
-            print(
-                f"  • SQL Inline fixes: {Fore.GREEN}{reference_error_count}{Style.RESET_ALL}"
-            )
-            print(
-                f"\n{Fore.GREEN}🎉 All queries are now consistent with the YAML definitions.{Style.RESET_ALL}"
-            )
+            print(f"\n{Fore.GREEN}✅ Fixed {len(all_errors)} mismatches:{Style.RESET_ALL}")
+            print(f"  • SQL Header fixes: {Fore.GREEN}{header_error_count}{Style.RESET_ALL}")
+            print(f"  • SQL Inline fixes: {Fore.GREEN}{reference_error_count}{Style.RESET_ALL}")
+            print(f"\n{Fore.GREEN}🎉 All queries are now consistent with the YAML definitions.{Style.RESET_ALL}")
     else:
-        print(
-            f"\n{Fore.GREEN}✅ Success! All query names match between YAML and SQL files.{Style.RESET_ALL}"
-        )
-        print(
-            f"{Fore.GREEN}✅ All query inline references within SQL files are consistent.{Style.RESET_ALL}"
-        )
-        print(
-            f"{Fore.GREEN}🎉 All {yaml_query_count} queries are properly named and documented.{Style.RESET_ALL}"
-        )
+        print(f"\n{Fore.GREEN}✅ Success! All query names match between YAML and SQL files.{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}✅ All query inline references within SQL files are consistent.{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}🎉 All {yaml_query_count} queries are properly named and documented.{Style.RESET_ALL}")
 
 
 if __name__ == "__main__":
