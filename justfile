@@ -24,6 +24,10 @@ dune-update-names *ARGS:
 install:
     poetry install
 
+# Install dependencies and check that the lock file is synced
+install-check:
+    poetry install && poetry check --lock
+
 # Format Python files
 format-python:
     poetry run ruff format scripts/*.py
