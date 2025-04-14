@@ -5,6 +5,7 @@ query_ids:
   - 4907530 # Airdrops: Claim Revenues
   - 4719780 # Airdrops: Daily Claim Count
   - 4719719 # Airdrops: Data for Claims
+  - 4983566 # Airdrops: Daily Instant Claims
 
   - 4724366 # Flow: Adjusted Remaining Balances
   - 4646303 # Flow: Chain Usage Distribution
@@ -106,3 +107,7 @@ query_ids:
   - 4724466 # Unified: Total Value Locked (TVL)
   - 4600977 # Unified: Unique User Count
   - 4687435 # Unified: Withdrawal Revenues
+  - 4983881 # Unified: Total Revenues
+  - 4983919 # Unified: Daily USD Revenue
+  - 4983952 # Unified: Quarterly Revenues
+  - 4983811 # Unified: Quarterly Transaction Count
