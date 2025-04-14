@@ -3,17 +3,21 @@ name: Push Queries to Dune
 on:
   workflow_dispatch:
   push:
-    branches:
-      - "main"
-    paths:
-      - "queries/**"
+    branches: ["main"]
+    paths: "queries/**"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Install Just
+        uses: extractions/setup-just@v3
+        with:
+          just-version: "1"
 
       - name: Install Python
         uses: actions/setup-python@v4
@@ -22,39 +26,32 @@ jobs:
 
       - name: Install Poetry
         uses: abatilo/actions-poetry@v4
-
-      - uses: extractions/setup-just@v2
         with:
-          just-version: 1.40.0
+          poetry-version: "1"
 
       - name: Define a cache for the virtual environment based on the lock file
         uses: actions/cache@v4
         with:
-          path: ./.venv
-          key: venv-${{ hashFiles('poetry.lock') }}
-
-      - name: Regenerate lock file if needed
-        run: |
-          poetry lock --check || poetry lock
+          key: deps-${{ hashFiles('poetry.lock') }}
+          path: |
+            .venv
+            .ruff_cache
 
       - name: Install the project dependencies
-        run: poetry install
+        run: just install
 
-      - name: Lint the Python code
+      - name: Lint the code
         run: just lint
 
-      - name: Lint the SQL code
-        run: poetry run sqlfluff lint ./queries/*.sql
-
-      - name: Log directory structure
+      - name: Log the queries
         run: |
           pwd
-          ls -R
+          ls -R ./queries
 
       - name: Update all queries on Dune
         env:
           DUNE_API_KEY: ${{ secrets.DUNE_API_KEY }}
-        run: poetry run python -u scripts/push_to_dune.py
+        run: just dune-push
 
       - name: "Summary"
         run: |

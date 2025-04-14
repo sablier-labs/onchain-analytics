@@ -13,11 +13,11 @@
     version = "1.0.0"
 
 [tool.poetry.dependencies]
-    dune-client = "^1.7.8"
-    pandas = "^2.2.3"
+    dune-client = "^1.7"
+    pandas = "^2.2"
     python = "^3.12"
-    python-dotenv = "^1.0.1"
-    pyyaml = "^6.0.2"
+    python-dotenv = "^1.0"
+    pyyaml = "^6.0"
 
 [tool.poetry.group.dev.dependencies]
     colorama = "^0.4.6"

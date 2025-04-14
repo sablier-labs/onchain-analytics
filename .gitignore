@@ -1,4 +1,5 @@
 # directories
+.ruff-cache
 .venv
 
 # files

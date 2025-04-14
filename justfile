@@ -14,7 +14,7 @@ dune-pull:
 
 # Push query SQLs to Dune
 dune-push:
-    poetry run python -u scripts/pull_from_dune.py
+    poetry run python -u scripts/push_to_dune.py
 
 # Update query names on Dune
 dune-update-names *ARGS:

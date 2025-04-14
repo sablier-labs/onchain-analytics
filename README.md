@@ -51,7 +51,7 @@ You will need the following software on your machine:
 
 - [Git](https://git-scm.com/downloads)
 - [Python 3.12](https://python.org/)
-- [Poetry](https://python-poetry.org)
+- [Poetry 1.x](https://python-poetry.org)
 - [Just](https://github.com/casey/just)
 - [Prettier](https://prettier.io)
 
