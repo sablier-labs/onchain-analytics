@@ -32,8 +32,8 @@ balance_with_price AS (
         lp.symbol,
         q.adjusted_remaining_balance * lp.price AS remaining_balance_value
     FROM
-        query_4611374 q -- Lockup: Adjusted Remaining Balances
-    LEFT JOIN latest_prices lp
+        query_4611374 AS q -- Lockup: Adjusted Remaining Balances
+    LEFT JOIN latest_prices AS lp
         ON
             q.token = lp.contract_address
             AND q.chain = lp.blockchain

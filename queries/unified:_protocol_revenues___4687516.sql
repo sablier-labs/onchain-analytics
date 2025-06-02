@@ -25,7 +25,7 @@ WITH price_lookup AS (
         WHERE
             blockchain IN ('avalanche_c', 'ethereum', 'bnb', 'polygon', 'gnosis')
             AND contract_address = 0x0000000000000000000000000000000000000000
-    ) sub
+    ) AS sub
     WHERE rn = 1
 )
 
@@ -52,5 +52,5 @@ FROM (
         block_time,
         withdrawal_fee AS protocol_revenues
     FROM query_4687435
-) t
-LEFT JOIN price_lookup p ON t.currency = p.currency;
+) AS t
+LEFT JOIN price_lookup AS p ON t.currency = p.currency;

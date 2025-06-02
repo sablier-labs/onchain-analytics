@@ -7,10 +7,10 @@ SELECT
     'Ethereum' AS chain,
     'ETH' AS currency,
     t1.block_time,
-    COALESCE(t2.value, 0) / 1e18 airdrop_fee
+    COALESCE(t2.value, 0) / 1e18 AS airdrop_fee
 FROM
-    ethereum.logs t1
-LEFT JOIN ethereum.transactions t2 ON t1.tx_hash = t2.hash
+    ethereum.logs AS t1
+LEFT JOIN ethereum.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -24,10 +24,10 @@ SELECT
     'Base' AS chain,
     'ETH' AS currency,
     t1.block_time,
-    COALESCE(t2.value, 0) / 1e18 airdrop_fee
+    COALESCE(t2.value, 0) / 1e18 AS airdrop_fee
 FROM
-    base.logs t1
-LEFT JOIN base.transactions t2 ON t1.tx_hash = t2.hash
+    base.logs AS t1
+LEFT JOIN base.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -41,10 +41,10 @@ SELECT
     'Arbitrum' AS chain,
     'ETH' AS currency,
     t1.block_time,
-    COALESCE(t2.value, 0) / 1e18 airdrop_fee
+    COALESCE(t2.value, 0) / 1e18 AS airdrop_fee
 FROM
-    arbitrum.logs t1
-LEFT JOIN arbitrum.transactions t2 ON t1.tx_hash = t2.hash
+    arbitrum.logs AS t1
+LEFT JOIN arbitrum.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -58,10 +58,10 @@ SELECT
     'Optimism' AS chain,
     'ETH' AS currency,
     t1.block_time,
-    COALESCE(t2.value, 0) / 1e18 airdrop_fee
+    COALESCE(t2.value, 0) / 1e18 AS airdrop_fee
 FROM
-    optimism.logs t1
-LEFT JOIN optimism.transactions t2 ON t1.tx_hash = t2.hash
+    optimism.logs AS t1
+LEFT JOIN optimism.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -75,10 +75,10 @@ SELECT
     'Linea' AS chain,
     'ETH' AS currency,
     t1.block_time,
-    COALESCE(t2.value, 0) / 1e18 airdrop_fee
+    COALESCE(t2.value, 0) / 1e18 AS airdrop_fee
 FROM
-    linea.logs t1
-LEFT JOIN linea.transactions t2 ON t1.tx_hash = t2.hash
+    linea.logs AS t1
+LEFT JOIN linea.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -92,10 +92,10 @@ SELECT
     'zkSync' AS chain,
     'ETH' AS currency,
     t1.block_time,
-    COALESCE(t2.value, 0) / 1e18 airdrop_fee
+    COALESCE(t2.value, 0) / 1e18 AS airdrop_fee
 FROM
-    zksync.logs t1
-LEFT JOIN zksync.transactions t2 ON t1.tx_hash = t2.hash
+    zksync.logs AS t1
+LEFT JOIN zksync.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -109,10 +109,10 @@ SELECT
     'Scroll' AS chain,
     'ETH' AS currency,
     t1.block_time,
-    COALESCE(t2.value, 0) / 1e18 airdrop_fee
+    COALESCE(t2.value, 0) / 1e18 AS airdrop_fee
 FROM
-    scroll.logs t1
-LEFT JOIN scroll.transactions t2 ON t1.tx_hash = t2.hash
+    scroll.logs AS t1
+LEFT JOIN scroll.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -126,10 +126,10 @@ SELECT
     'Abstract' AS chain,
     'ETH' AS currency,
     t1.block_time,
-    COALESCE(t2.value, 0) / 1e18 airdrop_fee
+    COALESCE(t2.value, 0) / 1e18 AS airdrop_fee
 FROM
-    abstract.logs t1
-LEFT JOIN abstract.transactions t2 ON t1.tx_hash = t2.hash
+    abstract.logs AS t1
+LEFT JOIN abstract.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -143,10 +143,10 @@ SELECT
     'Avalanche' AS chain,
     'AVAX' AS currency,
     t1.block_time,
-    COALESCE(t2.value, 0) / 1e18 airdrop_fee
+    COALESCE(t2.value, 0) / 1e18 AS airdrop_fee
 FROM
-    avalanche_c.logs t1
-LEFT JOIN avalanche_c.transactions t2 ON t1.tx_hash = t2.hash
+    avalanche_c.logs AS t1
+LEFT JOIN avalanche_c.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -160,10 +160,10 @@ SELECT
     'Polygon' AS chain,
     'POL' AS currency,
     t1.block_time,
-    COALESCE(t2.value, 0) / 1e18 airdrop_fee
+    COALESCE(t2.value, 0) / 1e18 AS airdrop_fee
 FROM
-    polygon.logs t1
-LEFT JOIN polygon.transactions t2 ON t1.tx_hash = t2.hash
+    polygon.logs AS t1
+LEFT JOIN polygon.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -177,10 +177,10 @@ SELECT
     'BNB Chain' AS chain,
     'BNB' AS currency,
     t1.block_time,
-    COALESCE(t2.value, 0) / 1e18 airdrop_fee
+    COALESCE(t2.value, 0) / 1e18 AS airdrop_fee
 FROM
-    bnb.logs t1
-LEFT JOIN bnb.transactions t2 ON t1.tx_hash = t2.hash
+    bnb.logs AS t1
+LEFT JOIN bnb.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -194,10 +194,10 @@ SELECT
     'Gnosis Chain' AS chain,
     'GNO' AS currency,
     t1.block_time,
-    COALESCE(t2.value, 0) / 1e18 airdrop_fee
+    COALESCE(t2.value, 0) / 1e18 AS airdrop_fee
 FROM
-    gnosis.logs t1
-LEFT JOIN gnosis.transactions t2 ON t1.tx_hash = t2.hash
+    gnosis.logs AS t1
+LEFT JOIN gnosis.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (

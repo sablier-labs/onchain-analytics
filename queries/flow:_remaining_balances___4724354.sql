@@ -13,10 +13,10 @@ SELECT
     COALESCE(t2.total_withdraw, 0) AS withdrawn_amount,
     CAST(t1.total_deposit AS double) - CAST(COALESCE(t2.total_withdraw, 0) AS double) AS remaining_balance
 FROM
-    query_4724335 t1 -- Flow: Grouped Deposit Data
+    query_4724335 AS t1 -- Flow: Grouped Deposit Data
 LEFT JOIN
     query_4724337 -- Flow: Data for Withdrawals per Stream
-        t2 ON t1.chain = t2.chain
+        AS t2 ON t1.chain = t2.chain
 AND t1.contract_address = t2.contract_address
 AND t1.streamid = t2.streamid
 AND t1.release_version = t2.release_version

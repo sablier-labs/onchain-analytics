@@ -11,7 +11,7 @@ SELECT
     p.price AS usd_asset_price,
     t.airdrop_fee * p.price AS usd_revenue
 FROM
-    query_4676715 t
+    query_4676715 AS t
 LEFT JOIN (
     SELECT DISTINCT
         (DATE_TRUNC('day', timestamp), symbol, contract_address),
@@ -21,7 +21,7 @@ LEFT JOIN (
         price
     FROM prices.day
     WHERE contract_address = 0x0000000000000000000000000000000000000000
-) p
+) AS p
     ON
         DATE_TRUNC('day', t.block_time) = p.revenue_day
         AND t.currency = p.symbol

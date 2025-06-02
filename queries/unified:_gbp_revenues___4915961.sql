@@ -14,9 +14,9 @@ SELECT
     q.usd_asset_price / p.price AS gbp_asset_price,
     q.usd_revenue / p.price AS gbp_revenue
 FROM
-    query_4907850 q
+    query_4907850 AS q
 LEFT JOIN
-    prices.day p
+    prices.day AS p
     ON
         DATE(q.revenue_date) = DATE(p.timestamp)
 WHERE

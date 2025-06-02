@@ -17,8 +17,8 @@ SELECT
         WHEN q2.streamid IS NOT NULL THEN 0
         ELSE q1.remaining_balance
     END AS remaining_balance
-FROM query_4611179 q1
-LEFT JOIN query_4665451 q2
+FROM query_4611179 AS q1
+LEFT JOIN query_4665451 AS q2
     ON
         q1.chain = q2.chain
         AND q1.streamid = q2.streamid

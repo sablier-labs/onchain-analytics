@@ -4,11 +4,11 @@
 
 
 SELECT
-  revenue_date,
-  SUM(total_usd_revenue) AS daily_usd_revenue
+    revenue_date,
+    SUM(total_usd_revenue) AS daily_usd_revenue
 FROM
-  query_4983881
+    query_4983881
 GROUP BY
-  revenue_date
+    revenue_date
 ORDER BY
-  revenue_date;
+    revenue_date;

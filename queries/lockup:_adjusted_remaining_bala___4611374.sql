@@ -15,9 +15,9 @@ WITH adjusted_balances AS (
         t.decimals,
         q.remaining_balance / POWER(10, t.decimals) AS adjusted_remaining_balance
     FROM
-        query_4611179 q -- Lockup: Remaining Balances
+        query_4611179 AS q -- Lockup: Remaining Balances
     LEFT JOIN
-        tokens.erc20 t
+        tokens.erc20 AS t
         ON
             q.token = t.contract_address
             AND q.chain = t.blockchain
