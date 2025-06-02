@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Unified: Revenues GBP Total
+-- query name: Unified: GBP Revenues
 -- query link: https://dune.com/queries/4915961
 
 
