@@ -87,6 +87,7 @@ query_ids:
   - 4719220 # Lockup: Withdrawal Count
   - 4907842 # Lockup: Withdrawal Revenues
   - 4646332 # Lockup: Share of Stablecoin Streams
+
   - 4687721 # Unified: Revenues USD Total
   - 4606813 # Unified: Cumulative Stablecoin Volume
   - 4606999 # Unified: Median Stablecoin Deposit
