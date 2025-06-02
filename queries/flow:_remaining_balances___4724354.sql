@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Flow: Remaining Balances
+-- query name: Flow: Data for Deposits per Stream
 -- query link: https://dune.com/queries/4724354
 
 

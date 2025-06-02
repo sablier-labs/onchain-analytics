@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Flow: Priced Adjusted Remaining Balances
+-- query name: Flow: Adjusted Remaining Balances
 -- query link: https://dune.com/queries/4724379
 
 
