@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Unified: Total revenues
+-- query name: Unified: Total Revenues
 -- query link: https://dune.com/queries/4983881
 
 
