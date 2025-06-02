@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Lockup: Adjusted Remaining Balances
+-- query name: Flow: Priced Adjusted Remaining Balances
 -- query link: https://dune.com/queries/4724379
 
 
@@ -35,7 +35,7 @@ balance_with_price AS (
         lp.symbol,
         q.adjusted_remaining_balance * lp.price AS remaining_balance_value
     FROM
-        query_4724366 AS q -- Lockup: Adjusted Remaining Balances
+        query_4724366 AS q -- Flow: Adjusted Remaining Balances
     LEFT JOIN latest_prices AS lp
         ON
             q.token = lp.contract_address

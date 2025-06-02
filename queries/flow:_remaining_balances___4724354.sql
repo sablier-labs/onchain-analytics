@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Flow: Data for Deposits per Stream
+-- query name: Flow: Remaining Balances
 -- query link: https://dune.com/queries/4724354
 
 
@@ -13,7 +13,7 @@ SELECT
     COALESCE(t2.total_withdraw, 0) AS withdrawn_amount,
     CAST(t1.total_deposit AS double) - CAST(COALESCE(t2.total_withdraw, 0) AS double) AS remaining_balance
 FROM
-    query_4724335 AS t1 -- Flow: Grouped Deposit Data
+    query_4724335 AS t1 -- Flow: Data for Deposits per Stream
 LEFT JOIN
     query_4724337 -- Flow: Data for Withdrawals per Stream
         AS t2 ON t1.chain = t2.chain
