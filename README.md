@@ -1,5 +1,11 @@
 # Onchain Analytics
 
+---
+
+🚧 We're currently migrating our contracts on Dune to a new naming system, read more about it [here](https://x.com/Sablier/status/1929582404462621158).
+
+---
+
 A repo for keeping track of Sablier's [Dune queries](https://dune.mintlify.app/api-reference/crud/endpoint/create),
 forked from [DuneQueryRepo](https://github.com/duneanalytics/DuneQueryRepo).
 
