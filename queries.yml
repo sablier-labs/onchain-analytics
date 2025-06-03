@@ -6,6 +6,8 @@ query_ids:
   - 4719780 # Airdrops: Daily Claim Count
   - 4719719 # Airdrops: Data for Claims
   - 4983566 # Airdrops: Daily Instant Claims
+  - 5223843 # Airdrops: Daily Number of Claims
+  - 5223926 # Airdrops: Number of Created Campaigns Since Feb 3rd
 
   - 4724366 # Flow: Adjusted Remaining Balances
   - 4646303 # Flow: Chain Usage Distribution
