@@ -8,12 +8,12 @@ SELECT
         (
             SELECT CAST(COUNT(*) AS DOUBLE)
             FROM
-                query_4580489 -- Lockup: Stream Creation Data
+                query_4580489 -- Lockup: Data for Creations - Chunk 1
             WHERE
                 transferable = true
         ) / (
             SELECT CAST(COUNT(*) AS DOUBLE)
             FROM
-                query_4580489 -- Lockup: Stream Creation Data
+                query_4580489 -- Lockup: Data for Creations - Chunk 1
         )
     ) * 100
