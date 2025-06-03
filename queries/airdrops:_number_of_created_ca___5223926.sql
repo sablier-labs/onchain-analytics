@@ -3,4 +3,5 @@
 -- query link: https://dune.com/queries/5223926
 
 
-SELECT COUNT(*) FROM query_4928090
+SELECT COUNT(*)
+FROM query_4928090
