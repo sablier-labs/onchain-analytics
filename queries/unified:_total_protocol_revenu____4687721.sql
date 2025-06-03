@@ -1,5 +1,5 @@
 -- part of a query repo
--- query name: Unified: Revenues USD Total
+-- query name: Unified: Total Protocol Revenues
 -- query link: https://dune.com/queries/4687721
 
 
