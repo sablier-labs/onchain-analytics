@@ -12,7 +12,7 @@ SELECT
     amount,
     'v1.1' AS release_version
 FROM
-    sablier_v2_1_multichain.sablierv2lockuplinear_evt_withdrawfromlockupstream
+    sablier_lockup_v1_1_multichain.sablierv2lockuplinear_evt_withdrawfromlockupstream
 UNION ALL
 SELECT
     chain,
@@ -23,7 +23,7 @@ SELECT
     amount,
     'v1.1' AS release_version
 FROM
-    sablier_v2_1_multichain.sablierv2lockupdynamic_evt_withdrawfromlockupstream
+    sablier_lockup_v1_1_multichain.sablierv2lockupdynamic_evt_withdrawfromlockupstream
 UNION ALL
 SELECT
     chain,
@@ -34,7 +34,7 @@ SELECT
     amount,
     'v1.1' AS release_version
 FROM
-    sablier_v2_2_multichain.sablierv2lockuplinear_evt_withdrawfromlockupstream
+    sablier_lockup_v1_2_multichain.sablierv2lockuplinear_evt_withdrawfromlockupstream
 UNION ALL
 SELECT
     chain,
@@ -45,7 +45,7 @@ SELECT
     amount,
     'v1.2' AS release_version
 FROM
-    sablier_v2_2_multichain.sablierv2lockupdynamic_evt_withdrawfromlockupstream
+    sablier_lockup_v1_2_multichain.sablierv2lockupdynamic_evt_withdrawfromlockupstream
 UNION ALL
 SELECT
     chain,
@@ -56,7 +56,7 @@ SELECT
     amount,
     'v1.2' AS release_version
 FROM
-    sablier_v2_2_multichain.sablierv2lockuptranched_evt_withdrawfromlockupstream
+    sablier_lockup_v1_2_multichain.sablierv2lockuptranched_evt_withdrawfromlockupstream
 
 UNION ALL
 SELECT
@@ -68,4 +68,4 @@ SELECT
     amount,
     'v2.0' AS release_version
 FROM
-    sablier_v2_2_multichain.sablierv2lockuptranched_evt_withdrawfromlockupstream
+    sablier_lockup_v1_2_multichain.sablierv2lockuptranched_evt_withdrawfromlockupstream

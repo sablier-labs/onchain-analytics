@@ -12,7 +12,7 @@ SELECT
     asset AS token,
     'v1.1' AS release_version
 FROM
-    sablier_v2_1_multichain.sablierv2lockuplinear_evt_cancellockupstream
+    sablier_lockup_v1_1_multichain.sablierv2lockuplinear_evt_cancellockupstream
 UNION ALL
 SELECT
     chain,
@@ -23,7 +23,7 @@ SELECT
     asset AS token,
     'v1.1' AS release_version
 FROM
-    sablier_v2_1_multichain.sablierv2lockupdynamic_evt_cancellockupstream
+    sablier_lockup_v1_1_multichain.sablierv2lockupdynamic_evt_cancellockupstream
 UNION ALL
 SELECT
     chain,
@@ -34,7 +34,7 @@ SELECT
     asset AS token,
     'v1.1' AS release_version
 FROM
-    sablier_v2_2_multichain.sablierv2lockuplinear_evt_cancellockupstream
+    sablier_lockup_v1_2_multichain.sablierv2lockuplinear_evt_cancellockupstream
 UNION ALL
 SELECT
     chain,
@@ -45,7 +45,7 @@ SELECT
     asset AS token,
     'v1.2' AS release_version
 FROM
-    sablier_v2_2_multichain.sablierv2lockupdynamic_evt_cancellockupstream
+    sablier_lockup_v1_2_multichain.sablierv2lockupdynamic_evt_cancellockupstream
 UNION ALL
 SELECT
     chain,
@@ -56,4 +56,4 @@ SELECT
     asset AS token,
     'v1.2' AS release_version
 FROM
-    sablier_v2_2_multichain.sablierv2lockuptranched_evt_cancellockupstream
+    sablier_lockup_v1_2_multichain.sablierv2lockuptranched_evt_cancellockupstream

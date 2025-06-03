@@ -82,7 +82,7 @@ SELECT
     deposit,
     0 AS protocolfee,
     0 AS brokerfee
-FROM sablier_v1_0_ethereum."Sablier_evt_CreateStream"
+FROM sablier_legacy_v1_0_ethereum."Sablier_evt_CreateStream"
 
 UNION ALL
 
@@ -166,4 +166,4 @@ SELECT
     deposit,
     0 AS protocolfee,
     0 AS brokerfee
-FROM sablier_v1_1_multichain."Sablier_evt_CreateStream"
+FROM sablier_legacy_v1_1_multichain."Sablier_evt_CreateStream"

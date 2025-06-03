@@ -95,7 +95,7 @@ SELECT
     json_extract_scalar(amounts, '$.protocolFee') AS protocolfee,
     json_extract_scalar(amounts, '$.brokerFee') AS brokerfee
 FROM
-    sablier_v2_0_multichain.sablierv2lockuplinear_evt_createlockuplinearstream
+    sablier_lockup_v1_0_multichain.sablierv2lockuplinear_evt_createlockuplinearstream
 
 UNION ALL
 
@@ -209,7 +209,7 @@ SELECT
     json_extract_scalar(amounts, '$.protocolFee') AS protocolfee,
     json_extract_scalar(amounts, '$.brokerFee') AS brokerfee
 FROM
-    sablier_v2_0_multichain."SablierV2LockupDynamic_evt_CreateLockupDynamicStream"
+    sablier_lockup_v1_0_multichain."SablierV2LockupDynamic_evt_CreateLockupDynamicStream"
 
 UNION ALL
 
@@ -306,7 +306,7 @@ SELECT
     json_extract_scalar(amounts, '$.protocolFee') AS protocolfee,
     json_extract_scalar(amounts, '$.brokerFee') AS brokerfee
 FROM
-    sablier_v2_1_multichain.sablierv2lockuplinear_evt_createlockuplinearstream
+    sablier_lockup_v1_1_multichain.sablierv2lockuplinear_evt_createlockuplinearstream
 
 UNION ALL
 
@@ -420,7 +420,7 @@ SELECT
     json_extract_scalar(amounts, '$.protocolFee') AS protocolfee,
     json_extract_scalar(amounts, '$.brokerFee') AS brokerfee
 FROM
-    sablier_v2_1_multichain."SablierV2LockupDynamic_evt_CreateLockupDynamicStream"
+    sablier_lockup_v1_1_multichain."SablierV2LockupDynamic_evt_CreateLockupDynamicStream"
 
 UNION ALL
 
@@ -527,7 +527,7 @@ SELECT
     '0' AS protocolfee,
     json_extract_scalar(amounts, '$.brokerFee') AS brokerfee
 FROM
-    sablier_v2_2_multichain.sablierv2lockuplinear_evt_createlockuplinearstream
+    sablier_lockup_v1_2_multichain.sablierv2lockuplinear_evt_createlockuplinearstream
 
 UNION ALL
 
@@ -648,7 +648,7 @@ SELECT
     '0' AS protocolfee,
     json_extract_scalar(amounts, '$.brokerFee') AS brokerfee
 FROM
-    sablier_v2_2_multichain."SablierV2LockupDynamic_evt_CreateLockupDynamicStream"
+    sablier_lockup_v1_2_multichain."SablierV2LockupDynamic_evt_CreateLockupDynamicStream"
 
 UNION ALL
 
@@ -749,4 +749,4 @@ SELECT
     '0' AS protocolfee,
     json_extract_scalar(amounts, '$.brokerFee') AS brokerfee
 FROM
-    sablier_v2_2_multichain."SablierV2LockupTranched_evt_CreateLockupTranchedStream"
+    sablier_lockup_v1_2_multichain."SablierV2LockupTranched_evt_CreateLockupTranchedStream"
