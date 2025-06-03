@@ -5,13 +5,13 @@
 
 SELECT
     CASE
-        WHEN contract = 'lockupLinear' THEN 'Lockup Linear'
-        WHEN contract = 'lockupDynamic' THEN 'Lockup Dynamic'
-        WHEN contract = 'lockupTranched' THEN 'Lockup Tranched'
+        WHEN category = 'lockupLinear' THEN 'Lockup Linear'
+        WHEN category = 'lockupDynamic' THEN 'Lockup Dynamic'
+        WHEN category = 'lockupTranched' THEN 'Lockup Tranched'
         ELSE 'error'
-    END AS contract,
+    END AS category,
     COUNT(*) AS number_of_created_streams
 FROM
     query_4672879 -- Lockup: Data for Creations
 GROUP BY
-    contract
+    category
