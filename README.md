@@ -2,7 +2,7 @@
 
 ---
 
-🚧 We're currently migrating our contracts on Dune to a new naming system, read more about it [here](https://x.com/Sablier/status/1929582404462621158).
+We recently migrated our contracts on Dune to a new naming system, read more about it [here](https://x.com/Sablier/status/1929582404462621158).
 
 ---
 
