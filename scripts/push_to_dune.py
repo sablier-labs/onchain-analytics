@@ -8,6 +8,7 @@ QUERIES_DIR = os.path.join(ROOT_DIR, "queries")
 QUERIES_FILE = os.path.join(ROOT_DIR, "queries.yml")
 dune = get_dune_client()
 
+
 def safe_update(query_id, sql, retries=5, delay=2):
     for attempt in range(retries):
         try:
@@ -16,12 +17,13 @@ def safe_update(query_id, sql, retries=5, delay=2):
             time.sleep(1.5)  # avoid triggering 429 again
             return
         except Exception as e:
-            print(f"WARNING: attempt {attempt+1} failed for query {query_id}: {e}")
+            print(f"WARNING: attempt {attempt + 1} failed for query {query_id}: {e}")
             if "429" in str(e).lower():
-                time.sleep(delay * (2 ** attempt))  # exponential backoff
+                time.sleep(delay * (2**attempt))  # exponential backoff
             else:
                 break
     print(f"ERROR: failed to update query {query_id} after {retries} retries")
+
 
 def main():
     """

@@ -45,6 +45,7 @@ query_ids:
   - 4600780 # Legacy: Stream Creation Count
   - 4601157 # Legacy: Unique User Count
 
+  - 5431097 # Lockup: Monthly Unique Senders
   - 4611374 # Lockup: Adjusted Remaining Balances
   - 4676715 # Lockup: Airdrop Revenues
   - 4646277 # Lockup: Chain Usage Distribution

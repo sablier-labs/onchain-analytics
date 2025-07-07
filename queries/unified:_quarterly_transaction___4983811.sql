@@ -9,7 +9,7 @@ WITH quarters AS (
         SUM(transaction_count) AS total_transactions
     FROM query_4983787
     WHERE block_date < DATE_TRUNC('quarter', CURRENT_DATE)
-    GROUP BY quarter_start
+    GROUP BY DATE_TRUNC('quarter', block_date)
 ),
 
 ordered_quarters AS (

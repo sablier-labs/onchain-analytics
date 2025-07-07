@@ -164,7 +164,7 @@ FROM (
     SELECT t1.block_date, t1.tx_hash
     FROM
         polygon.logs AS t1
-    LEFT JOIN polgyon.transactions AS t2 ON t1.tx_hash = t2.hash
+    LEFT JOIN polygon.transactions AS t2 ON t1.tx_hash = t2.hash
     WHERE
         (
             (
