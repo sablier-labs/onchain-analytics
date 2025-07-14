@@ -10,7 +10,7 @@ SELECT
     COUNT(q.token) AS number_of_deposits
 FROM
     query_4606918 AS q
-LEFT JOIN
+INNER JOIN
     tokens.erc20 AS t
     ON
         q.token = t.contract_address

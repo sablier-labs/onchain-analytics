@@ -12,7 +12,7 @@ SELECT
     t.airdrop_fee * p.price AS usd_revenue
 FROM
     query_4676715 AS t
-LEFT JOIN (
+INNER JOIN (
     SELECT DISTINCT
         (DATE_TRUNC('day', timestamp), symbol, contract_address),
         DATE_TRUNC('day', timestamp) AS revenue_day,

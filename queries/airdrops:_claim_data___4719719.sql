@@ -8,7 +8,7 @@ SELECT
     contract_address
 FROM
     ethereum.logs AS t1
-LEFT JOIN ethereum.transactions AS t2 ON t1.tx_hash = t2.hash
+INNER JOIN ethereum.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -23,7 +23,7 @@ SELECT
     contract_address
 FROM
     base.logs AS t1
-LEFT JOIN base.transactions AS t2 ON t1.tx_hash = t2.hash
+INNER JOIN base.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -38,7 +38,7 @@ SELECT
     contract_address
 FROM
     arbitrum.logs AS t1
-LEFT JOIN arbitrum.transactions AS t2 ON t1.tx_hash = t2.hash
+INNER JOIN arbitrum.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -53,7 +53,7 @@ SELECT
     contract_address
 FROM
     optimism.logs AS t1
-LEFT JOIN optimism.transactions AS t2 ON t1.tx_hash = t2.hash
+INNER JOIN optimism.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -68,7 +68,7 @@ SELECT
     contract_address
 FROM
     linea.logs AS t1
-LEFT JOIN linea.transactions AS t2 ON t1.tx_hash = t2.hash
+INNER JOIN linea.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -83,7 +83,7 @@ SELECT
     contract_address
 FROM
     zksync.logs AS t1
-LEFT JOIN zksync.transactions AS t2 ON t1.tx_hash = t2.hash
+INNER JOIN zksync.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -98,7 +98,7 @@ SELECT
     contract_address
 FROM
     scroll.logs AS t1
-LEFT JOIN scroll.transactions AS t2 ON t1.tx_hash = t2.hash
+INNER JOIN scroll.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -113,7 +113,7 @@ SELECT
     contract_address
 FROM
     abstract.logs AS t1
-LEFT JOIN abstract.transactions AS t2 ON t1.tx_hash = t2.hash
+INNER JOIN abstract.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -128,7 +128,7 @@ SELECT
     contract_address
 FROM
     avalanche_c.logs AS t1
-LEFT JOIN avalanche_c.transactions AS t2 ON t1.tx_hash = t2.hash
+INNER JOIN avalanche_c.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -143,7 +143,7 @@ SELECT
     contract_address
 FROM
     polygon.logs AS t1
-LEFT JOIN polygon.transactions AS t2 ON t1.tx_hash = t2.hash
+INNER JOIN polygon.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -158,7 +158,7 @@ SELECT
     contract_address
 FROM
     bnb.logs AS t1
-LEFT JOIN bnb.transactions AS t2 ON t1.tx_hash = t2.hash
+INNER JOIN bnb.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (
@@ -173,7 +173,7 @@ SELECT
     contract_address
 FROM
     gnosis.logs AS t1
-LEFT JOIN gnosis.transactions AS t2 ON t1.tx_hash = t2.hash
+INNER JOIN gnosis.transactions AS t2 ON t1.tx_hash = t2.hash
 WHERE
     (
         (

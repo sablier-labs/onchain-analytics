@@ -16,7 +16,7 @@ WITH adjusted_balances AS (
         q.remaining_balance / POWER(10, t.decimals) AS adjusted_remaining_balance
     FROM
         query_4724354 AS q -- Flow: Remaining Balances
-    LEFT JOIN
+    INNER JOIN
         tokens.erc20 AS t
         ON
             q.token = t.contract_address

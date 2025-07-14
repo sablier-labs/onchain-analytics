@@ -25,4 +25,4 @@ SELECT
     COUNT(sablier_user) AS matching_users
 FROM
     sablier_users
-LEFT JOIN safe.safes_all ON sablier_users.sablier_user = safe.safes_all.address;
+INNER JOIN safe.safes_all ON sablier_users.sablier_user = safe.safes_all.address;

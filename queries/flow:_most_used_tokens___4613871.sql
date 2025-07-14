@@ -9,7 +9,7 @@ SELECT
     COUNT(q.token) AS number_of_streams
 FROM
     query_4596391 AS q -- Flow: Data for Creations
-LEFT JOIN
+INNER JOIN
     tokens.erc20 AS t
     ON
         q.token = t.contract_address

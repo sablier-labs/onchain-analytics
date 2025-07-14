@@ -53,4 +53,4 @@ FROM (
         withdrawal_fee AS protocol_revenues
     FROM query_4687435
 ) AS t
-LEFT JOIN price_lookup AS p ON t.currency = p.currency;
+INNER JOIN price_lookup AS p ON t.currency = p.currency;

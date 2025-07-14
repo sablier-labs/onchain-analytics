@@ -15,7 +15,7 @@ SELECT
     q.usd_revenue / p.price AS gbp_revenue
 FROM
     query_4907850 AS q
-LEFT JOIN
+INNER JOIN
     prices.day AS p
     ON
         DATE(q.revenue_date) = DATE(p.timestamp)

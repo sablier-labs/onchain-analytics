@@ -74,7 +74,7 @@ SELECT
     END AS stablecoin_deposit
 FROM
     sablier_flow_v1_0_multichain.sablierflow_evt_depositflowstream AS t1
-LEFT JOIN
+INNER JOIN
     query_4596391 AS t2 -- Flow: Data for Creations
     ON
         t1.streamid = t2.streamid AND t1.chain = t2.chain AND t1.funder = t2.sender
@@ -152,7 +152,7 @@ SELECT
     END AS stablecoin_deposit
 FROM
     sablier_flow_v1_1_multichain.sablierflow_evt_depositflowstream AS t1
-LEFT JOIN
+INNER JOIN
     query_4596391 AS t2 -- Flow: Data for Creations
     ON
         t1.streamid = t2.streamid AND t1.chain = t2.chain AND t1.funder = t2.sender
