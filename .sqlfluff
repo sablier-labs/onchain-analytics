@@ -1,10 +1,10 @@
 [sqlfluff]
-exclude_rules=RF02,ST05,ST06,ST08,LT09
 # The dialect used by DuneSQL
 dialect = trino
-max_line_length = 120
+exclude_rules=RF02,ST05,ST06,ST08,LT09
 # Allow up to 100k bytes for file sizes
 large_file_skip_byte_limit = 100000
+max_line_length = 120
 templater = jinja
 
 [sqlfluff:rules:capitalisation.identifiers]

@@ -5,11 +5,7 @@ import argparse
 from colorama import init as init_colorama, Fore, Style
 from typing import Dict, List, Tuple
 from parse_queries import parse_queries
-
-# Directory constants
-ROOT_DIR = os.path.join(os.path.dirname(__file__), "..")
-QUERIES_DIR = os.path.join(ROOT_DIR, "queries")
-QUERIES_FILE = os.path.join(ROOT_DIR, "queries.yml")
+from constants import ROOT_DIR, QUERIES_DIR
 
 # Regex patterns
 # Matches SQL filenames with pattern ending in ___<number>.sql to extract the query ID
@@ -148,7 +144,7 @@ def validate_query_names(
                 if not lint_only:
                     fixes.append((query_id, sql_file, yaml_name, "update_header"))
 
-    # Apply fixes if not in lint-only mode
+    # Apply fixes if not in check-only mode
     if not lint_only:
         for query_id, file_path, yaml_name, fix_type in fixes:
             fix_header_name(file_path, yaml_name, fix_type)
@@ -243,11 +239,11 @@ def validate_inline_references(
                     f"  YAML: '{yaml_name}'\n"
                     f"  SQL Inline: '{ref_name}'\n"
                 )
-                # Mark for fixing if not in lint-only mode
+                # Mark for fixing if not in check-only mode
                 if not lint_only:
                     file_needs_update = True
 
-        # Apply fixes if needed and not in lint-only mode
+        # Apply fixes if needed and not in check-only mode
         if not lint_only and file_needs_update:
             fix_inline_references(sql_file_path, yaml_query_dict)
 
@@ -302,10 +298,10 @@ def main():
     Optionally fix inconsistencies.
     """
     parser = argparse.ArgumentParser(description="Sync and validate query names between YAML and SQL files")
-    parser.add_argument("--lint", action="store_true", help="Lint only mode (don't fix errors)")
+    parser.add_argument("--check-only", action="store_true", help="Check only mode (don't fix errors)")
     args = parser.parse_args()
 
-    mode_text = "QUERY NAME LINTER" if args.lint else "QUERY NAME SYNC"
+    mode_text = "QUERY NAME CHECK" if args.check_only else "QUERY NAME SYNC"
     print_header(mode_text)
 
     # Parse YAML file
@@ -318,10 +314,10 @@ def main():
     sql_files = find_sql_files()
 
     # Validate query names
-    header_errors = validate_query_names(query_ids_with_names, sql_files, args.lint)
+    header_errors = validate_query_names(query_ids_with_names, sql_files, args.check_only)
 
     # Validate query inline references
-    reference_errors = validate_inline_references(query_ids_with_names, sql_files, args.lint)
+    reference_errors = validate_inline_references(query_ids_with_names, sql_files, args.check_only)
 
     # Print summary
     yaml_query_count = len(query_ids_with_names)
@@ -338,7 +334,7 @@ def main():
         header_error_count = len(header_errors)
         reference_error_count = len(reference_errors)
 
-        if args.lint:
+        if args.check_only:
             print(f"\n{Fore.RED}❌ Found {len(all_errors)} mismatches:{Style.RESET_ALL}")
             print(f"  • SQL Header mismatches: {Fore.RED}{header_error_count}{Style.RESET_ALL}")
             print(f"  • SQL Inline mismatches: {Fore.RED}{reference_error_count}{Style.RESET_ALL}")

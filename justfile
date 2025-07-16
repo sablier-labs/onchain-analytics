@@ -1,24 +1,29 @@
-# Development Commands
+set shell := ["bash", "-euo", "pipefail", "-c"]
+
+# ---------------------------------------------------------------------------- #
+#                                 DEPENDENCIES                                 #
+# ---------------------------------------------------------------------------- #
+
+# Poetry: https://github.com/python-poetry/poetry
+poetry := require("poetry")
+
+# ---------------------------------------------------------------------------- #
+#                                    RECIPES                                   #
+# ---------------------------------------------------------------------------- #
 
 # Show available commands
 default:
     @just --list
 
-# Preview a Dune query (pass ID with e.g. `id=123`)
-dune-preview id:
-    poetry run python -u scripts/preview_query.py {{id}}
+# Run all checks
+full-check: dune-names-check python-check sql-check
+    @echo "All checks complete!"
+alias fc := full-check
 
-# Pull queries from Dune
-dune-pull:
-    poetry run python -u scripts/pull_from_dune.py
-
-# Push query SQLs to Dune
-dune-push:
-    poetry run python -u scripts/push_to_dune.py
-
-# Update query names on Dune
-dune-update-names *ARGS:
-    poetry run python -u scripts/update_query_names.py {{ARGS}}
+# Format all files
+full-format: python-format sql-format
+    @echo "All files formatted!"
+alias ff := full-format
 
 # Install dependencies
 install:
@@ -28,34 +33,52 @@ install:
 install-check:
     poetry install && poetry check --lock
 
+# Check Python files
+python-check:
+    poetry run ruff check .
+
 # Format Python files
-format-python:
-    poetry run ruff format scripts/*.py
+python-format:
+    poetry run ruff format .
+
+# Check SQL files
+sql-check:
+    poetry run sqlfluff lint .
 
 # Format SQL files
-format-sql:
-    poetry run sqlfluff format queries/*.sql
+sql-format:
+    poetry run sqlfluff format .
 
-# Format all files
-format: format-python format-sql
-    @echo "All files formatted!"
+# ---------------------------------------------------------------------------- #
+#                                     DUNE                                     #
+# ---------------------------------------------------------------------------- #
 
-# Lint query names
-lint-names:
-    poetry run python -u scripts/sync_names.py --lint
+# Preview a Dune query (pass ID with e.g. `id=123`)
+[group("dune")]
+dune-preview id:
+    poetry run python -u dune/scripts/preview_query.py {{id}}
 
-# Lint Python files
-lint-python:
-    poetry run ruff check scripts/*.py
+# Sync Dune query names
+[group("dune")]
+dune-names-check:
+    poetry run python -u dune/scripts/sync_query_names.py --check-only
 
-# Lint SQL files
-lint-sql:
-    poetry run sqlfluff lint queries/*.sql
+# Sync Dune query names in local files
+[group("dune")]
+dune-names-sync:
+    poetry run python -u dune/scripts/sync_query_names.py
 
-# Lint all files
-lint: lint-names lint-python lint-sql
-    @echo "All linting checks complete!"
+# Update query names in Dune
+[group("dune")]
+dune-names-update *args:
+    poetry run python -u dune/scripts/update_query_names.py {{ args }}
 
-# Sync query names
-sync-names:
-    poetry run python -u scripts/sync_names.py
+# Pull queries from Dune
+[group("dune")]
+dune-pull:
+    poetry run python -u dune/scripts/pull_from_dune.py
+
+# Push query SQLs to Dune
+[group("dune")]
+dune-push:
+    poetry run python -u dune/scripts/push_to_dune.py

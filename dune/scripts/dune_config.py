@@ -1,7 +1,7 @@
-import os
 from dotenv import load_dotenv
 from dune_client.client import DuneClient
 from typing import cast
+from constants import DOTENV_FILE
 
 
 def get_dune_client():
@@ -12,6 +12,5 @@ def get_dune_client():
         DuneClient: Initialized Dune API client
     """
     # Find the .env file in the project root
-    dotenv_path = os.path.join(os.path.dirname(__file__), "..", ".env")
-    load_dotenv(dotenv_path)
+    load_dotenv(DOTENV_FILE)
     return cast(DuneClient, DuneClient.from_env())

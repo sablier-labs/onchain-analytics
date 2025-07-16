@@ -2,10 +2,8 @@ import os
 import yaml
 import time
 from dune_config import get_dune_client
+from constants import QUERIES_DIR, QUERIES_FILE
 
-ROOT_DIR = os.path.join(os.path.dirname(__file__), "..")
-QUERIES_DIR = os.path.join(ROOT_DIR, "queries")
-QUERIES_FILE = os.path.join(ROOT_DIR, "queries.yml")
 dune = get_dune_client()
 
 

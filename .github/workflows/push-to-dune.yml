@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: ["main"]
-    paths: ["queries/**"]
+    paths: ["dune/queries/**"]
 
 jobs:
   build:
@@ -40,13 +40,13 @@ jobs:
       - name: Install the project dependencies
         run: just install-check
 
-      - name: Lint the code
-        run: just lint
+      - name: Run the code checks
+        run: just full-check
 
       - name: Log the queries
         run: |
           pwd
-          ls -R ./queries
+          ls -R ./dune/queries
 
       - name: Update all queries on Dune
         env:

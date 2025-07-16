@@ -1,8 +1,5 @@
-import os
 from typing import List, Tuple
-
-# Always read from queries.yml in the project root
-QUERIES_FILE = os.path.join(os.path.dirname(__file__), "..", "queries.yml")
+from constants import QUERIES_FILE
 
 
 def parse_queries() -> List[Tuple[int, str]]:
