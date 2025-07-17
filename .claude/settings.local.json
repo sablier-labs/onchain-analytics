@@ -1,6 +1,14 @@
 {
-	"permissions": {
-		"allow": ["Bash(poetry add:*)", "Bash(just *)"],
-		"deny": ["Bash(just dune-*)"]
-	}
+  "permissions": {
+    "allow": [
+      "Bash(just *)",
+      "Bash(mkdir:*)",
+      "Bash(python:*)",
+      "Bash(poetry *)",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ],
+    "deny": [
+      "Bash(just dune-*)"
+    ]
+  }
 }
