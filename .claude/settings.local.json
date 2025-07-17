@@ -1,0 +1,6 @@
+{
+	"permissions": {
+		"allow": ["Bash(poetry add:*)", "Bash(just *)"],
+		"deny": ["Bash(just dune-*)"]
+	}
+}
