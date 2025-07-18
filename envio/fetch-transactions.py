@@ -1,24 +1,26 @@
+from datetime import datetime, timezone
 from gql import gql
 
-from constants import PROTOCOLS
+from constants import PROTOCOLS, EXCLUDED_CHAIN_IDS
 from helpers import (
+    add_quarter_argument,
     create_base_parser,
     create_graphql_client,
     execute_graphql_query,
     get_last_quarter_months,
     months_to_quarter_label,
     parse_month,
+    parse_quarter_to_months,
     print_header,
     print_period_info,
     print_section_header,
-    process_protocols,
     save_json_results,
 )
 
 
-def fetch_transactions(endpoint_key, start_timestamp, end_timestamp):
+def fetch_transactions_paginated(endpoint_key, start_timestamp, end_timestamp):
     """
-    Fetch unique transaction count from Envio using Hasura GraphQL.
+    Fetch all unique transaction hashes from Envio using Hasura GraphQL with pagination.
 
     Args:
         endpoint_key (str): Which endpoint to use ('airdrops', 'flow', 'lockup')
@@ -26,63 +28,95 @@ def fetch_transactions(endpoint_key, start_timestamp, end_timestamp):
         end_timestamp (int): End timestamp in Unix format
 
     Returns:
-        dict: GraphQL response containing UserTransaction aggregate count
+        list: List of unique transaction hashes
     """
     client = create_graphql_client(endpoint_key)
 
-    # GraphQL query to fetch UserTransaction aggregate with timestamp filtering
+    # GraphQL query to fetch UserTransaction entities with timestamp filtering
     query = gql("""
-        query GetTransactions(
-            $startTimestamp: numeric!,
-            $endTimestamp: numeric!
-        ) {
-            UserTransaction_aggregate(
-                where: {
-                    timestamp: { _gte: $startTimestamp, _lte: $endTimestamp }
-                }
+        query GetQuarterlyTransactions($limit: Int!, $offset: Int!, $startTimestamp: numeric!, $endTimestamp: numeric!, $excludedChainIds: [numeric!]!) {
+            UserTransaction(
+                distinct_on: [hash]
+                limit: $limit
+                offset: $offset
+                where: { user: {chainId: {_nin: $excludedChainIds}}, timestamp: {_gte: $startTimestamp, _lte: $endTimestamp}}
             ) {
-                aggregate {
-                    count(columns: [hash], distinct: true)
-                }
+                hash
             }
         }
     """)
 
-    variables = {
-        "startTimestamp": start_timestamp,
-        "endTimestamp": end_timestamp,
-    }
+    all_hashes = []
+    limit = 1000  # Fetch 1000 records at a time
+    offset = 0
 
-    return execute_graphql_query(client, query, variables, endpoint_key)
+    while True:
+        variables = {
+            "limit": limit,
+            "offset": offset,
+            "startTimestamp": start_timestamp,
+            "endTimestamp": end_timestamp,
+            "excludedChainIds": EXCLUDED_CHAIN_IDS,
+        }
 
+        result = execute_graphql_query(client, query, variables, endpoint_key)
 
-def process_transaction_result(result, protocol):
-    """Process transaction query result for a specific protocol."""
-    if "data" not in result or "UserTransaction_aggregate" not in result["data"]:
-        return None
+        if not result or "data" not in result or "UserTransaction" not in result["data"]:
+            print(f"   ❌ No data found for {endpoint_key}")
+            break
 
-    transaction_count = result["data"]["UserTransaction_aggregate"]["aggregate"]["count"]
-    print(f"   ✅ Found {transaction_count:,} transactions for {protocol}")
+        transactions = result["data"]["UserTransaction"]
 
-    return {"transaction_count": transaction_count}
+        if not transactions:
+            # No more results
+            break
+
+        # Extract hashes
+        hashes = [tx["hash"] for tx in transactions if tx.get("hash")]
+        all_hashes.extend(hashes)
+
+        print(f"   📥 Fetched {len(hashes)} transactions from {endpoint_key} (offset: {offset})")
+
+        # If we got fewer results than the limit, we've reached the end
+        if len(transactions) < limit:
+            break
+
+        # Move to next page
+        offset += limit
+
+    return all_hashes
 
 
 def main():
-    """Fetch and analyze Quarterly Transaction counts (last 3 months)."""
+    """Fetch and analyze Quarterly Transaction counts (can specify quarter or use last 3 months)."""
     parser = create_base_parser("Fetch Quarterly Transactions from Envio")
+    add_quarter_argument(parser)
     args = parser.parse_args()
 
     print_header("📊 SABLIER QUARTERLY TRANSACTIONS ANALYTICS")
 
-    # Get last 3 complete months
-    months = get_last_quarter_months()
-    print(f"📅 Analyzing last quarter months: {', '.join(months)}")
+    # Determine which months to analyze
+    if args.quarter:
+        quarter_str = args.quarter
+        print(f"📅 Quarter specified: {quarter_str}")
+
+        try:
+            months, quarter_label = parse_quarter_to_months(quarter_str)
+        except ValueError as e:
+            print(f"❌ Error parsing quarter: {e}")
+            print("   Expected format: YYYY-qN (e.g., 2025-q1)")
+            return
+    else:
+        # Get last 3 complete months
+        months = get_last_quarter_months()
+        quarter_label = months_to_quarter_label(months)
+        print(f"📅 Using most recent complete quarter: {quarter_label}")
+
+    print(f"📅 Analyzing months: {', '.join(months)}")
     print()
 
-    from datetime import datetime, timezone
-
     quarterly_results = {}
-    total_quarterly_transactions = 0
+    all_quarterly_hashes = set()  # Use set for deduplication across quarter
 
     # Process each month
     for month in months:
@@ -101,27 +135,34 @@ def main():
         print(f"\n🔄 Fetching Transactions from Envio for {month}...")
         print()
 
-        # Process all protocols for this month
-        month_protocols_data = process_protocols(
-            PROTOCOLS,
-            fetch_transactions,
-            start_timestamp,
-            end_timestamp,
-            process_result_func=process_transaction_result,
-        )
+        month_hashes = set()  # Use set for deduplication within month
 
-        if not month_protocols_data:
+        # Fetch transactions from all protocols
+        for protocol in PROTOCOLS:
+            print(f"🔍 Fetching transactions from {protocol}...")
+            hashes = fetch_transactions_paginated(protocol, start_timestamp, end_timestamp)
+
+            if hashes:
+                protocol_unique = set(hashes)
+                month_hashes.update(protocol_unique)
+                print(f"   ✅ Found {len(protocol_unique):,} unique transactions for {protocol}")
+            else:
+                print(f"   ⚠️  No transactions found for {protocol}")
+
+        if not month_hashes:
             print(f"❌ No transaction data found for {month}")
+            quarterly_results[month] = {"total_transactions": 0, "hashes": []}
             continue
 
-        # Calculate monthly totals
-        monthly_total = 0
-        for protocol, data in month_protocols_data.items():
-            transaction_count = data.get("transaction_count", 0)
-            monthly_total += transaction_count
+        # Store monthly results
+        monthly_total = len(month_hashes)
+        quarterly_results[month] = {
+            "total_transactions": monthly_total,
+            "hashes": sorted(list(month_hashes)),  # Convert to sorted list for JSON
+        }
 
-        quarterly_results[month] = {"total_transactions": monthly_total, "protocols": month_protocols_data}
-        total_quarterly_transactions += monthly_total
+        # Add to quarterly total
+        all_quarterly_hashes.update(month_hashes)
 
         print(f"📊 {month} Total: {monthly_total:,} transactions")
         print()
@@ -130,36 +171,40 @@ def main():
         print("❌ No transaction data found for any month")
         return
 
+    # Convert quarterly hashes to sorted list
+    all_quarterly_hashes_list = sorted(list(all_quarterly_hashes))
+    total_quarterly_unique = len(all_quarterly_hashes_list)
+
     # Calculate quarterly average
-    quarterly_average = total_quarterly_transactions / len(quarterly_results)
+    quarterly_average = sum(d["total_transactions"] for d in quarterly_results.values()) / len(quarterly_results)
 
     print_section_header("📈 QUARTERLY RESULTS SUMMARY")
 
     for month, data in quarterly_results.items():
-        print(f"📊 {month}: {data['total_transactions']:,} transactions")
+        print(f"📊 {month}: {data['total_transactions']:,} unique transactions")
 
     print()
-    print(f"🎯 Total across quarter: {total_quarterly_transactions:,} transactions")
+    print(f"🎯 Total unique transactions across quarter: {total_quarterly_unique:,} transactions")
     print(f"📊 Average transactions per month: {quarterly_average:,.0f} transactions")
     print()
 
     # Save detailed results
     print_section_header("💾 SAVING RESULTS")
 
-    quarter_label = months_to_quarter_label(months)
     output_data = {
         "quarter_months": months,
         "quarter_label": quarter_label,
-        "total_quarterly_transactions": total_quarterly_transactions,
+        "total_unique_quarterly_transactions": total_quarterly_unique,
         "average_monthly_transactions": round(quarterly_average),
         "monthly_results": quarterly_results,
+        "all_unique_hashes": all_quarterly_hashes_list,
     }
 
     save_json_results(
         output_data,
         "envio/transactions",
         f"{quarter_label}.json",
-        f"📊 Quarterly Average Transactions: {quarterly_average:,.0f}",
+        f"📊 Total Unique Quarterly Transactions: {total_quarterly_unique:,}",
     )
 
     print()

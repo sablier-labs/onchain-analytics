@@ -3,10 +3,10 @@ import json
 import os
 from datetime import datetime, timezone, timedelta
 
-from gql import gql, Client
+from gql import Client
 from gql.transport.requests import RequestsHTTPTransport
 
-from constants import ENDPOINTS, PROTOCOLS
+from constants import ENDPOINTS
 
 
 def create_graphql_client(endpoint_key):
@@ -377,3 +377,31 @@ def months_to_quarter_label(months):
     quarter = (month - 1) // 3 + 1
 
     return f"{year}-q{quarter}"
+
+
+def parse_quarter_to_months(quarter_str):
+    """
+    Parse quarter string and return the constituent months.
+
+    Args:
+        quarter_str (str): Quarter in format 'YYYY-qN' (e.g., '2025-q1')
+
+    Returns:
+        tuple: (months_list, quarter_label)
+    """
+    # Use parse_quarter helper to validate the quarter format
+    start_iso, end_iso = parse_quarter(quarter_str)
+
+    # Extract year and quarter number for month calculation
+    year, quarter_num = quarter_str.lower().split("-q")
+    year = int(year)
+    quarter_num = int(quarter_num)
+
+    # Calculate the three months of the quarter
+    start_month = (quarter_num - 1) * 3 + 1
+    months = []
+    for i in range(3):
+        month_num = start_month + i
+        months.append(f"{year}-{month_num:02d}")
+
+    return months, quarter_str

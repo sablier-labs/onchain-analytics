@@ -5,7 +5,8 @@
       "Bash(mkdir:*)",
       "Bash(python:*)",
       "Bash(poetry *)",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(just python-check:*)"
     ],
     "deny": [
       "Bash(just dune-*)"

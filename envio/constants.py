@@ -1,8 +1,8 @@
 # https://envio.dev/app/sablier-labs/lockup-envio
 ENDPOINTS = {
-    "airdrops": "https://indexer.hyperindex.xyz/4f157e6/v1/graphql",
-    "flow": "https://indexer.hyperindex.xyz/37ffa39/v1/graphql",
-    "lockup": "https://indexer.hyperindex.xyz/531634a/v1/graphql",
+    "airdrops": "https://indexer.hyperindex.xyz/5dd79b6/v1/graphql",
+    "flow": "https://indexer.hyperindex.xyz/523ac61/v1/graphql",
+    "lockup": "https://indexer.hyperindex.xyz/9074833/v1/graphql",
 }
 
 # https://github.com/sablier-labs/sdk/blob/15a5cc9/src/chains/data.ts
@@ -38,5 +38,16 @@ CHAINS = [
 # Derived lists for backward compatibility
 CHAIN_IDS = [chain["id"] for chain in CHAINS]
 CHAIN_NAMES = {chain["id"]: chain["name"] for chain in CHAINS}
+
+EXCLUDED_CHAIN_IDS = [
+    88888,  # Chiliz
+    1890,  # Lightlink
+    478,  # Form
+    1329,  # Sei
+    84532,  # Base Sepolia
+    421614,  # Arbitrum Sepolia
+    11155111,  # Ethereum Sepolia
+    11155420,  # Optimism Sepolia
+]
 
 PROTOCOLS = ["airdrops", "flow", "lockup"]
