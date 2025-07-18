@@ -1,11 +1,23 @@
-import argparse
-import json
-import os
-from datetime import datetime, timezone
-from gql import gql, Client
-from gql.transport.requests import RequestsHTTPTransport
-from constants import ENDPOINTS, CHAINS
-from helpers import parse_quarter, get_most_recent_complete_quarter
+"""
+TODO: add price data source
+"""
+
+from gql import gql
+
+from constants import CHAINS, PROTOCOLS
+from helpers import (
+    add_limit_argument,
+    add_quarter_argument,
+    create_base_parser,
+    create_graphql_client,
+    execute_graphql_query,
+    get_most_recent_complete_quarter,
+    handle_period_parsing,
+    parse_quarter,
+    print_header,
+    print_section_header,
+    save_json_results,
+)
 
 
 def fetch_revenues(endpoint_key, limit, chain_id, start_timestamp, end_timestamp):
@@ -16,21 +28,17 @@ def fetch_revenues(endpoint_key, limit, chain_id, start_timestamp, end_timestamp
         endpoint_key (str): Which endpoint to use ('airdrops', 'flow', 'lockup')
         limit (int): Number of records to fetch (default: 1000)
         chain_id (int): Filter by chain ID
-        start_timestamp (int): Start timestamp in seconds
-        end_timestamp (int): End timestamp in seconds
+        start_timestamp (str): Start timestamp in ISO format
+        end_timestamp (str): End timestamp in ISO format
 
     Returns:
         dict: GraphQL response containing Revenue entities
     """
-    endpoint = ENDPOINTS[endpoint_key]
-
-    # Set up GraphQL client
-    transport = RequestsHTTPTransport(url=endpoint)
-    client = Client(transport=transport)
+    client = create_graphql_client(endpoint_key)
 
     # GraphQL query to fetch Revenue entities with date filtering
     query = gql("""
-        query FetchRevenues(
+        query GetRevenues(
             $limit: Int!,
             $chainId: numeric!,
             $startTimestamp: timestamptz!,
@@ -50,18 +58,14 @@ def fetch_revenues(endpoint_key, limit, chain_id, start_timestamp, end_timestamp
         }
     """)
 
-    try:
-        variables = {
-            "limit": limit,
-            "chainId": chain_id,
-            "startTimestamp": start_timestamp,
-            "endTimestamp": end_timestamp,
-        }
-        result = client.execute(query, variable_values=variables)
-        return {"data": result}
-    except Exception as e:
-        print(f"Error fetching revenues for chain {chain_id}: {e}")
-        return None
+    variables = {
+        "limit": limit,
+        "chainId": chain_id,
+        "startTimestamp": start_timestamp,
+        "endTimestamp": end_timestamp,
+    }
+
+    return execute_graphql_query(client, query, variables, f"{endpoint_key}-chain-{chain_id}")
 
 
 def aggregate_revenues_by_currency(all_revenues):
@@ -81,83 +85,87 @@ def aggregate_revenues_by_currency(all_revenues):
         amount = float(revenue["amount"])
 
         if currency not in aggregated:
-            aggregated[currency] = {"total_amount": 0.0, "record_count": 0, "currency": currency}
+            aggregated[currency] = {"total_amount": 0.0, "currency": currency}
 
         aggregated[currency]["total_amount"] += amount
-        aggregated[currency]["record_count"] += 1
 
     return aggregated
 
 
-def save_results_to_json(aggregated_data, quarter, all_revenues, protocols_data):
+def process_protocol_revenues(protocol, limit, start_timestamp, end_timestamp):
     """
-    Save aggregated results to JSON file.
+    Process revenues for a single protocol across all chains.
 
     Args:
-        aggregated_data (dict): Aggregated revenue data by currency
-        quarter (str): Quarter string (e.g., '2025-q2')
-        all_revenues (list): All revenue records
-        protocols_data (dict): Protocol-specific revenue data
+        protocol (str): Protocol name
+        limit (int): Record limit per chain
+        start_timestamp (str): Start timestamp
+        end_timestamp (str): End timestamp
+
+    Returns:
+        list: All revenue records for the protocol
     """
-    # Create output directory if it doesn't exist
-    output_dir = "envio/revenues"
-    os.makedirs(output_dir, exist_ok=True)
+    protocol_revenues = []
 
-    # Prepare output data
-    output_data = {
-        "quarter": quarter,
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "total_records": len(all_revenues),
-        "total_currencies": len(aggregated_data),
-        "currencies": aggregated_data,
-    }
+    for chain in CHAINS:
+        chain_id = chain["id"]
+        chain_name = chain["name"]
+        print(f"   ⛓️  Fetching data for {chain_name} (ID: {chain_id})...")
 
-    # Save to JSON file
-    filename = f"{output_dir}/{quarter}.json"
-    with open(filename, "w") as f:
-        json.dump(output_data, f, indent=2, default=str)
+        result = fetch_revenues(
+            protocol,
+            limit=limit,
+            chain_id=chain_id,
+            start_timestamp=start_timestamp,
+            end_timestamp=end_timestamp,
+        )
 
-    print(f"📁 Results saved to: {filename}")
-    print(f"📊 Total records: {len(all_revenues):,}")
-    print(f"🏦 Total currencies: {len(aggregated_data)}")
-    return filename
+        if not result:
+            print(f"      ❌ Failed to fetch revenue data for {chain_name}")
+            print("      🛑 Stopping execution due to error")
+            return None
+
+        if "errors" in result:
+            print(f"      ❌ GraphQL errors for {chain_name}: {result['errors']}")
+            print("      🛑 Stopping execution due to error")
+            return None
+
+        if "data" not in result or "Revenue" not in result["data"]:
+            print(f"      ⚠️  No Revenue data found for {chain_name}")
+            continue
+
+        revenues = result["data"]["Revenue"]
+        print(f"      ✅ Found {len(revenues):,} revenue records for {chain_name}")
+        protocol_revenues.extend(revenues)
+
+    return protocol_revenues
 
 
 def main():
     """Fetch and print Revenue entities."""
-    parser = argparse.ArgumentParser(description="Fetch Revenue entities from Envio")
-    parser.add_argument(
-        "--quarter",
-        type=str,
-        help="Quarter in format 'YYYY-qN' (e.g., '2025-q2'). If not specified, uses most recent complete quarter.",
-    )
-    parser.add_argument("--limit", type=int, default=1000, help="Number of records to fetch per chain (default: 1000)")
-
+    parser = create_base_parser("Fetch Revenue entities from Envio")
+    add_quarter_argument(parser)
+    add_limit_argument(parser, default=1000)
     args = parser.parse_args()
 
-    print("\n" + "=" * 80)
-    print("🚀 SABLIER REVENUE ANALYTICS")
-    print("=" * 80)
+    print_header("🚀 SABLIER REVENUE ANALYTICS")
 
-    # Determine quarter to use
-    if args.quarter:
-        quarter = args.quarter
-        print(f"📅 Quarter specified: {quarter}")
-    else:
-        quarter = get_most_recent_complete_quarter()
-        print(f"📅 Using most recent complete quarter: {quarter}")
-
-    print()
-
-    try:
-        start_timestamp, end_timestamp = parse_quarter(quarter)
-        start_date = datetime.fromisoformat(start_timestamp.replace("Z", "+00:00"))
-        end_date = datetime.fromisoformat(end_timestamp.replace("Z", "+00:00"))
-        print(f"📊 Fetching revenues for {quarter}")
-        print(f"   Period: {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}")
-    except ValueError as e:
-        print(f"❌ Error parsing quarter: {e}")
+    # Handle period parsing
+    result = handle_period_parsing("quarter", args.quarter, parse_quarter, get_most_recent_complete_quarter)
+    if result[0] is None:
         return
+
+    quarter, timestamps = result
+    start_timestamp, end_timestamp = timestamps
+
+    from datetime import datetime
+
+    start_date = datetime.fromisoformat(start_timestamp.replace("Z", "+00:00"))
+    end_date = datetime.fromisoformat(end_timestamp.replace("Z", "+00:00"))
+
+    print(f"📊 Fetching revenues for {quarter}")
+    print(f"   Period: {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}")
+    print()
 
     print("\n🔄 Fetching Revenue entities from Envio for all protocols...")
     print(f"📊 Limit per chain: {args.limit:,}")
@@ -166,49 +174,20 @@ def main():
     all_protocols_data = {}
     total_revenues = []
 
-    # Fetch revenues from all protocols
-    protocols = ["airdrops", "flow", "lockup"]
-
-    for protocol in protocols:
+    for protocol in PROTOCOLS:
         print(f"🔗 Processing protocol: {protocol}")
+        from constants import ENDPOINTS
+
         print(f"🌐 Endpoint: {ENDPOINTS[protocol]}")
 
-        protocol_revenues = []
+        protocol_revenues = process_protocol_revenues(protocol, args.limit, start_timestamp, end_timestamp)
 
-        for chain in CHAINS:
-            chain_id = chain["id"]
-            chain_name = chain["name"]
-            print(f"   ⛓️  Fetching data for {chain_name} (ID: {chain_id})...")
-
-            result = fetch_revenues(
-                protocol,
-                limit=args.limit,
-                chain_id=chain_id,
-                start_timestamp=start_timestamp,
-                end_timestamp=end_timestamp,
-            )
-
-            if not result:
-                print(f"      ❌ Failed to fetch revenue data for {chain_name}")
-                print("      🛑 Stopping execution due to error")
-                return
-
-            if "errors" in result:
-                print(f"      ❌ GraphQL errors for {chain_name}: {result['errors']}")
-                print("      🛑 Stopping execution due to error")
-                return
-
-            if "data" not in result or "Revenue" not in result["data"]:
-                print(f"      ⚠️  No Revenue data found for {chain_name}")
-                continue
-
-            revenues = result["data"]["Revenue"]
-            print(f"      ✅ Found {len(revenues):,} revenue records for {chain_name}")
-            protocol_revenues.extend(revenues)
+        if protocol_revenues is None:
+            return
 
         # Aggregate by currency for this protocol
         protocol_aggregated = aggregate_revenues_by_currency(protocol_revenues)
-        all_protocols_data[protocol] = {"total_records": len(protocol_revenues), "currencies": protocol_aggregated}
+        all_protocols_data[protocol] = {"currencies": protocol_aggregated}
         total_revenues.extend(protocol_revenues)
 
         print(f"   📊 Protocol {protocol} total: {len(protocol_revenues):,} records")
@@ -224,8 +203,7 @@ def main():
     # Aggregate by currency across all protocols
     aggregated = aggregate_revenues_by_currency(total_revenues)
 
-    print("📈 REVENUE AGGREGATION RESULTS")
-    print("=" * 80)
+    print_section_header("📈 REVENUE AGGREGATION RESULTS")
     print(f"🕐 Quarter: {quarter}")
     print(f"💰 Total Currencies: {len(aggregated)}")
     print()
@@ -233,13 +211,19 @@ def main():
     for currency, data in sorted(aggregated.items()):
         print(f"💱 Currency: {currency}")
         print(f"   💵 Total Amount: {data['total_amount']:.6f}")
-        print(f"   📊 Record Count: {data['record_count']:,}")
         print()
 
-    # Save results to JSON file
-    print("💾 SAVING RESULTS")
-    print("=" * 80)
-    save_results_to_json(aggregated, quarter, total_revenues, all_protocols_data)
+    # Save results
+    print_section_header("💾 SAVING RESULTS")
+
+    output_data = {
+        "quarter": quarter,
+        "total_currencies": len(aggregated),
+        "currencies": dict(sorted(aggregated.items())),
+    }
+
+    save_json_results(output_data, "envio/revenues", f"{quarter}.json", f"🏦 Total currencies: {len(aggregated)}")
+
     print()
     print("✅ Analysis complete! 🎉")
 

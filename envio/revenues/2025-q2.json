@@ -1,33 +1,31 @@
 {
+  "generated_at": "2025-07-18 14:23:00 UTC",
   "quarter": "2025-q2",
-  "generated_at": "2025-07-17T19:38:21.286087+00:00",
-  "total_records": 935,
-  "total_currencies": 5,
+  "total_currencies": 6,
   "currencies": {
-    "ETH": {
-      "total_amount": 5.8017653413178145,
-      "record_count": 694,
-      "currency": "ETH"
-    },
-    "BNB": {
-      "total_amount": 0.37327538202478255,
-      "record_count": 61,
-      "currency": "BNB"
-    },
-    "POL": {
-      "total_amount": 923.8447715319571,
-      "record_count": 47,
-      "currency": "POL"
-    },
     "AVAX": {
-      "total_amount": 6.317502290701874,
-      "record_count": 42,
+      "total_amount": 6.317502290701873,
       "currency": "AVAX"
     },
-    "CHZ": {
-      "total_amount": 16389.552723509354,
-      "record_count": 91,
-      "currency": "CHZ"
+    "BERA": {
+      "total_amount": 435.31970947074507,
+      "currency": "BERA"
+    },
+    "BNB": {
+      "total_amount": 0.3732753820247824,
+      "currency": "BNB"
+    },
+    "ETH": {
+      "total_amount": 7.324949246847727,
+      "currency": "ETH"
+    },
+    "POL": {
+      "total_amount": 923.8447715319572,
+      "currency": "POL"
+    },
+    "XDC": {
+      "total_amount": 0.004275941402703038,
+      "currency": "XDC"
     }
   }
 }
