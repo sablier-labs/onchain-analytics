@@ -76,11 +76,6 @@ def add_quarter_argument(parser):
     )
 
 
-def add_limit_argument(parser, default=1000):
-    """Add limit argument to parser."""
-    parser.add_argument("--limit", type=int, default=default, help=f"Number of records to fetch (default: {default})")
-
-
 def print_header(title):
     """Print formatted header."""
     print("\n" + "=" * 80)
@@ -138,51 +133,6 @@ def handle_period_parsing(period_type, period_value, parse_func, get_recent_func
     except ValueError as e:
         print(f"❌ Error parsing {period_type}: {e}")
         return None, None
-
-
-def process_protocols(protocols, fetch_func, *args, **kwargs):
-    """
-    Process multiple protocols with consistent error handling.
-
-    Args:
-        protocols (list): List of protocol names
-        fetch_func: Function to fetch data for a protocol
-        *args, **kwargs: Additional arguments for fetch_func
-
-    Returns:
-        dict: Results by protocol or None on error
-    """
-    all_protocols_data = {}
-
-    # Extract process_result_func from kwargs to avoid passing it to fetch_func
-    process_result_func = kwargs.pop("process_result_func", lambda x, p: x)
-
-    for protocol in protocols:
-        print(f"🔗 Processing protocol: {protocol}")
-        print(f"🌐 Endpoint: {ENDPOINTS[protocol]}")
-
-        result = fetch_func(protocol, *args, **kwargs)
-
-        if not result:
-            print(f"   ❌ Failed to fetch data for {protocol}")
-            print("   🛑 Stopping execution due to error")
-            return None
-
-        if "errors" in result:
-            print(f"   ❌ GraphQL errors for {protocol}: {result['errors']}")
-            print("   🛑 Stopping execution due to error")
-            return None
-
-        # Let the specific fetch function handle the result processing
-        processed_result = process_result_func(result, protocol)
-        if processed_result is None:
-            print(f"   ⚠️  No data found for {protocol}")
-            continue
-
-        all_protocols_data[protocol] = processed_result
-        print()
-
-    return all_protocols_data
 
 
 def save_json_results(data, output_dir, filename, success_message=None):
@@ -405,3 +355,34 @@ def parse_quarter_to_months(quarter_str):
         months.append(f"{year}-{month_num:02d}")
 
     return months, quarter_str
+
+
+def format_amount(amount):
+    """
+    Format amount with proper decimal places and thousand separators.
+
+    Args:
+        amount (float or str): Amount to format
+
+    Returns:
+        str: Formatted amount string
+    """
+    if amount is None:
+        return "0"
+
+    # Convert to float and format to 2 decimal places
+    num = float(amount)
+    formatted = f"{num:.2f}"
+
+    # Split into integer and decimal parts
+    if "." in formatted:
+        integer_part, decimal_part = formatted.split(".")
+    else:
+        integer_part, decimal_part = formatted, "00"
+
+    # Only add separators if integer part has more than 4 digits
+    if len(integer_part) > 4:
+        # Add thousand separators
+        integer_part = f"{int(integer_part):,}"
+
+    return f"{integer_part}.{decimal_part}"

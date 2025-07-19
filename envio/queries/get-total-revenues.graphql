@@ -1,0 +1,11 @@
+query GetTotalRevenues($currency: String!) {
+  Total: Revenue_aggregate(where: { currency: { _eq: $currency } }) {
+    aggregate {
+      sum {
+        amount
+        valueGBP
+        valueUSD
+      }
+    }
+  }
+}

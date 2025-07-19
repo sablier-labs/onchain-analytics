@@ -1,0 +1,11 @@
+query GetQuarterRevenues($currency: String!, $from: timestamptz!, $until: timestamptz!) {
+  Quarter: Revenue_aggregate(where: { currency: { _eq: $currency }, dateTimestamp: { _gte: $from, _lt: $until } }) {
+    aggregate {
+      sum {
+        amount
+        valueGBP
+        valueUSD
+      }
+    }
+  }
+}

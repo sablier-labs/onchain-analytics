@@ -15,15 +15,15 @@ poetry := require("poetry")
 default:
     @just --list
 
-# Run all checks
+# Run all code checks
 full-check: dune-names-check python-check sql-check
     @echo "All checks complete!"
 alias fc := full-check
 
-# Format all files
-full-format: python-format sql-format
-    @echo "All files formatted!"
-alias ff := full-format
+# Run all code fixes
+full-write: python-format sql-format
+    @echo "All code formatted!"
+alias fw := full-write
 
 # Install dependencies
 install:
