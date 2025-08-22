@@ -1,6 +1,7 @@
 printWidth: 120
+tabWidth: 2
 trailingComma: "all"
 overrides:
-    - files: "*.md"
-      options:
-          proseWrap: "always"
+  - files: "*.md"
+    options:
+      proseWrap: "always"

@@ -1,0 +1,43 @@
+# https://envio.dev/app/sablier-labs/analytics
+ENDPOINTS = {
+    "airdrops": "https://indexer.hyperindex.xyz/508d217/v1/graphql",
+    "analytics": "https://indexer.hyperindex.xyz/7672d32/v1/graphql",
+    "flow": "https://indexer.hyperindex.xyz/3b4ea6b/v1/graphql",
+    "lockup": "https://indexer.hyperindex.xyz/53b7e25/v1/graphql",
+}
+
+# https://github.com/sablier-labs/sdk/blob/15a5cc9/src/chains/data.ts
+CHAINS = [
+    {"id": 1, "name": "Ethereum Mainnet"},
+    {"id": 10, "name": "Optimism"},
+    {"id": 50, "name": "XDC"},
+    {"id": 56, "name": "BNB Smart Chain"},
+    {"id": 100, "name": "Gnosis"},
+    {"id": 130, "name": "Unichain"},
+    {"id": 137, "name": "Polygon"},
+    {"id": 324, "name": "zkSync"},
+    {"id": 478, "name": "Form"},
+    {"id": 1329, "name": "Sei"},
+    {"id": 1890, "name": "Lightlink"},
+    {"id": 2741, "name": "Abstract"},
+    {"id": 2818, "name": "Morph"},
+    {"id": 4689, "name": "IoTeX"},
+    {"id": 5330, "name": "Superseed"},
+    {"id": 5845, "name": "Tangle"},
+    {"id": 8453, "name": "Base"},
+    {"id": 34443, "name": "Mode"},
+    {"id": 42161, "name": "Arbitrum"},
+    {"id": 43114, "name": "Avalanche"},
+    {"id": 50104, "name": "Sophon"},
+    {"id": 59144, "name": "Linea"},
+    {"id": 81457, "name": "Blast"},
+    {"id": 80094, "name": "Berachain"},
+    {"id": 88888, "name": "Chiliz"},
+    {"id": 534352, "name": "Scroll"},
+]
+
+# Derived lists for backward compatibility
+CHAIN_IDS = [chain["id"] for chain in CHAINS]
+CHAIN_NAMES = {chain["id"]: chain["name"] for chain in CHAINS}
+
+PROTOCOLS = ["airdrops", "flow", "lockup"]
