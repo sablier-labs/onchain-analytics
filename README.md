@@ -1,5 +1,8 @@
 # Onchain Analytics
 
+> [!WARNING]
+> This repository is deprecated and no longer maintained.
+
 ---
 
 We recently migrated our contracts on Dune to a new naming system, read more about it [here](https://x.com/Sablier/status/1929582404462621158).
